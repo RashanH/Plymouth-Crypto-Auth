@@ -30,10 +30,10 @@
                                 <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                     Email
                                 </th>
-                                <th scope="col" class="w-60 text-sm font-medium text-gray-900 px-6 py-4 text-center">
+                                <th scope="col" class="max-w-md text-sm font-medium text-gray-900 px-6 py-4 text-center">
                                 Name
                                 </th>
-                                <th scope="col" class="w-60 text-sm font-medium text-gray-900 px-6 py-4 text-center">
+                                <th scope="col" class="max-w-md text-sm font-medium text-gray-900 px-6 py-4 text-center">
                                     Company
                                 </th>
                                 <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-center" style="width:9rem">
