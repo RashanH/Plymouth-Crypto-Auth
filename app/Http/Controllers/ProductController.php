@@ -15,7 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::where('user_id', '=', Auth::id())->paginate(2);
+        $products = Product::where('user_id', '=', Auth::id())->paginate(10);
 
         return view('product.list', compact('products','products'));
     }
@@ -39,19 +39,22 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'txt_name'=>'required',
-            'txt_secret_code' => 'required'
+            'name'=>'required',
+            'secret_code' => 'required',
+            'latest_version' => 'required'
         ]);
  
         $product = new Product([
             'user_id' => Auth::id(),
-            'name' => $request->get('txt_name'),
-            'description'=> $request->get('txt_description'),
-            'secret_code'=> $request->get('txt_secret_code')
+            'name' => $request->get('name'),
+            'latest_version' => $request->get('latest_version'),
+            'force_latest_version' => $request->has('force_latest_version'),
+            'description'=> $request->get('description'),
+            'secret_code'=> $request->get('secret_code')
         ]);
- 
+
         $product->save();
-        return redirect('/products')->with('success', 'Product has been added');
+        return redirect('/products')->with('success', 'Product has been added.');
     }
 
     /**
@@ -88,16 +91,19 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         if ($product->user_id != Auth::id()){ return back()->withErrors('You don\'t have permission.')->withInput(); }
+     
         $request->validate([
-            'txt_name'=>'required',
-            'txt_secret_code' => 'required'
+            'name'=>'required',
+            'secret_code' => 'required',
+            'latest_version' => 'required'
         ]);
- 
- 
+        
         $product = Product::find($product->id);
-        $product->name = $request->get('txt_name');
-        $product->description = $request->get('txt_description');
-        $product->secret_code = $request->get('txt_secret_code');
+        $product->name = $request->get('name');
+        $product->latest_version = $request->get('latest_version');
+        $product->force_latest_version = $request->has('force_latest_version');
+        $product->description = $request->get('description');
+        $product->secret_code = $request->get('secret_code');
  
         $product->update();
  

@@ -13,12 +13,7 @@
                 <div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-2">
                     <div class="p-6">
                         <div class="flex items-center">
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-400">
-                                <path
-                                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
-                                </path>
-                            </svg>
+                        <i class="fa fa-user text-gray-400 fa-2xl"></i>
                             <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold">Subscription Status
                             </div>
                         </div>
@@ -54,13 +49,7 @@
 
                     <div class="p-6 border-t border-gray-200 md:border-t-0 md:border-l">
                         <div class="flex items-center">
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-400">
-                                <path
-                                    d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z">
-                                </path>
-                                <path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                            </svg>
+                        <i class="fa fa-credit-card text-gray-400 fa-2xl"></i>
                             <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold">Payment Methods</div>
                         </div>
 
@@ -76,13 +65,12 @@
                                 <div class="mt-3 flex items-center text-sm font-semibold text-indigo-700">
 
                                     @if (! Auth::user()->subscribed())
-                                        <div
-                                            class="text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-green-900 text-green-900 rounded-full" style="background: #10ff005e; color:#000;">
-                                            Start your subscription
-                                        </div>
-                                    @endif
+                                    <div class="text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-green-900 text-green-900 rounded-full"
+                                        style="background: #10ff005e; color:#000;">
+                                        Start your subscription
+                                    </div>
 
-
+                                    @else
                                     <div>Billing portal</div>
 
                                     <div class="ml-1 text-indigo-500">
@@ -92,19 +80,30 @@
                                                 clip-rule="evenodd"></path>
                                         </svg>
                                     </div>
+
+                                    @endif
+
+
+
                                 </div>
                             </a>
                         </div>
                     </div>
                 </div>
 
-
+                @if (Auth::user()->subscribed())
                 <div
                     class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 border-t border-gray-200 md:border-t-1 md:border-0">
                     <div class="text-lg text-gray-600 leading-7 font-semibold">For plans, upgrades & subscription
                         settings, please visit our new <a class="text-indigo-700"
-                            href="{{ URL::to('billing/portal') }}">Billing Portal</a>.</div>
+                            href="{{ URL::to('billing/portal') }}">
+                            <div class="text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-green-900 text-green-900 rounded-full"
+                                style="background: #10ff005e; color:#000;">
+                                Billing Portal
+                            </div>
+                        </a></div>
                 </div>
+                @endif
                 <div
                     class="max-w-7xl mx-auto px-4 pt-4 pb-0 sm:px-6 lg:px-8 border-t border-gray-200 md:border-t-1 md:border-0">
                     <h2 class="font-semibold text-xl text-gray-600 leading-tight">
@@ -116,15 +115,10 @@
                     <div class="space-y-6">
 
                         @forelse ($invoices as $invoice)
-                        <div class="flex items-center">
+                        <div class="pl-4 flex items-center">
                             <div>
-                                <a href="{{ $invoice->invoice_pdf }}">
-                                    <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        viewBox="0 0 24 24" stroke="currentColor" class="w-8 h-8 text-gray-500">
-                                        <path
-                                            d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
-                                        </path>
-                                    </svg>
+                                <a href="{{ $invoice->invoice_pdf }}" title="Download invoice as PDF">
+                                <i class="fa fa-download text-gray-400 fa-2xl"></i>
                                 </a>
                             </div>
 
@@ -147,12 +141,7 @@
                         @empty
                         <div class="flex items-center">
                             <div>
-                                <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    viewBox="0 0 24 24" stroke="currentColor" class="w-8 h-8 text-gray-500">
-                                    <path
-                                        d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
-                                    </path>
-                                </svg>
+                            <i class="fa fa-exclamation text-gray-400 fa-2xl"></i>
                             </div>
 
                             <div class="ml-3">

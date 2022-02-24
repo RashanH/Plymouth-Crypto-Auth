@@ -17,6 +17,8 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('user_id');
             $table->string('name');
+            $table->string('latest_version');
+            $table->boolean('force_latest_version')->default(0);
             $table->text('description')->nullable();
             $table->string('secret_code');
             $table->timestamps();
