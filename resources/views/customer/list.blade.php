@@ -1,4 +1,4 @@
-@extends('product.layout')
+@extends('customer.layout')
 
 @section('content')
 
@@ -6,10 +6,10 @@
 
     <div class="max-w-7xl px-4 pt-6 pb-2 sm:px-6 lg:px-8 border-t border-gray-200 md:border-t-1 md:border-0">
         <div class="text-lg text-gray-600 leading-7 font-semibold text-right"><a class="text-indigo-700"
-                href="{{ route('products.create') }}">
+                href="{{ route('customers.create') }}">
                 <div class="text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-2 bg-green-900 text-green-900 rounded-full"
                     style="background: #10ff005e; color:#000;">
-                    Add new product
+                    Add new customer
                 </div>
             </a></div>
     </div>
@@ -28,13 +28,13 @@
                         <thead class="bg-white border-b">
                             <tr>
                                 <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                    Name
+                                    Email
                                 </th>
                                 <th scope="col" class="w-60 text-sm font-medium text-gray-900 px-6 py-4 text-center">
-                                    Version
+                                Name
                                 </th>
-                                <th scope="col" class="w-20 text-sm font-medium text-gray-900 px-6 py-4 text-center">
-                                    Users
+                                <th scope="col" class="w-60 text-sm font-medium text-gray-900 px-6 py-4 text-center">
+                                    Company
                                 </th>
                                 <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-center" style="width:9rem">
                                     Actions
@@ -42,24 +42,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($products as $product)
+                            @forelse ($customers as $customer)
                             <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-indigo-500 truncate"> 
-                                <a href="{{ route('products.show',$product) }}">
+                                <a href="{{ route('customers.show',$customer) }}">
                                 <div style="height:100%;" class="w-full">
-                                {{ $product->name }}
+                                {{ $customer->email }} 
     </div></a>
                                 </td>
                                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-center truncate">
-                                    {{ $product->latest_version }}
+                                    {{ $customer->first_name }} {{ $customer->last_name }}
                                 </td>
                                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-center truncate">
-                                    0
+                                {{ $customer->company }}
                                 </td>
                                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-center">
-                                    <form action="{{ route('products.destroy',$product->id) }}" method="POST">
+                                    <form action="{{ route('customers.destroy',$customer->id) }}" method="POST">
                                         <a class="inline-block px-6 py-2.5"
-                                            href="{{ route('products.edit',$product->id) }}" title="Edit"><i
+                                            href="{{ route('customers.edit',$customer->id) }}" title="Edit"><i
                                                 class="fa fa-edit"></i></a>
                                         @csrf
                                         @method('DELETE')
@@ -89,12 +89,12 @@
                             <tr
                                 class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 text-center">
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900" colspan="4">
-                                    You don't have any active products. Let's get started.<br>
+                                    You don't have any active customers. Let's get started.<br>
 
-                                    <a class="text-indigo-700" href="{{ URL::to('products/create') }}">
+                                    <a class="text-indigo-700" href="{{ URL::to('customers/create') }}">
                                         <div class="text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-2 my-4 bg-green-900 text-green-900 rounded-full"
                                             style="background: #10ff005e; color:#000;">
-                                            Create the first product
+                                            Create the first customer
                                         </div>
                                     </a>
 
@@ -107,8 +107,8 @@
 
                         </tbody>
                     </table>
-                    @if(!$products->isEmpty())
-                  <div class="my-4"> {{ $products->links() }}</div> 
+                    @if(!$customers->isEmpty())
+                  <div class="my-4"> {{ $customers->links() }}</div> 
                     @endif
                     
                 </div>
