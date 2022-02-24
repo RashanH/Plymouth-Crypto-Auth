@@ -15,6 +15,6 @@ class BillingController extends Controller
 
 
         return view('billing.index', compact('user', 'invoices', 'current_plan'));
-        //return $current_plan;
+        return $current_plan;
     }
 }
