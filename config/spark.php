@@ -135,8 +135,7 @@ return [
                         'Feature 2',
                         'Feature 3',
                     ],
-                ],
-                [
+                ],[
                     'name' => 'Premium',
                     'short_description' => 'This is a short, human friendly description of the plan.',
                     'monthly_id' => 'price_1KWVShGNiD9f6pP2UYWBICuN',
