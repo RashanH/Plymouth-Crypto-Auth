@@ -15,6 +15,16 @@
     <div class="text-lg text-gray-600 leading-7 font-semibold">{{ $product->name }}</div>
 </div>
 
+@if ($message = Session::get('success'))
+<div class="py-5 px-6 mb-4 mt-4 text-base" role="alert" style="background:#caffdf;">
+    {{ $message }}
+</div>
+@endif
+@if ($errors->any())
+<div class="py-5 px-6 mb-4 mt-4 text-base" role="alert" style="background:#ffcaca;">
+<ul> @foreach ($errors->all() as $error) <li>{{ $error }}</li> @endforeach </ul>
+</div>
+@endif
 
 <div class="flex flex-col">
     <div class="overflow-x-auto">

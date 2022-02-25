@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 border-t border-gray-200 md:border-t-1 md:border-0">
-    <div class="text-lg text-gray-600 leading-7 font-semibold">{{ $product->name }}</div>
+    <div class="text-lg text-gray-700 leading-7 font-semibold text-center">{{ $product->name }}</div>
 </div>
 
 <div class="max-w-7xl px-4 pt-6 pb-2 sm:px-6 lg:px-8 border-t border-gray-200 md:border-t-1 md:border-0 relative"
@@ -25,6 +25,11 @@
 @if ($message = Session::get('success'))
 <div class="py-5 px-6 mb-4 mt-4 text-base" role="alert" style="background:#caffdf;">
     {{ $message }}
+</div>
+@endif
+@if ($errors->any())
+<div class="py-5 px-6 mb-4 mt-4 text-base" role="alert" style="background:#ffcaca;">
+<ul> @foreach ($errors->all() as $error) <li>{{ $error }}</li> @endforeach </ul>
 </div>
 @endif
 

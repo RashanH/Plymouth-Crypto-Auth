@@ -15,7 +15,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers = Customer::paginate(10);
+        $customers = Customer::where('user_id', '=', Auth::id())
+        ->paginate(10);
         return view('customer.list', compact('customers','customers'));
     }
 
@@ -25,7 +26,8 @@ class CustomerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    { 
+        if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission.')->withInput(); }
         return view('customer.create');
     }
 
@@ -37,6 +39,7 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
+        if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission.')->withInput(); }
         $request->validate([
             'email'=>'required|email'
         ]);
@@ -73,6 +76,7 @@ class CustomerController extends Controller
      */
     public function edit(Customer $customer)
     {
+        if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission.')->withInput(); }
         if ($customer->user_id != Auth::id()){ return back()->withErrors('You don\'t have permission.')->withInput(); }
         return view('customer.edit',compact('customer'));
     }
@@ -86,6 +90,7 @@ class CustomerController extends Controller
      */
     public function update(Request $request, Customer $customer)
     {
+        if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission.')->withInput(); }
         if ($customer->user_id != Auth::id()){ return back()->withErrors('You don\'t have permission.')->withInput(); }
      
         $request->validate([
@@ -111,6 +116,7 @@ class CustomerController extends Controller
      */
     public function destroy(Customer $customer)
     {
+        if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission.')->withInput(); }
         if ($customer->user_id != Auth::id()){ return back()->withErrors('You don\'t have permission.')->withInput(); }
         $customer->delete();
         return redirect('/customers')->with('success', 'Customer deleted successfully');

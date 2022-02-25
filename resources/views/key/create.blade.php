@@ -22,9 +22,14 @@
 </div>
 
 
+@if ($message = Session::get('success'))
+<div class="py-5 px-6 mb-4 mt-4 text-base" role="alert" style="background:#caffdf;">
+    {{ $message }}
+</div>
+@endif
 @if ($errors->any())
 <div class="py-5 px-6 mb-4 mt-4 text-base" role="alert" style="background:#ffcaca;">
-    <ul> @foreach ($errors->all() as $error) <li>{{ $error }}</li> @endforeach </ul>
+<ul> @foreach ($errors->all() as $error) <li>{{ $error }}</li> @endforeach </ul>
 </div>
 @endif
 

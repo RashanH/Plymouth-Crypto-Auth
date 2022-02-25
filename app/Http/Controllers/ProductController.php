@@ -22,7 +22,7 @@ class ProductController extends Controller
         ->where('products.user_id', '=', Auth::id())
         ->paginate(10);
         
-        
+
         return view('product.list', compact('products','products'));
     }
 
@@ -33,6 +33,7 @@ class ProductController extends Controller
      */
     public function create()
     {
+        if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission.')->withInput(); }
         return view('product.create');
     }
 
@@ -44,6 +45,8 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission.')->withInput(); }
+
         $request->validate([
             'name'=>'required',
             'secret_code' => 'required',
@@ -95,6 +98,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
+        if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission.')->withInput(); }
         if ($product->user_id != Auth::id()){ return back()->withErrors('You don\'t have permission.')->withInput(); }
         return view('product.edit',compact('product'));
     }
@@ -108,6 +112,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+        if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission.')->withInput(); }
         if ($product->user_id != Auth::id()){ return back()->withErrors('You don\'t have permission.')->withInput(); }
      
         $request->validate([
@@ -136,6 +141,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+         if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission.')->withInput(); }
+         
         if ($product->user_id != Auth::id()){ return back()->withErrors('You don\'t have permission.')->withInput(); }
         $product->delete();
         return redirect('/products')->with('success', 'Product deleted successfully');
