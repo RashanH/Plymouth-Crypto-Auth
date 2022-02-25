@@ -1,26 +1,20 @@
 @extends('product.layout')
 
 @section('content')
+<div class="row">
+    <div class="col-lg-11">
+        <h2>Laravel 9 CRUD Example</h2>
+    </div>
+    <div class="col-lg-1">
+        <a class="btn btn-primary" href="{{ url('products') }}"> Back</a>
+    </div>
+</div>
+
+
 <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 border-t border-gray-200 md:border-t-1 md:border-0">
     <div class="text-lg text-gray-600 leading-7 font-semibold">{{ $product->name }}</div>
 </div>
 
-<div class="max-w-7xl px-4 pt-6 pb-2 sm:px-6 lg:px-8 border-t border-gray-200 md:border-t-1 md:border-0 relative"
-    style="display: flex; justify-content: space-between;">
-    <div class="text-lg text-gray-600 leading-7 font-semibold">
-        <a class="text-indigo-700" href="{{ URL::to('products') }}">
-            <div class="text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-2 bg-green-900 text-green-900 rounded-full"
-                style="background: #bac2ff5e; color:#000;">Back to product list</div>
-        </a>
-    </div>
-
-    <div class="text-lg text-gray-600 leading-7 font-semibold">
-        <a class="text-indigo-700" href="{{ URL::to('keys/create', $product->id) }}">
-            <div class="text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-2 bg-green-900 text-green-900 rounded-full"
-                style="background: #10ff005e; color:#000;">Add new key</div>
-        </a>
-    </div>
-</div>
 
 <div class="flex flex-col">
     <div class="overflow-x-auto">
@@ -48,9 +42,9 @@
                         @forelse ($keys as $key)
                         <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-indigo-500 truncate">
-                                <a href="{{ route('keys.show', $key) }}">
+                                <a href="{{ route('keys.show',$key) }}">
                                     <div style="height:100%;" class="w-full">
-                                        {{ $key->key_code }}
+                                        {{ $keys->name }}
                                     </div>
                                 </a>
                             </td>

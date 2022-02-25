@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Key;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -66,7 +67,13 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         if ($product->user_id != Auth::id()){ return back()->withErrors('You don\'t have permission.')->withInput(); }
-        return view('product.view',compact('product'));
+
+
+        $keys = Key::where('product_id', '=', $product->id)->paginate(10);
+
+        //return $keys;
+
+        return view('product.view',compact('product', 'keys'));
     }
 
     /**

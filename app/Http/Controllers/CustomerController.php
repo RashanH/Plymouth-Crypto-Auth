@@ -41,7 +41,7 @@ class CustomerController extends Controller
             'email'=>'required|email'
         ]);
  
-        $student = new Customer([
+        $customer = new Customer([
             'user_id' => Auth::id(),
             'first_name' => $request->get('first_name'),
             'last_name'=> $request->get('last_name'),
@@ -49,7 +49,7 @@ class CustomerController extends Controller
             'company'=> $request->get('company'),
         ]);
  
-        $student->save();
+        $customer->save();
         return redirect('/customers')->with('success', 'Customer has been added');
     }
 
@@ -92,13 +92,13 @@ class CustomerController extends Controller
             'email'=>'required|email'
         ]);
         
-        $student = Customer::find($customer->id);
-        $student->first_name = $request->get('first_name');
-        $student->last_name = $request->get('last_name');
-        $student->email = $request->get('email');
-        $student->company = $request->get('company');
+        $customer = Customer::find($customer->id);
+        $customer->first_name = $request->get('first_name');
+        $customer->last_name = $request->get('last_name');
+        $customer->email = $request->get('email');
+        $customer->company = $request->get('company');
  
-        $student->update();
+        $customer->update();
  
         return redirect('/customers')->with('success', 'Customer updated successfully');
     }
@@ -114,5 +114,33 @@ class CustomerController extends Controller
         if ($customer->user_id != Auth::id()){ return back()->withErrors('You don\'t have permission.')->withInput(); }
         $customer->delete();
         return redirect('/customers')->with('success', 'Customer deleted successfully');
+    }
+
+    public function autocomplete(Request $request)
+    {
+        $data = Customer::select("email")
+        ->where("user_id","=", Auth::id())
+        ->where('email','like','%' . $request->input('query') . '%')
+        ->take(5)
+                ->get();
+
+        //return $data;
+   
+        return response()->json($data);
+    }
+
+
+    public function get_details_by_email(Request $request)
+    {
+        $email = $request->input('query');
+
+        $data = Customer::select('first_name','last_name', 'company')
+        ->where("user_id","=", Auth::id())
+        ->where("email","=", $email)
+        ->take(1)->first();
+
+        //return $email;
+   
+        return response()->json($data);
     }
 }
