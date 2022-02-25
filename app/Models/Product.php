@@ -11,4 +11,9 @@ class Product extends Model
     protected $fillable = [
         'user_id','name', 'latest_version', 'force_latest_version', 'description', 'secret_code'
     ];
+
+    public function keys()
+    {
+        return $this->hasMany(Key::class);
+    }
 }

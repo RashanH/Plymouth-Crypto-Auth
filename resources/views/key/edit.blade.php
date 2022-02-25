@@ -79,7 +79,7 @@
                 <input type="email"
                     class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                     placeholder="Customer email" name="customer_email"
-                    value="{{ old('customer_email') ?? $customer->email }}" id="customer_email"> </div>
+                    value="{{ old('customer_email') ?? $customer->email ?? '' }}" id="customer_email"> </div>
             <div class="grid md:grid-cols-2 gap-4">
                 <div class="form-group mb-6">
                     <label class="form-check-label inline-block text-gray-800" for="customer_first_name">First
@@ -87,7 +87,7 @@
                     <input type="text"
                         class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                         placeholder="First name" name="customer_first_name"
-                        value="{{ old('customer_first_name') ?? $customer->first_name }}" id="customer_first_name"
+                        value="{{ old('customer_first_name') ?? $customer->first_name ?? '' }}" id="customer_first_name"
                         disabled>
                 </div>
                 <div class="form-group mb-6">
@@ -96,7 +96,7 @@
                     <input type="text"
                         class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                         placeholder="Last name" name="customer_last_name"
-                        value="{{ old('customer_last_name') ?? $customer->last_name }}" id="customer_last_name"
+                        value="{{ old('customer_last_name') ?? $customer->last_name ?? ''}} " id="customer_last_name"
                         disabled>
                 </div>
             </div <div class="form-group mb-6 autocomplete">
@@ -104,10 +104,10 @@
             <input type="text"
                 class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                 placeholder="Company" name="customer_company"
-                value="{{ old('customer_company') ?? $customer->company }}" id="customer_company" disabled>
+                value="{{ old('customer_company') ?? $customer->company ?? ''}}" id="customer_company" disabled>
 
 
-
+                @if(!empty($customer->id))
             <div class="max-w-7xl pt-6 pb-4">
                 <div class="text-lg text-gray-600 leading-7 font-semibold text-left"><a class="text-indigo-700"
                         href="{{ route('customers.edit',$customer->id) }}">
@@ -117,10 +117,10 @@
                         </div>
                     </a></div>
             </div>
-
+            @endif
 
             <button type="submit"
-                class="w-full px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Update
+                class="w-full px-6 py-2.5 my-4 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Update
                 key</button>
         </form>
     </div>

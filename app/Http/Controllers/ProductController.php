@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\Key;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -16,8 +17,12 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::where('user_id', '=', Auth::id())->paginate(10);
-
+        
+        $products = Product::withCount('keys')
+        ->where('products.user_id', '=', Auth::id())
+        ->paginate(10);
+        
+        
         return view('product.list', compact('products','products'));
     }
 

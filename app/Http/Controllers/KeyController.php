@@ -134,7 +134,9 @@ class KeyController extends Controller
         ->where('id', '=', $key->customer_id)
         ->first();
         //return $customer;
-        if ($customer->user_id != Auth::id()){ return back()->withErrors('You don\'t have permissions.')->withInput(); }
+
+        //todo - handle if delete customer
+        //if ($customer->user_id != Auth::id()){ return back()->withErrors('You don\'t have permissions.')->withInput(); }
 
 
         return view('key.edit',compact('key', 'product', 'customer'));

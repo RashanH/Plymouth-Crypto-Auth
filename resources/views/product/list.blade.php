@@ -35,7 +35,7 @@
                                     Version
                                 </th>
                                 <th scope="col" class="w-20 text-sm font-medium text-gray-900 px-6 py-4 text-center">
-                                    Users
+                                    Keys
                                 </th>
                                 <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-center"
                                     style="width:9rem">
@@ -59,7 +59,7 @@
                                 </td>
                                 <td
                                     class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-center truncate">
-                                    0
+                                   {{ $product->keys_count }}
                                 </td>
                                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-center">
                                     <a class="inline-block px-6 py-2.5"

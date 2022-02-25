@@ -12,4 +12,6 @@ class Key extends Model
     protected $fillable = [
         'user_id','product_id', 'customer_id', 'key_code', 'maximum_devices', 'is_blocked', 'notes', 'expires_at'
     ];
+
+   
 }
