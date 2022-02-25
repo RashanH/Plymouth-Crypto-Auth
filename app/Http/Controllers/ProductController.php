@@ -69,7 +69,13 @@ class ProductController extends Controller
         if ($product->user_id != Auth::id()){ return back()->withErrors('You don\'t have permission.')->withInput(); }
 
 
-        $keys = Key::where('product_id', '=', $product->id)->paginate(10);
+
+        //$keys = Key::where('product_id', '=', $product->id)->paginate(10);
+
+        $keys = Key::select('keys.*', 'first_name', 'last_name', 'email', 'company')
+        ->where('product_id', '=', $product->id)
+        ->leftJoin('customers', 'keys.customer_id', '=', 'customers.id')
+        ->paginate(10);
 
         //return $keys;
 

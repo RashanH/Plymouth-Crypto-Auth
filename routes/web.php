@@ -34,6 +34,8 @@ Route::get('customers/autocomplete',  [CustomerController::class, 'autocomplete'
 Route::get('customers/get_details_by_email',  [CustomerController::class, 'get_details_by_email'])->middleware('auth')->name('customers/get_details_by_email');
 Route::resource('customers', CustomerController::class)->middleware('auth');
 
-Route::resource('keys', KeyController::class)->except(['create'])->middleware('auth');
+
 
 Route::get('/keys/create/{product}', [KeyController::class, 'create']);
+Route::resource('keys', KeyController::class)->except(['create'])->middleware('auth');
+

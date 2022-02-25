@@ -95,7 +95,7 @@ class KeyController extends Controller
             'maximum_devices' => $request->get('maximum_devices'),
             'is_blocked' => $request->has('is_blocked'),
             'notes'=> $request->get('notes'),
-            'expires_at'=> Carbon::now()->addDays($request->get('expires_at'))->toDateTimeString()
+            'expires_at'=> Carbon::createFromFormat('Y-m-d', $request->get('expires_at'))->toDateTimeString()
         ]);
 
         $key->save();
@@ -121,7 +121,23 @@ class KeyController extends Controller
      */
     public function edit(Key $key)
     {
-        //
+        //return $key;
+        if ($key->user_id != Auth::id()){ return back()->withErrors('You don\'t have permission.')->withInput(); }
+
+        $product = Product::where('user_id', '=', Auth::id())
+        ->where('id', '=', $key->product_id)
+        ->first();
+        //return $product;
+        if ($product->user_id != Auth::id()){ return back()->withErrors('You don\'t have permissions.')->withInput(); }
+
+        $customer = Customer::where('user_id', '=', Auth::id())
+        ->where('id', '=', $key->customer_id)
+        ->first();
+        //return $customer;
+        if ($customer->user_id != Auth::id()){ return back()->withErrors('You don\'t have permissions.')->withInput(); }
+
+
+        return view('key.edit',compact('key', 'product', 'customer'));
     }
 
     /**
@@ -133,7 +149,52 @@ class KeyController extends Controller
      */
     public function update(Request $request, Key $key)
     {
-        //
+        $request->validate([
+            'product_id'=>'required',
+            'key_code' => 'required',
+            'maximum_devices' => 'required',
+            'expires_at' => 'required',
+            'customer_email' => 'required|email',
+        ]);
+
+        $product = Product::select('user_id')
+        ->where('id', '=', $request->get('product_id'))
+        ->first();
+
+        if ($product->user_id != Auth::id()){ return back()->withErrors('You don\'t have permissions.')->withInput(); }
+        if ($key->user_id != Auth::id()){ return back()->withErrors('You don\'t have permissions.')->withInput(); }
+        
+        $prev_customer = Customer::select('id')
+            ->where('user_id', '=', Auth::id())
+            ->where('email', '=', $request->get('customer_email'))
+            ->first();
+            
+        $customer_id = 0;
+        if (!$prev_customer) { 
+            //create customer
+            $customer = new Customer([
+                'user_id' => Auth::id(),
+                'first_name' => $request->get('customer_first_name'),
+                'last_name'=> $request->get('customer_last_name'),
+                'email'=> $request->get('customer_email'),
+                'company'=> $request->get('customer_company'),
+            ]);
+            $customer->save();
+            $customer_id = $customer->id;
+        } else{
+            $customer_id = $prev_customer->id;
+        }
+        
+        $key = Key::find($key->id);
+        $key->customer_id = $customer_id;
+        $key->key_code = $request->get('key_code');
+        $key->maximum_devices = $request->get('maximum_devices');
+        $key->is_blocked = $request->has('is_blocked');
+        $key->notes = $request->get('notes');
+        $key->expires_at = Carbon::createFromFormat('Y-m-d', $request->get('expires_at'))->toDateTimeString();
+ 
+        $key->update();
+        return redirect('/products/' . $request->get('product_id'),)->with('success', 'Key updated successfully');
     }
 
     /**
@@ -144,6 +205,11 @@ class KeyController extends Controller
      */
     public function destroy(Key $key)
     {
-        //
+        if ($key->user_id != Auth::id()){ return back()->withErrors('You don\'t have permissions.')->withInput(); }
+
+        $product_id = $key->product_id;
+
+        $key->delete();
+        return redirect('/products/'. $product_id)->with('success', 'Key deleted successfully');
     }
 }

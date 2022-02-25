@@ -22,6 +22,12 @@
     </div>
 </div>
 
+@if ($message = Session::get('success'))
+<div class="py-5 px-6 mb-4 mt-4 text-base" role="alert" style="background:#caffdf;">
+    {{ $message }}
+</div>
+@endif
+
 <div class="flex flex-col">
     <div class="overflow-x-auto">
         <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
@@ -33,7 +39,7 @@
                                 Key
                             </th>
                             <th scope="col" class="max-w-md text-sm font-medium text-gray-900 px-6 py-4 text-center">
-                                Version
+                                Customer
                             </th>
                             <th scope="col" class="w-20 text-sm font-medium text-gray-900 px-6 py-4 text-center">
                                 Users
@@ -54,18 +60,17 @@
                                     </div>
                                 </a>
                             </td>
-                            <td
-                                class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-center truncate">
-                                0
+                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-center truncate">
+                                {{ $key->email }}
                             </td>
                             <td
                                 class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-center truncate">
                                 0
                             </td>
                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-center">
-                                <form action="{{ route('keys.destroy',$key->id) }}" method="POST">
-                                    <a class="inline-block px-6 py-2.5" href="{{ route('keys.edit',$key->id) }}"
+                                <a class="inline-block px-6 py-2.5" href="{{ route('keys.edit', $key->id) }}"
                                         title="Edit"><i class="fa fa-edit"></i></a>
+                                <form action="{{ route('keys.destroy',$key->id) }}" method="POST" class="inline-block">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="inline-block px-6 py-2.5" title="Delete"><i

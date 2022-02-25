@@ -38,16 +38,20 @@
                     placeholder="Key code" name="key_code" value="{{ old('key_code') ?? '' }}"> </div>
             <div class="grid md:grid-cols-3 gap-4">
                 <div class="form-group mb-6">
-                    <input type="number"
+                    <label class="form-check-label inline-block text-gray-800" for="expires_at">Expires at</label>
+                    <input
                         class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                        placeholder="Expires in (days)" name="expires_at" value="{{ old('expires_at') ?? '' }}">
+                        type="date" id="expires_at" name="expires_at"
+                        value="{{ old('expires_at') ?? date('Y-m-d') }}"
+                        min="2022-02-25T00:00" max="2099-02-25T00:00">
                 </div>
                 <div class="form-group mb-6">
+                    <label class="form-check-label inline-block text-gray-800" for="maximum_devices">Max. devices</label>
                     <input type="number"
                         class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                        placeholder="Max. devices" name="maximum_devices" value="{{ old('maximum_devices') ?? '' }}">
+                        placeholder="Max. devices" name="maximum_devices" id="maximum_devices" value="{{ old('maximum_devices') ?? '1' }}">
                 </div>
-                <div class="form-group mb-6 form-check text-right mt-2">
+                <div class="form-group mb-6 form-check text-right mt-6">
                     <input type="checkbox"
                         class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain mr-2 cursor-pointer"
                         id="is_blocked" name="is_blocked" @if(is_array(old('is_blocked')) && in_array(3,

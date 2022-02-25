@@ -12,7 +12,7 @@
 </div>
 <div class="max-w-7xl mx-auto px-4 pt-4 pb-0 sm:px-6 lg:px-8">
     <h2 class="font-semibold text-xl text-gray-600 leading-tight text-center uppercase">
-        {{ $customer->name }}
+        {{ $customer->email }}
     </h2>
 </div>
 
