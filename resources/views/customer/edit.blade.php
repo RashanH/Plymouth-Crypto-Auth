@@ -23,7 +23,7 @@
 @endif
 @if ($errors->any())
 <div class="py-5 px-6 mb-4 mt-4 text-base" role="alert" style="background:#ffcaca;">
-<ul> @foreach ($errors->all() as $error) <li>{{ $error }}</li> @endforeach </ul>
+    <ul> @foreach ($errors->all() as $error) <li>{{ $error }}</li> @endforeach </ul>
 </div>
 @endif
 
@@ -35,7 +35,8 @@
             @method('PATCH')
             @csrf
             <div class="grid md:grid-cols-2 gap-4">
-                <div class="form-group mb-6"> <input type="text"
+                <div class="form-group mb-6">
+                    <input type="text"
                         class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                         placeholder="First name" name="first_name" value="{{ $customer->first_name }}"></div>
                 <div class="form-group mb-6"> <input type="text"
@@ -44,12 +45,10 @@
             </div>
             <div class="form-group mb-6"> <input type="email"
                     class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                    placeholder="Email" name="email"
-                    value="{{ $customer->email }}"> </div>
+                    placeholder="Email" name="email" value="{{ $customer->email }}"> </div>
             <div class="form-group mb-6"> <input type="text"
                     class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                    placeholder="Company" name="company"
-                    value="{{ $customer->company }}"> </div>
+                    placeholder="Company" name="company" value="{{ $customer->company }}"> </div>
 
             <button type="submit"
                 class="w-full px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Update</button>

@@ -38,8 +38,7 @@
             @method('PATCH')
             @csrf
             <input type="hidden" name="product_id" value="{{ $product->id }}">
-            <div class="form-group mb-6"> <label class="form-check-label inline-block text-gray-800"
-                    for="key_code">Key</label>
+            <div class="form-group mb-6"> <label class="form-check-label inline-block text-gray-800" for="key_code">Key</label>
                 <input type="text"
                     class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                     placeholder="Key code" id="key_code" name="key_code"

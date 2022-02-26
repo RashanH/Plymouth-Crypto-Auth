@@ -43,7 +43,15 @@ class CustomerController extends Controller
         $request->validate([
             'email'=>'required|email'
         ]);
- 
+
+        $prev_customer = Customer::where('user_id', '=', Auth::id())
+        ->where('email', '=', $request->get('email'))
+        ->first();
+
+        if ($prev_customer != null) {
+            return back()->withErrors('A customer with this email address already exists.')->withInput();
+         }
+         
         $customer = new Customer([
             'user_id' => Auth::id(),
             'first_name' => $request->get('first_name'),

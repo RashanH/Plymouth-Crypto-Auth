@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-1 md:table-fixed">
+<div class="grid grid-cols-1 md:grid-cols-1 md:table-fixed">
 
     <div class="max-w-7xl px-4 pt-6 pb-2 sm:px-6 lg:px-8 border-t border-gray-200 md:border-t-1 md:border-0">
         <div class="text-lg text-gray-600 leading-7 font-semibold text-right"><a class="text-indigo-700"
