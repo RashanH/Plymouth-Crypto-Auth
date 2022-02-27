@@ -12,8 +12,7 @@
         "laravel/sanctum": "^2.14.1",
         "laravel/spark-stripe": "1.2.3",
         "laravel/tinker": "^2.7",
-        "livewire/livewire": "^2.5",
-        "spatie/crypto": "^2.0"
+        "livewire/livewire": "^2.5"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

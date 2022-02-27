@@ -42,7 +42,38 @@
                 <input type="text"
                     class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                     placeholder="Key code" id="key_code" name="key_code"
-                    value="{{ old('key_code') ?? $key->key_code }}"> </div>
+                    value="{{ old('key_code') ?? $key->key_code }}"> 
+                
+                
+                    <div class="max-w-7xl pt-2 pb-2 border-t border-gray-200 md:border-t-1 md:border-0 relative" style="display: flex; justify-content: space-between;">
+                        <div class="text-lg text-gray-600 leading-7 font-semibold">
+                            <a id="generate_new_serial" class="text-indigo-700" href="#">
+                                <div class="text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-2 bg-green-900 text-green-900 rounded-full" style="background: #bac2ff5e; color:#000;">Generate a new key</div>
+                            </a>
+                        </div>
+                    
+                        <div class="text-lg text-gray-600 leading-7 font-semibold">
+                            <a class="text-indigo-700" href="#">
+                                <div onclick="copy_serial_key()" class="text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-2 bg-green-900 text-green-900 rounded-full" style="background: #10ff005e; color:#000;">Copy key</div>
+                            </a>
+                        </div>
+                    </div>
+                    <script>function copy_serial_key() { var copyText = document.getElementById("key_code"); copyText.select(); copyText.setSelectionRange(0, 99999); navigator.clipboard.writeText(copyText.value); }</script>
+
+
+                </a>
+                <script>
+                    $(document).ready(function(){
+                      $("#generate_new_serial").click(function(){
+                        $.get("{{ url('/keys/generate_serial') }}", function(data, status){
+                          $("#key_code").val(data);
+                        });
+                      });
+                    });
+                    </script>
+                    
+                </div>
+
             <div class="grid md:grid-cols-3 gap-4">
                 <div class="form-group mb-6">
                     <label class="form-check-label inline-block text-gray-800" for="expires_at">Expires at</label>

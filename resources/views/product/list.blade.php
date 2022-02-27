@@ -16,7 +16,7 @@
 
     @if ($message = Session::get('success'))
     <div class="py-5 px-6 mb-4 mt-4 text-base" role="alert" style="background:#caffdf;">
-        {{ $message }}
+        {!! $message !!}
     </div>
     @endif
     @if ($errors->any())

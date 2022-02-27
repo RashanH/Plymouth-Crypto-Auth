@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('latest_version');
             $table->boolean('force_latest_version')->default(0);
             $table->text('description')->nullable();
-            $table->string('secret_code');
+            $table->text('private_key');
             $table->timestamps();
         });
     }

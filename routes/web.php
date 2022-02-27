@@ -36,7 +36,8 @@ Route::get('customers/get_details_by_email',  [CustomerController::class, 'get_d
 Route::resource('customers', CustomerController::class)->middleware('auth');
 
 
-Route::get('/keys/create/{product}', [KeyController::class, 'create']);
+Route::get('/keys/create/{product}', [KeyController::class, 'create'])->middleware('auth');
+Route::get('/keys/generate_serial', [KeyController::class, 'generate_serial'])->middleware('auth');
 Route::resource('keys', KeyController::class)->except(['create'])->middleware('auth');
 
 Route::get('test', [TestController::class, 'index']);

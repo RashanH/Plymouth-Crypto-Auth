@@ -3,9 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Spatie\Crypto\Rsa\KeyPair;
-use Spatie\Crypto\Rsa\PrivateKey;
-use Spatie\Crypto\Rsa\PublicKey;
 use Illuminate\Support\Facades\Storage;
 
 class TestController extends Controller
@@ -53,7 +50,7 @@ class TestController extends Controller
 
         $config = array(
             "digest_alg" => "sha512",
-            "private_key_bits" => 4096,
+            "private_key_bits" => 2048,
             "private_key_type" => OPENSSL_KEYTYPE_RSA,
         );
            

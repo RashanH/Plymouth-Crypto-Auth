@@ -8,6 +8,7 @@ use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 
 class KeyController extends Controller
 {
@@ -21,6 +22,22 @@ class KeyController extends Controller
         $keys = Key::where('user_id', '=', Auth::id())->paginate(10);
 
         return view('product.list', compact('products','products'));
+    }
+    
+    public function generate_serial_code() {
+
+        $serial = Str::random(5) . '-' . Str::random(5) . '-' . Str::random(5) . '-' . Str::random(5) . '-' . Str::random(5);
+        $serial = strtoupper($serial);
+
+        if (Key::where('key_code', '=', $serial)->where('user_id', '=', Auth::id())->count() > 0){
+            $this->generate_serial_code();
+        }
+    
+        return $serial;
+    }
+
+    public function generate_serial(Request $request) {
+        return $this->generate_serial_code();
     }
 
     /**
@@ -37,8 +54,9 @@ class KeyController extends Controller
         ->first();
 
         if ($productx->user_id != Auth::id()){ return back()->withErrors('You don\'t have permissions.')->withInput(); }
+        $serial = $this->generate_serial_code();
 
-        return view('key.create', compact('product'));
+        return view('key.create', compact('product', 'serial'));
     }
 
     /**

@@ -9,7 +9,7 @@ class Product extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'user_id','name', 'latest_version', 'force_latest_version', 'description', 'secret_code'
+        'user_id','name', 'latest_version', 'force_latest_version', 'description', 'private_key'
     ];
 
     public function keys()
