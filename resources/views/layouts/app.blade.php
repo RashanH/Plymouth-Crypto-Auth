@@ -52,7 +52,7 @@
     <div class="max-w-7xl px-4 pt-6 pb-2 sm:px-6 lg:px-8"
         style="display: flex; justify-content: space-between; margin: auto;">
         <div class="text-sm text-gray-400 leading-7 font-semibold">
-            With ♥, Rashan!
+            With ♥, by Rashan
         </div>
 
         <div class="text-sm text-gray-400 leading-7 font-semibold">

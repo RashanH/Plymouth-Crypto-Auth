@@ -68,11 +68,11 @@
                             </td>
                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-center">
                                 <form action="{{ route('keys.destroy',$key->id) }}" method="POST">
-                                    <a class="inline-block px-6 py-2.5" href="{{ route('keys.edit',$key->id) }}"
+                                    <a class="inline-block px-2 py-2.5" href="{{ route('keys.edit',$key->id) }}"
                                         title="Edit"><i class="fa fa-edit"></i></a>
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="inline-block px-6 py-2.5" title="Delete"><i
+                                    <button type="submit" class="inline-block px-2 py-2.5" title="Delete"><i
                                             class="fa fa-trash-alt"></i></button>
                                 </form>
                             </td>

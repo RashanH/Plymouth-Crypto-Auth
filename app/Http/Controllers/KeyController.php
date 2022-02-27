@@ -82,6 +82,7 @@ class KeyController extends Controller
         ->first();
 
         if ($product->user_id != Auth::id()){ return back()->withErrors('You don\'t have permissions.')->withInput(); }
+        if (Key::where('key_code', '=', $request->get('key_code'))->where('user_id', '=', Auth::id())->count() > 0){ return back()->withErrors('The serial key is already available.')->withInput(); }
         
         $prev_customer = Customer::select('id')
             ->where('user_id', '=', Auth::id())
@@ -188,7 +189,8 @@ class KeyController extends Controller
 
         if ($product->user_id != Auth::id()){ return back()->withErrors('You don\'t have permissions.')->withInput(); }
         if ($key->user_id != Auth::id()){ return back()->withErrors('You don\'t have permissions.')->withInput(); }
-        
+        if (Key::where('key_code', '=', $request->get('key_code'))->where('user_id', '=', Auth::id())->count() > 0){ return back()->withErrors('The serial key is already available.')->withInput(); }
+      
         $prev_customer = Customer::select('id')
             ->where('user_id', '=', Auth::id())
             ->where('email', '=', $request->get('customer_email'))
