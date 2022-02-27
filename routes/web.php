@@ -5,6 +5,7 @@ use App\Http\Controllers\BillingController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\KeyController;
+use App\Http\Controllers\TestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +36,7 @@ Route::get('customers/get_details_by_email',  [CustomerController::class, 'get_d
 Route::resource('customers', CustomerController::class)->middleware('auth');
 
 
-
 Route::get('/keys/create/{product}', [KeyController::class, 'create']);
 Route::resource('keys', KeyController::class)->except(['create'])->middleware('auth');
 
+Route::get('test', [TestController::class, 'index']);
