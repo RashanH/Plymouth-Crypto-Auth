@@ -64,7 +64,7 @@ class TestController extends Controller
         $pubKey = openssl_pkey_get_details($res);
         $pubKey = $pubKey["key"];
         
-        $data = 'plaintext data goes here';
+        $data = 'Rashan Test';
         
         // Encrypt the data to $encrypted using the public key
         openssl_public_encrypt($data, $encrypted, $pubKey);
@@ -72,13 +72,12 @@ class TestController extends Controller
         // Decrypt the data using the private key and store the results in $decrypted
         openssl_private_decrypt($encrypted, $decrypted, $privKey);
         
-        //echo $decrypted;
-
         Storage::disk('local')->put('private.txt',$privKey);
         Storage::disk('local')->put('public.txt',$pubKey);
         Storage::disk('local')->put('encrypted.txt',$encrypted);
+        Storage::disk('local')->put('decrypted.txt',$decrypted);
 
-        //return response()->json([$pubKey, $privKey, $encrypted, $decrypted]);
+        return response()->json([$pubKey, $privKey, htmlentities($encrypted), $decrypted]);
 
         return 'x';
 

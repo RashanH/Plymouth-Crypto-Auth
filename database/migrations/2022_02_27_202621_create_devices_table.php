@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('devices', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('key_id');
+            $table->bigInteger('user_id');
             $table->string('hardware_unique');
             $table->string('operating_system');
             $table->string('ip_address');
