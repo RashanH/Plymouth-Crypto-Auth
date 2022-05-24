@@ -7,6 +7,7 @@ use App\Models\Device;
 use App\Models\Key;
 use App\Models\Product;
 use App\Models\User;
+use Illuminate\Support\Facades\Crypt;
 
 use Illuminate\Http\Request;
 use Validator;
@@ -29,8 +30,13 @@ class APIController extends Controller
         $product = Product::where('id', '=', $request->product_id)->first();
         if ($product === null) { return response()->json(['status' => 'error', 'message' => 'associated_product_is_not_available']); }
 
+        //return $product->private_key;
+        //return Crypt::decryptString($product->private_key);
+
         //decrypt
-        openssl_private_decrypt($request->payload, $decrypted_payload, $product->private_key);
+        openssl_private_decrypt($request->payload, $decrypted_payload, Crypt::decryptString($product->private_key));
+
+        return $decrypted_payload;
         
         $decoded_json = json_decode($decrypted_payload, true);
         $version = $decoded_json['version'];
@@ -64,7 +70,7 @@ class APIController extends Controller
         );
 
         $results_json = json_encode($results);
-        openssl_public_encrypt($results_json, $encrypted_result, $product->private_key);
+        openssl_private_encrypt($results_json, $encrypted_result, $product->private_key);
 
         return response()->json(['status' => 'success', 'message' => $encrypted_result]);
     }

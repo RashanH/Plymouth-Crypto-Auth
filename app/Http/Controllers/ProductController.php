@@ -64,8 +64,8 @@ class ProductController extends Controller
         $pubKey = openssl_pkey_get_details($res);
         $pubKey = $pubKey["key"];
 
-        $pubKey = Str::replace('-----BEGIN PUBLIC KEY-----', '', $pubKey);
-        $pubKey = Str::replace('-----END PUBLIC KEY-----', '', $pubKey);
+        //$pubKey = Str::replace('-----BEGIN PUBLIC KEY-----', '', $pubKey);
+        //$pubKey = Str::replace('-----END PUBLIC KEY-----', '', $pubKey);
        
         return array('private' => $privKey, 'public' => $pubKey);
     }
@@ -85,7 +85,7 @@ class ProductController extends Controller
 
         $public = $key_set['public'];
 
-        //return $encrypted_private;
+        
 
         $product = new Product([
             'user_id' => Auth::id(),
@@ -101,6 +101,7 @@ class ProductController extends Controller
         Mail::to(Auth::user()->email)
         ->send(new MailNewPublicKey($public, $product->name, $product->id));
 
+        return $public;
 
         return redirect('/products')->with('success', 'Product has been added. Your new public key is send via an email.&nbsp;
         <a class="text-indigo-700" onclick="copy_public_key()" href="#"><div class="text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-2 bg-green-900 text-green-900 rounded-full" style="background: #10ff005e; color:#000;">Copy public key</div></a><input type="text" id="public_key" value="' . $public . '" style="display:none;"><script>function copy_public_key() { var copyText = document.getElementById("public_key"); copyText.select(); copyText.setSelectionRange(0, 99999); navigator.clipboard.writeText(copyText.value); alert("Key copied to clipboard"); }</script>');
