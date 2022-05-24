@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\KeyController;
 use App\Http\Controllers\DeviceController;
+use App\Http\Controllers\APIController;
 use App\Http\Controllers\TestController;
 
 /*
@@ -42,3 +43,6 @@ Route::resource('keys', KeyController::class)->except(['create'])->middleware('a
 Route::get('devices', [DeviceController::class, 'index'])->middleware('auth');
 
 Route::get('test', [TestController::class, 'index']);
+
+
+Route::post('api/hello', [APIController::class, 'hello']);
