@@ -22,6 +22,11 @@ class Key extends Model
         return $this->hasMany(Device::class, 'key_id');
     }
 
+    public function product()
+    {
+        return $this->hasOne(Product::class, 'id', 'product_id');
+    }
+
     //protected static function booted()
     //{
     //    static::addGlobalScope('user_based_filter', function (Builder $builder) {

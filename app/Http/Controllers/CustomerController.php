@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\Device;
+use App\Models\Key;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -73,7 +76,11 @@ class CustomerController extends Controller
     public function show(Customer $customer)
     {
         if ($customer->user_id != Auth::id()){ return back()->withErrors('You don\'t have permission.')->withInput(); }
-        return view('customer.view',compact('customer'));
+
+        $keys = Key::where('customer_id', '=', $customer->id)->where('user_id', '=', Auth::id())->with('product')->paginate(10);
+        $keys_count = Key::where('customer_id', '=', $customer->id)->where('user_id', '=', Auth::id())->count();
+        //return $keys;
+        return view('customer.view',compact('customer', 'keys', 'keys_count'));
     }
 
     /**

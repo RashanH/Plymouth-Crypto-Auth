@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 border-t border-gray-200 md:border-t-1 md:border-0">
-    <div class="text-lg text-gray-700 leading-7 font-semibold text-center">{{ $product->name }}</div>
+    <div class="text-lg text-gray-700 leading-7 font-semibold text-center">{{ $product->name }} (Ver. {{ $product->latest_version }})</div>
 </div>
 
 <div class="max-w-7xl px-4 pt-6 pb-2 sm:px-6 lg:px-8 border-t border-gray-200 md:border-t-1 md:border-0 relative"
@@ -69,8 +69,12 @@
                                 </a>
                             </td>
                             <td
-                                class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-center truncate">
-                                {{ $key->email }}
+                                class="text-sm text-indigo-500  font-light px-6 py-4 whitespace-nowrap text-center truncate">
+                                <a href="{{ route('customers.show', $key->customer_id) }}">
+                                    <div style="height:100%;" class="w-full">
+                                        {{ $key->email }}
+                                    </div>
+                                </a>
                             </td>
                             <td
                                 class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-center truncate">
