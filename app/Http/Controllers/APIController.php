@@ -30,12 +30,9 @@ class APIController extends Controller
 
         $product = Product::where('id', '=', $request->product_id)->first();
         if ($product === null) { return response()->json(['status' => 'error', 'message' => 'associated_product_is_not_available']); }
-
-        //return  $request->payload;
-        //return $product->private_key;
+        
         $pvt_key_text = Crypt::decryptString($product->private_key);
-        //return $pvt_key;
-
+        
         //decrypt
         $private_key = openssl_pkey_get_private($pvt_key_text);
         openssl_private_decrypt(base64_decode($request->payload), $decrypted_payload, $private_key);
@@ -78,13 +75,9 @@ class APIController extends Controller
         );
 
         $results_json = json_encode($results);
-        //return base64_encode($results_json);
-        //$cc =  base64_encode($results_json);
         openssl_private_encrypt(base64_encode($results_json), $encrypted_result, $private_key);
 
-        //return 'success%' . base64_encode($encrypted_result);
-
-        return response()->json(['status' => 'success', 'message' => base64_encode($encrypted_result)]); //TODO: Remove htmlentities, base64_encode if needed
+        return response()->json(['status' => 'success', 'message' => base64_encode($encrypted_result)]);
     }
     
 }
