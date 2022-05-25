@@ -8,6 +8,7 @@ use App\Models\Key;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Support\Facades\Crypt;
+use Carbon\Carbon;
 
 use Illuminate\Http\Request;
 use Validator;
@@ -30,13 +31,16 @@ class APIController extends Controller
         $product = Product::where('id', '=', $request->product_id)->first();
         if ($product === null) { return response()->json(['status' => 'error', 'message' => 'associated_product_is_not_available']); }
 
+        //return  $request->payload;
         //return $product->private_key;
-        //return Crypt::decryptString($product->private_key);
+        $pvt_key_text = Crypt::decryptString($product->private_key);
+        //return $pvt_key;
 
         //decrypt
-        openssl_private_decrypt($request->payload, $decrypted_payload, Crypt::decryptString($product->private_key));
+        $private_key = openssl_pkey_get_private($pvt_key_text);
+        openssl_private_decrypt(base64_decode($request->payload), $decrypted_payload, $private_key);
 
-        return $decrypted_payload;
+        //return $decrypted_payload;
         
         $decoded_json = json_decode($decrypted_payload, true);
         $version = $decoded_json['version'];
@@ -59,6 +63,9 @@ class APIController extends Controller
         //is blocked
         if ($key->is_blocked == true) { return response()->json(['status' => 'error', 'message' => 'key_is_blocked']); }
 
+        //expired
+        if (Carbon::parse($key->expires_at) < Carbon::now()) { return response()->json(['status' => 'error', 'message' => 'key_expired']); }
+
         //return product_id, hwid, expire, customer info => enmcrpyed
         $results = array(
             "product_id"=>$request->product_id, 
@@ -66,12 +73,18 @@ class APIController extends Controller
             "force_latest"=>$product->force_latest_version,
             "hwid"=>$hwid, 
             "expire"=>$key->expires_at,
-            "customer"=>$customer
+            "customer_id"=>$customer->id,
+            "customer_email"=>$customer->email
         );
 
         $results_json = json_encode($results);
-        openssl_private_encrypt($results_json, $encrypted_result, $product->private_key);
+        //return base64_encode($results_json);
+        //$cc =  base64_encode($results_json);
+        openssl_private_encrypt(base64_encode($results_json), $encrypted_result, $private_key);
 
-        return response()->json(['status' => 'success', 'message' => $encrypted_result]);
+        //return 'success%' . base64_encode($encrypted_result);
+
+        return response()->json(['status' => 'success', 'message' => base64_encode($encrypted_result)]); //TODO: Remove htmlentities, base64_encode if needed
     }
+    
 }

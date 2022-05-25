@@ -6,7 +6,7 @@ Please save these information. You will need these details while setting up your
 Product name: {{ $product_name }}<br />
 Product ID: {{ $product_id }}<br />
 Public key:<br />
-{{ $public_key }}
+<pre>{{ $public_key }}</pre>
 <br /><br />
 For configuration instructions, please read the docs.
 
