@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Crypt;
 
 class TestController extends Controller
 {
@@ -82,4 +83,21 @@ class TestController extends Controller
         return 'x';
 
     }
+
+    public function index2(Request $request){
+        //return Crypt::encryptString("Rashan Test 123");
+        $string  = 'NEXEF-KVHIY-75G0P-ONUIB-GDDEP';
+        return $this->plainKeyToEncrypted($string);
+
+        //RCOT13 > Base64
+    }
+
+    public function plainKeyToEncrypted($plain_key) {
+        return base64_encode(str_rot13($plain_key));
+    }
+
+    public function encryptedToPlainKey($_encrypted_key){
+        return str_rot13(base64_decode($_encrypted_key));
+    }
+
 }

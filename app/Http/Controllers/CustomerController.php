@@ -78,6 +78,11 @@ class CustomerController extends Controller
         if ($customer->user_id != Auth::id()){ return back()->withErrors('You don\'t have permission.')->withInput(); }
 
         $keys = Key::where('customer_id', '=', $customer->id)->where('user_id', '=', Auth::id())->with('product')->paginate(10);
+        $keys->each(function ($collection, $alphabet) {
+            $collection->key_code = $this->encryptedToPlainKey($collection->key_code);
+        });
+
+
         $keys_count = Key::where('customer_id', '=', $customer->id)->where('user_id', '=', Auth::id())->count();
         //return $keys;
         return view('customer.view',compact('customer', 'keys', 'keys_count'));
@@ -163,5 +168,13 @@ class CustomerController extends Controller
         //return $email;
    
         return response()->json($data);
+    }
+
+    public function plainKeyToEncrypted($plain_key) {
+        return base64_encode(str_rot13($plain_key));
+    }
+
+    public function encryptedToPlainKey($_encrypted_key){
+        return str_rot13(base64_decode($_encrypted_key));
     }
 }

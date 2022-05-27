@@ -126,9 +126,24 @@ class ProductController extends Controller
         ->leftJoin('customers', 'keys.customer_id', '=', 'customers.id')
         ->paginate(10);
 
-        //return $keys;
+        $keys->each(function ($collection, $alphabet) {
+            $collection->key_code = $this->encryptedToPlainKey($collection->key_code);
+        });
 
+       
+        
+        
+
+        
         return view('product.view',compact('product', 'keys'));
+    }
+
+    public function plainKeyToEncrypted($plain_key) {
+        return base64_encode(str_rot13($plain_key));
+    }
+
+    public function encryptedToPlainKey($_encrypted_key){
+        return str_rot13(base64_decode($_encrypted_key));
     }
 
     /**

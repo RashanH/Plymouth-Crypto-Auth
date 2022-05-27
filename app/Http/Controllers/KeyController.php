@@ -29,7 +29,7 @@ class KeyController extends Controller
         $serial = Str::random(5) . '-' . Str::random(5) . '-' . Str::random(5) . '-' . Str::random(5) . '-' . Str::random(5);
         $serial = strtoupper($serial);
 
-        if (Key::where('key_code', '=', $serial)->where('user_id', '=', Auth::id())->count() > 0){
+        if (Key::where('key_code', '=', $this->plainKeyToEncrypted($serial))->where('user_id', '=', Auth::id())->count() > 0){
             $this->generate_serial_code();
         }
     
@@ -84,7 +84,7 @@ class KeyController extends Controller
         if ($product->user_id != Auth::id()){ return back()->withErrors('You don\'t have permissions.')->withInput(); }
 
         
-            if (Key::where('key_code', '=', $request->get('key_code'))->where('user_id', '=', Auth::id())->count() > 0){ return back()->withErrors('The serial key is already available.')->withInput(); }
+            if (Key::where('key_code', '=', $this->plainKeyToEncrypted($request->get('key_code')))->where('user_id', '=', Auth::id())->count() > 0){ return back()->withErrors('The serial key is already available.')->withInput(); }
         
         $prev_customer = Customer::select('id')
             ->where('user_id', '=', Auth::id())
@@ -115,7 +115,7 @@ class KeyController extends Controller
             'user_id' => Auth::id(),
             'product_id' => $request->get('product_id'),
             'customer_id' =>  $customer_id,
-            'key_code' => $request->get('key_code'),
+            'key_code' => $this->plainKeyToEncrypted($request->get('key_code')),
             'maximum_devices' => $request->get('maximum_devices'),
             'is_blocked' => $request->has('is_blocked'),
             'notes'=> $request->get('notes'),
@@ -148,6 +148,9 @@ class KeyController extends Controller
         if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission.')->withInput(); }
         //return $key;
         if ($key->user_id != Auth::id()){ return back()->withErrors('You don\'t have permission.')->withInput(); }
+
+        $key->key_code = $this->encryptedToPlainKey($key->key_code);
+
 
         $product = Product::where('user_id', '=', Auth::id())
         ->where('id', '=', $key->product_id)
@@ -193,8 +196,8 @@ class KeyController extends Controller
         if ($key->user_id != Auth::id()){ return back()->withErrors('You don\'t have permissions.')->withInput(); }
 
        
-        if ($key->key_code != $request->get('key_code')){
-            if (Key::where('key_code', '=', $request->get('key_code'))->where('user_id', '=', Auth::id())->count() > 0){ return back()->withErrors('The serial key is already available.')->withInput(); }
+        if ($key->key_code != $this->plainKeyToEncrypted($request->get('key_code'))){
+            if (Key::where('key_code', '=', $this->plainKeyToEncrypted($request->get('key_code')))->where('user_id', '=', Auth::id())->count() > 0){ return back()->withErrors('The serial key is already available.')->withInput(); }
         }
 
         $prev_customer = Customer::select('id')
@@ -220,7 +223,7 @@ class KeyController extends Controller
         
         $key = Key::find($key->id);
         $key->customer_id = $customer_id;
-        $key->key_code = $request->get('key_code');
+        $key->key_code = $this->plainKeyToEncrypted($request->get('key_code'));
         $key->maximum_devices = $request->get('maximum_devices');
         $key->is_blocked = $request->has('is_blocked');
         $key->notes = $request->get('notes');
@@ -245,5 +248,13 @@ class KeyController extends Controller
 
         $key->delete();
         return redirect('/products/'. $product_id)->with('success', 'Key deleted successfully');
+    }
+
+    public function plainKeyToEncrypted($plain_key) {
+        return base64_encode(str_rot13($plain_key));
+    }
+
+    public function encryptedToPlainKey($_encrypted_key){
+        return str_rot13(base64_decode($_encrypted_key));
     }
 }

@@ -42,7 +42,7 @@ Route::resource('keys', KeyController::class)->except(['create'])->middleware('a
 
 Route::get('devices', [DeviceController::class, 'index'])->middleware('auth');
 
-Route::get('test', [TestController::class, 'index']);
+Route::get('test', [TestController::class, 'index2']);
 
 
 Route::post('api/hello', [APIController::class, 'hello']);
