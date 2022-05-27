@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\User;
 use Illuminate\Support\Facades\Crypt;
 use Carbon\Carbon;
+use Stevebauman\Location\Facades\Location;
 
 use Illuminate\Http\Request;
 use Validator;
@@ -80,4 +81,90 @@ class APIController extends Controller
         return response()->json(['status' => 'success', 'message' => base64_encode($encrypted_result)]);
     }
     
+    public function register(Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'product_id'=>'required',
+            'payload'=>'required',
+            'serial'=>'required',
+            'operating_system'=>'required'
+        ]);
+
+        if ($validator->fails()) {    
+            return response()->json([ 'status' => 'error', 'message' => 'missing_info' ]);
+        }
+        
+        $product = Product::where('id', '=', $request->product_id)->first();
+        if ($product === null) { return response()->json(['status' => 'error', 'message' => 'associated_product_is_not_available']); }
+        
+        $pvt_key_text = Crypt::decryptString($product->private_key);
+        
+        //decrypt
+        $private_key = openssl_pkey_get_private($pvt_key_text);
+        openssl_private_decrypt(base64_decode($request->payload), $decrypted_payload, $private_key);
+
+        //return $decrypted_payload;
+        
+        $decoded_json = json_decode($decrypted_payload, true);
+        $version = $decoded_json['version'];
+        $hwid = $decoded_json['hwid'];
+        $serial = $decoded_json['serial'];
+        $operating_system = $decoded_json['operating_system'];
+
+        $key = Key::where('key_code', '=', $this->plainKeyToEncrypted($serial))->where('product_id', '=', $request->product_id)->first();
+        if ($key === null) { return response()->json(['status' => 'error', 'message' => 'associated_key_is_not_available']); }
+        
+        $customer = Customer::where('id', '=', $key->customer_id)->first();
+        if ($customer === null) { return response()->json(['status' => 'error', 'message' => 'associated_customer_is_not_available']); }
+
+        $device = Device::where('hardware_unique', '=', $hwid)->where('product_id', '=', $request->product_id)->first();
+        if ($device != null) { return response()->json(['status' => 'error', 'message' => 'hwid_already_registered']); }
+
+        //is blocked
+        if ($key->is_blocked == true) { return response()->json(['status' => 'error', 'message' => 'key_is_blocked']); }
+
+        //expired
+        if (Carbon::parse($key->expires_at) < Carbon::now()) { return response()->json(['status' => 'error', 'message' => 'key_expired']); }
+        
+        //check multiple devices
+        if ($key->maximum_devices > 1){
+            $current_devices_count = Device::where('key_id', '=', $key->id)->where('product_id', '=', $request->product_id)->count();
+            if ($current_devices_count >= $key->maximum_devices) { 
+                return response()->json(['status' => 'error', 'message' => 'maximum_devices_limit_reached']); 
+            } else {
+                //register device
+                $new_device = new Device([
+                    'key_id' => $key->id,
+                    'product_id' => $product->id,
+                    'hardware_unique' => $hwid,
+                    'operating_system'=> $operating_system,
+                    'registered_ip_address'=> $request()->ip(),
+                    'registered_country'=> Location::get($request()->ip())->countryName,
+                ]);
+                $customer->save();
+                return response()->json(['status' => 'status', 'message' => 'device_registered']); 
+            }
+        } else{
+            //register device
+            $new_device = new Device([
+                'key_id' => $key->id,
+                'product_id' => $product->id,
+                'hardware_unique' => $hwid,
+                'operating_system'=> $operating_system,
+                'registered_ip_address'=> $request()->ip(),
+                'registered_country'=> Location::get($request()->ip())->countryName,
+            ]);
+            $customer->save();
+            return response()->json(['status' => 'status', 'message' => 'device_registered']); 
+        }
+
+    }
+
+    public function plainKeyToEncrypted($plain_key) {
+        return base64_encode(str_rot13($plain_key));
+    }
+
+    public function encryptedToPlainKey($_encrypted_key){
+        return str_rot13(base64_decode($_encrypted_key));
+    }
 }

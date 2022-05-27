@@ -46,3 +46,4 @@ Route::get('test', [TestController::class, 'index2']);
 
 
 Route::post('api/hello', [APIController::class, 'hello']);
+Route::post('api/register', [APIController::class, 'register']);

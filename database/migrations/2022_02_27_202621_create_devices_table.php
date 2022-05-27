@@ -16,12 +16,12 @@ return new class extends Migration
         Schema::create('devices', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('key_id');
-            $table->bigInteger('user_id');
+            //$table->bigInteger('user_id');
             $table->bigInteger('product_id');
             $table->string('hardware_unique');
             $table->string('operating_system');
-            $table->string('ip_address');
-            $table->string('country');
+            $table->string('registered_ip_address');
+            $table->string('registered_country');
             $table->timestamps();
         });
     }
