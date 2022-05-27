@@ -47,3 +47,4 @@ Route::get('test', [TestController::class, 'index2']);
 
 Route::post('api/verify', [APIController::class, 'verify']);
 Route::post('api/register', [APIController::class, 'register']);
+Route::post('api/unsubscribe', [APIController::class, 'unsubscribe']);

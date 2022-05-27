@@ -158,6 +158,42 @@ class APIController extends Controller
 
     }
 
+    public function unsubscribe(Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'product_id'=>'required',
+            'payload'=>'required',
+            //'version'=>'required',
+            //'hwid'=>'required'
+        ]);
+
+        if ($validator->fails()) {    
+            return response()->json([ 'status' => 'error', 'message' => 'missing_info' ]);
+        }
+
+        $product = Product::where('id', '=', $request->product_id)->first();
+        if ($product === null) { return response()->json(['status' => 'error', 'message' => 'associated_product_is_not_available']); }
+        
+        $pvt_key_text = Crypt::decryptString($product->private_key);
+        
+        //decrypt
+        $private_key = openssl_pkey_get_private($pvt_key_text);
+        openssl_private_decrypt(base64_decode($request->payload), $decrypted_payload, $private_key);
+
+        //return $decrypted_payload;
+        $decoded_json = json_decode($decrypted_payload, true);
+        $hwid = $decoded_json['hwid'];
+        
+        $device = Device::where('hardware_unique', '=', $hwid)->where('product_id', '=', $request->product_id)->first();
+        if ($device == null) { return response()->json(['status' => 'error', 'message' => 'hwid_not_registered']); }
+        else { 
+            //delete
+            $device->delete();
+            return response()->json(['status' => 'success', 'message' => 'successfully_unsubscribed ']); 
+        }
+
+    }
+
     public function plainKeyToEncrypted($plain_key) {
         return base64_encode(str_rot13($plain_key));
     }
