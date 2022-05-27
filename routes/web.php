@@ -45,5 +45,5 @@ Route::get('devices', [DeviceController::class, 'index'])->middleware('auth');
 Route::get('test', [TestController::class, 'index2']);
 
 
-Route::post('api/hello', [APIController::class, 'hello']);
+Route::post('api/verify', [APIController::class, 'verify']);
 Route::post('api/register', [APIController::class, 'register']);

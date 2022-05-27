@@ -16,7 +16,7 @@ use Validator;
 
 class APIController extends Controller
 {
-    public function hello(Request $request){
+    public function verify(Request $request){
 
         $validator = Validator::make($request->all(), [
             'product_id'=>'required',
@@ -85,9 +85,7 @@ class APIController extends Controller
 
         $validator = Validator::make($request->all(), [
             'product_id'=>'required',
-            'payload'=>'required',
-            'serial'=>'required',
-            'operating_system'=>'required'
+            'payload'=>'required'
         ]);
 
         if ($validator->fails()) {    
@@ -125,7 +123,7 @@ class APIController extends Controller
 
         //expired
         if (Carbon::parse($key->expires_at) < Carbon::now()) { return response()->json(['status' => 'error', 'message' => 'key_expired']); }
-        
+
         //check multiple devices
         if ($key->maximum_devices > 1){
             $current_devices_count = Device::where('key_id', '=', $key->id)->where('product_id', '=', $request->product_id)->count();
@@ -142,9 +140,9 @@ class APIController extends Controller
                     'registered_country'=> Location::get($request()->ip())->countryName,
                 ]);
                 $customer->save();
-                return response()->json(['status' => 'status', 'message' => 'device_registered']); 
+                return response()->json(['status' => 'success', 'message' => 'device_registered']); 
             }
-        } else{
+        } else {
             //register device
             $new_device = new Device([
                 'key_id' => $key->id,
@@ -155,7 +153,7 @@ class APIController extends Controller
                 'registered_country'=> Location::get($request()->ip())->countryName,
             ]);
             $customer->save();
-            return response()->json(['status' => 'status', 'message' => 'device_registered']); 
+            return response()->json(['status' => 'success', 'message' => 'device_registered']); 
         }
 
     }

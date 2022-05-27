@@ -83,7 +83,7 @@ class ProductController extends Controller
         $key_set = $this->generate_rsa_key();
         $encrypted_private = Crypt::encryptString($key_set['private']);
 
-        $public = $key_set['public'];
+        $public = base64_encode($key_set['public']);
 
         
 
