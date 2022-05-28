@@ -162,9 +162,7 @@ class APIController extends Controller
 
         $validator = Validator::make($request->all(), [
             'product_id'=>'required',
-            'payload'=>'required',
-            //'version'=>'required',
-            //'hwid'=>'required'
+            'payload'=>'required'
         ]);
 
         if ($validator->fails()) {    
