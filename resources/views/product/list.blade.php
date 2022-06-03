@@ -21,9 +21,9 @@
     @endif
     @if ($errors->any())
     <div class="py-5 px-6 mb-4 mt-4 text-base" role="alert" style="background:#ffcaca;">
-    <ul> @foreach ($errors->all() as $error) <li>{{ $error }}</li> @endforeach </ul>
+        <ul> @foreach ($errors->all() as $error) <li>{{ $error }}</li> @endforeach </ul>
     </div>
-@endif
+    @endif
 
     <div class="flex flex-col">
         <div class="overflow-x-auto">
@@ -64,13 +64,13 @@
                                 </td>
                                 <td
                                     class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-center truncate">
-                                   {{ $product->keys_count }}
+                                    {{ $product->keys_count }}
                                 </td>
                                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-center">
-                                    <a class="inline-block px-2 py-2.5"
-                                            href="{{ route('products.edit',$product->id) }}" title="Edit"><i
-                                                class="fa fa-edit"></i></a>
-                                    <form action="{{ route('products.destroy',$product->id) }}" method="POST" class="inline-block">
+                                    <a class="inline-block px-2 py-2.5" href="{{ route('products.edit',$product->id) }}"
+                                        title="Edit"><i class="fa fa-edit"></i></a>
+                                    <form action="{{ route('products.destroy',$product->id) }}" method="POST"
+                                        class="inline-block">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="inline-block px-2 py-2.5" title="Delete"><i

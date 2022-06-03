@@ -4741,3 +4741,14 @@ body .btn-eight:hover {
 .loginbtn {
   color: #fff !important; font-family: 'gorditamedium'; font-size: 18px; letter-spacing: -0.2px; line-height: initial; color: #02274a; padding: 15px 0; margin: 0 26px; position: relative;
 }
+
+.loginbtn_black {
+  font-family: 'gorditamedium';
+  font-size: 18px;
+  letter-spacing: -0.2px;
+  line-height: initial;
+  color: #02274a;
+  padding: 15px 0;
+  margin: 0 26px;
+  position: relative;
+}

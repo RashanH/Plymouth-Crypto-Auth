@@ -7,6 +7,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\KeyController;
 use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\APIController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TestController;
 
 /*
@@ -48,3 +49,8 @@ Route::get('test', [TestController::class, 'index2']);
 Route::post('api/verify', [APIController::class, 'verify']);
 Route::post('api/register', [APIController::class, 'register']);
 Route::post('api/unsubscribe', [APIController::class, 'unsubscribe']);
+
+Route::get('pricing', function () { return view('pricing'); });
+Route::get('faq', function () { return view('faq'); });
+Route::get('contact', function () { return view('contact'); });
+Route::post('contact', [DashboardController::class, 'contact'])->name('contact');
