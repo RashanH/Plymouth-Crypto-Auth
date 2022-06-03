@@ -121,30 +121,34 @@ return [
         'user' => [
             'model' => User::class,
 
-            'trial_days' => 5,
+            'trial_days' => 0,
 
             'default_interval' => 'monthly',
 
             'plans' => [
                 [
                     'name' => 'Standard',
-                    'short_description' => 'This is a short, human friendly description of the plan.',
-                    'monthly_id' => 'price_1KWVSaGNiD9f6pP2ZRxlth7W',
-                    'yearly_id' => 'price_1KWVSaGNiD9f6pP2ZRxlth7W',
+                    'short_description' => 'Starter licensing features with limited products',
+                    'monthly_id' => 'price_1L6il5GNiD9f6pP2sqH4VVoo',
+                    'yearly_id' => 'price_1L6il5GNiD9f6pP2EUEMavRU',
                     'features' => [
-                        'Feature 1',
-                        'Feature 2',
-                        'Feature 3',
+                        'Upto 25 products',
+                        'Unlimited keys',
+                        'Unlimited customers',
+                        'Fully secure licenses',
+                        '24/7 personalized customer support',
                     ],
                 ],[
                     'name' => 'Premium',
                     'short_description' => 'This is a short, human friendly description of the plan.',
-                    'monthly_id' => 'price_1KWVShGNiD9f6pP2UYWBICuN',
-                    'yearly_id' => 'price_1KWVShGNiD9f6pP2UYWBICuN',
+                    'monthly_id' => 'price_1L6il5GNiD9f6pP2JGdPGakJ',
+                    'yearly_id' => 'price_1L6il5GNiD9f6pP2UnW3A54k',
                     'features' => [
-                        'Feature 1',
-                        'Feature 2',
-                        'Feature 3',
+                        'Unlimited products',
+                        'Unlimited keys',
+                        'Unlimited customers',
+                        'Fully secure licenses',
+                        '24/7 personalized customer support',
                     ],
                 ],
             ],

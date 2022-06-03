@@ -44,9 +44,9 @@ Route::get('devices', [DeviceController::class, 'index'])->middleware('auth');
 Route::get('test', [TestController::class, 'index2']);
 
 
-Route::post('api/verify', [APIController::class, 'verify']);
-Route::post('api/register', [APIController::class, 'register']);
-Route::post('api/unsubscribe', [APIController::class, 'unsubscribe']);
+Route::post('api/verify', [APIController::class, 'verify'])->middleware('throttle:15,1');
+Route::post('api/register', [APIController::class, 'register'])->middleware('throttle:15,1');
+Route::post('api/unsubscribe', [APIController::class, 'unsubscribe'])->middleware('throttle:15,1');
 
 Route::get('pricing', function () { return view('pricing'); });
 Route::get('faq', function () { return view('faq'); });

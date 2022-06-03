@@ -43,7 +43,7 @@
         <header class="theme-main-menu sticky-menu theme-menu-four">
             <div class="inner-content">
                 <div class="container d-flex align-items-center justify-content-between">
-                    <div class="logo order-lg-0"><a href="{{ url('') }}" class="d-block"><img src="images/logo/logo_02.png"
+                    <div class="logo order-lg-0"><a href="{{ url('') }}" class="d-block"><img src="images/logo/logo_01.png"
                                 alt="" width="129"></a></div>
 
                     <div class="right-widget d-flex align-items-center ms-auto ms-lg-0 order-lg-3">
@@ -71,7 +71,7 @@
                         <div class="collapse navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav">
                                 <li class="d-block d-lg-none">
-                                    <div class="logo"><a href="{{ url('') }}"><img src="images/logo/logo_02.png" alt=""
+                                    <div class="logo"><a href="{{ url('') }}"><img src="images/logo/logo_01.png" alt=""
                                                 width="130"></a></div>
                                 </li>
                                 <li class="nav-item">
@@ -105,7 +105,7 @@
                 <div class="row">
                     <div class="col-xxl-7 col-xl-8 col-lg-7 col-md-9 m-auto">
                         <div class="title-style-one text-center">
-                            <h2 class="main-title">Solo, Agency or Team? We’ve got you Covered</h2>
+                            <h2 class="main-title">Solo, agency or team? We’ve got you covered.</h2>
                         </div> <!-- /.title-style-one -->
                     </div>
                 </div>
@@ -127,40 +127,42 @@
                               <div class="row gx-xxl-5">
                                 <div class="col-md-6">
                                     <div class="pr-table-wrapper active md-mb-30">
-                                        <div class="pack-name">Business</div>
-                                        <div class="pack-details">For individuals and teams. Get <span>1 year <br> premium market access</span></div>
+                                        <div class="pack-name">Standard</div>
                                         <div class="top-banner d-sm-flex justify-content-center align-items-center">
-                                            <div class="price"><sup>$</sup>75</div>
+                                            <div class="price"><sup>$</sup>9.99</div>
                                             <div>
                                                 <span>Monthly membership</span>
-                                                <em>Starting at $75/mo with </em>
+                                                <em>Starting at $9.99/mo with </em>
                                             </div>
                                         </div> <!-- /.top-banner -->
                                         <ul class="pr-feature style-none">
-                                            <li>Unlimited campaigns</li>
-                                            <li>Push Notifications</li>
-                                            <li>Team fundraising</li>
+                                            <li>✔ Upto 25 products</li>
+                                            <li>✔ Unlimited keys</li>
+                                            <li>✔ Unlimited customers</li>
+                                            <li>✔ Fully secure licenses</li>
+                                            <li>✔ 24/7 personalized customer support</li>
                                         </ul>
-                                        <a href="#" class="trial-button">Try us without risk. <span>Choose plan <i class="fas fa-chevron-right"></i></span> </a>
+                                        <a href="{{ url('billing') }}" class="trial-button">Try us without risk. <span>Choose plan <i class="fas fa-chevron-right"></i></span> </a>
                                     </div> <!-- /.pr-table-wrapper -->
                                 </div>
                                 <div class="col-md-6">
                                     <div class="pr-table-wrapper">
-                                        <div class="pack-name">Agency</div>
-                                        <div class="pack-details">For big agency & teams. Get <span>1 year <br> premium market access</span></div>
+                                        <div class="pack-name">Premium</div>
                                         <div class="top-banner d-sm-flex justify-content-center align-items-center">
-                                            <div class="price"><sup>$</sup>99</div>
+                                            <div class="price"><sup>$</sup>24.99</div>
                                             <div>
                                                 <span>Monthly membership</span>
-                                                <em>Starting at $99/mo with </em>
+                                                <em>Starting at $24.99/mo with </em>
                                             </div>
                                         </div> <!-- /.top-banner -->
                                         <ul class="pr-feature style-none">
-                                            <li>Unlimited campaigns</li>
-                                            <li>Push Notifications</li>
-                                            <li>Team fundraising</li>
+                                            <li>✔ Unlimited products</li>
+                                            <li>✔ Unlimited keys</li>
+                                            <li>✔ Unlimited customers</li>
+                                            <li>✔ Fully secure licenses</li>
+                                            <li>✔ 24/7 personalized customer support</li>
                                         </ul>
-                                        <a href="#" class="trial-button">Try us without risk. <span>Choose plan <i class="fas fa-chevron-right"></i></span> </a>
+                                        <a href="{{ url('billing') }}" class="trial-button">Try us without risk. <span>Choose plan <i class="fas fa-chevron-right"></i></span> </a>
                                     </div> <!-- /.pr-table-wrapper -->
                                 </div>
                             </div>
@@ -170,47 +172,49 @@
                               <div class="row gx-xxl-5">
                                 <div class="col-md-6">
                                     <div class="pr-table-wrapper active md-mb-30">
-                                        <div class="pack-name">Business</div>
-                                        <div class="pack-details">For individuals and teams. Get <span>2 year <br> premium market access</span></div>
+                                        <div class="pack-name">Standard</div>
                                         <div class="top-banner d-sm-flex justify-content-center align-items-center">
-                                            <div class="price"><sup>$</sup>69</div>
+                                            <div class="price"><sup>$</sup>99.99</div>
                                             <div>
                                                 <span>Yearly membership</span>
-                                                <em>Starting at $69/mo with </em>
+                                                <em>Starting at $8.33/mo with </em>
                                             </div>
                                         </div> <!-- /.top-banner -->
-                                        <ul class="pr-feature style-none">
-                                            <li>Unlimited campaigns</li>
-                                            <li>Push Notifications</li>
-                                            <li>Team fundraising</li>
+                                        <ul class="pr-feature style-none tickboxes">
+                                            <li>✔ Upto 25 products</li>
+                                            <li>✔ Unlimited keys</li>
+                                            <li>✔ Unlimited customers</li>
+                                            <li>✔ Fully secure licenses</li>
+                                            <li>✔ 24/7 personalized customer support</li>
                                         </ul>
-                                        <a href="#" class="trial-button">Try us without risk. <span>Choose plan <i class="fas fa-chevron-right"></i></span> </a>
+                                        <a href="{{ url('billing') }}" class="trial-button">Try us without risk. <span>Choose plan <i class="fas fa-chevron-right"></i></span> </a>
                                     </div> <!-- /.pr-table-wrapper -->
                                 </div>
                                 <div class="col-md-6">
                                     <div class="pr-table-wrapper">
-                                        <div class="pack-name">Agency</div>
-                                        <div class="pack-details">For big agency & teams. Get <span>2 year <br> premium market access</span></div>
-                                        <div class="top-banner d-sm-flex justify-content-center align-items-center">
-                                            <div class="price"><sup>$</sup>97</div>
+                                        <div class="pack-name">Premium</div>
+                                       <div class="top-banner d-sm-flex justify-content-center align-items-center">
+                                            <div class="price"><sup>$</sup>249.99</div>
                                             <div>
                                                 <span>Yearly membership</span>
-                                                <em>Starting at $97/mo with </em>
+                                                <em>Starting at $21/mo with </em>
                                             </div>
                                         </div> <!-- /.top-banner -->
                                         <ul class="pr-feature style-none">
-                                            <li>Unlimited campaigns</li>
-                                            <li>Push Notifications</li>
-                                            <li>Team fundraising</li>
+                                            <li>✔ Unlimited products</li>
+                                            <li>✔ Unlimited keys</li>
+                                            <li>✔ Unlimited customers</li>
+                                            <li>✔ Fully secure licenses</li>
+                                            <li>✔ 24/7 personalized customer support</li>
                                         </ul>
-                                        <a href="#" class="trial-button">Try us without risk. <span>Choose plan <i class="fas fa-chevron-right"></i></span> </a>
+                                        <a href="{{ url('billing') }}" class="trial-button">Try us without risk. <span>Choose plan <i class="fas fa-chevron-right"></i></span> </a>
                                     </div> <!-- /.pr-table-wrapper -->
                                 </div>
                             </div>
                         </div>
                     </div> <!-- /.tab-content -->
 
-                    <div class="msg-note mt-80 lg-mt-50" data-aos="fade-up">If you Need any Custom or others Pricing System. <br> Please <a href="contact-us.html">Send Message</a></div>
+                    <div class="msg-note mt-80 lg-mt-50" data-aos="fade-up">If you Need any Custom or others Pricing System. <br> Please <a href="{{ url('contact') }}">Send Message</a></div>
                 </div>
             </div> <!-- /.pricing-table-area-one -->
         </div> <!-- /.pricing-section-one -->
@@ -225,56 +229,48 @@
 				<div class="container">
 					<div class="inner-wrapper">
 						<div class="row">
-							<div class="col-lg-4 footer-intro mb-40">
-								<div class="logo"><a href="index.html"><img src="images/logo/logo_01.png" alt="" width="130"></a></div>
-								<p>In this class, you will learn about the most effective machine learning techniques, and gain practice implementing them.</p>
-								<ul class="d-flex social-icon style-none">
-									<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-									<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-									<li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-								</ul>
-							</div>
-							<div class="col-lg-2 col-sm-4 ms-auto mb-30">
-								<h5 class="footer-title">Links</h5>
-								<ul class="footer-nav-link style-none">
-									<li><a href="index.html">Home</a></li>
-									<li><a href="pricing.html">Pricing</a></li>
-									<li><a href="about-us2.html">About us</a></li>
-									<li><a href="service-V1.html">Service</a></li>
-									<li><a href="blog-V1.html">Blog</a></li>
-								</ul>
-							</div>
-							<div class="col-lg-3 col-sm-4 mb-30">
-								<h5 class="footer-title">Services</h5>
-								<ul class="footer-nav-link style-none">
-									<li><a href="service-details-V1.html">Artificial Intelligence</a></li>
-									<li><a href="service-details-V1.html">Data Analytics</a></li>
-									<li><a href="service-details-V1.html">Data Visualization</a></li>
-									<li><a href="service-details-V1.html">Deep Learning</a></li>
-									<li><a href="service-details-V1.html">Statistical Modeling</a></li>
-								</ul>
-							</div>
-							<div class="col-xl-2 col-lg-3 col-sm-4 mb-30">
-								<h5 class="footer-title">Legal</h5>
-								<ul class="footer-nav-link style-none">
-									<li><a href="faq.html">Terms of use</a></li>
-									<li><a href="faq.html">Terms & conditions</a></li>
-									<li><a href="faq.html">Privacy policy</a></li>
-									<li><a href="faq.html">Cookie policy</a></li>
-								</ul>
-							</div>
+							<div class="col-lg-3 footer-intro mb-40">
+                                <div class="logo"><a href="{{ url('') }}"><img src="images/logo/logo_01.png" alt=""
+                                            width="129"></a></div>
+                                <p>We support to for your licensing requirements.</p>
+                                <ul class="d-flex social-icon style-none">
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12 mb-30">
+                                <h5 class="footer-title">Home Links</h5>
+                                <ul class="footer-nav-link style-none">
+                                    <li><a href="{{ url('') }}">Home</a></li>
+                                    <li><a href="{{ url('docs') }}">API documentation</a></li>
+                                    <li><a href="{{ url('pricing') }}">Pricing</a></li>
+                                    <li><a href="{{ url('faq') }}">FAQ</a></li>
+                                    <li><a href="{{ url('contact') }}">Contact</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-xl-5 col-lg-4 col-md-6 mb-30">
+                                <h5 class="footer-title">Dashboard Links</h5>
+                                <ul class="footer-nav-link style-none">
+                                    <li><a href="{{ url('dashboard') }}">Dashboard</a></li>
+                                    <li><a href="{{ url('products') }}">Manage products</a></li>
+                                    <li><a href="{{ url('customers') }}">Manage customers</a></li>
+                                    <li><a href="{{ url('billing') }}">Billing</a></li>
+                                    <li><a href="{{ url('user/profile') }}">Account settings</a></li>
+                                </ul>
+                            </div>
 						</div>
 
-						<div class="bottom-footer">
-							<div class="d-lg-flex justify-content-between align-items-center">
-								<ul class="order-lg-1 pb-15 d-flex justify-content-center footer-nav style-none">
-									<li><a href="faq.html">Privacy &amp; Terms.</a></li>
-									<li><a href="faq.html">FAQ</a></li>
-									<li><a href="contact-us.html">Contact Us</a></li>
-								</ul>
-								<p class="copyright text-center order-lg-0 pb-15">Copyright @2022 sinco inc.</p>
-							</div>
-						</div>
+                        <div class="bottom-footer">
+                            <div class="d-lg-flex justify-content-between align-items-center">
+                                <ul class="order-lg-1 pb-15 d-flex justify-content-center footer-nav style-none">
+                                 <!--   <li><a href="#">Privacy &amp; Terms.</a></li> -->
+                                    <li><a href="{{ url('faq') }}">FAQ</a></li>
+                                    <li><a href="{{ url('contact') }}">Contact Us</a></li>
+                                </ul>
+                                <p class="copyright text-center order-lg-0 pb-15">Copyright @2022 CryptFence Solutions.</p>
+                            </div>
+                        </div>
 					</div> <!-- /.inner-wrapper -->
 				</div>
 			</div> <!-- /.footer-style-four -->

@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 use Mail;
 
 class DashboardController extends Controller
@@ -19,9 +20,10 @@ class DashboardController extends Controller
         $customer_count = Customer::where('user_id', '=', Auth::id())->count();
         $user_name = Auth::user()->name;;
         $current_plan = Auth::user()->sparkPlan();
-
-        //return $current_plan;
-        return view('dashboard', compact('product_count', 'key_count', 'customer_count', 'user_name', 'current_plan'));
+        $expires = Auth::user()->subscription('default');
+        
+        
+        return view('dashboard', compact('product_count', 'key_count', 'customer_count', 'user_name', 'current_plan', 'expires'));
     }
 
 

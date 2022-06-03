@@ -21,7 +21,7 @@
                 <a href="{{ url('') }}" class="go-back-button tran3s">Go to home</a>
             </div>
 
-            <h2>Hi buddy, welcome <br> Back!</h2>
+            <h2>Hello there, welcome to <br> CryptFence!</h2>
             <p class="header-info pt-20 pb-20 lg-pt-10 lg-pb-10">Have an account? Login <a
                     href="{{ url('login') }}">here</a></p>
 

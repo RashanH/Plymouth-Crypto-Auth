@@ -30,7 +30,7 @@ class CustomerController extends Controller
      */
     public function create()
     { 
-        if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission.')->withInput(); }
+        if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission. Please subscribe to a plan.')->withInput(); }
         return view('customer.create');
     }
 
@@ -42,7 +42,7 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission.')->withInput(); }
+        if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission. Please subscribe to a plan.')->withInput(); }
         $request->validate([
             'email'=>'required|email'
         ]);

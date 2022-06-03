@@ -38,7 +38,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission.')->withInput(); }
+        if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission. Please subscribe to a plan.')->withInput(); }
         return view('product.create');
     }
 
@@ -69,7 +69,7 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission.')->withInput(); }
+        if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission. Please subscribe to a plan.')->withInput(); }
 
         $request->validate([
             'name'=>'required',

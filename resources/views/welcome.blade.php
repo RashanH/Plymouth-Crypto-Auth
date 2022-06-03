@@ -43,7 +43,7 @@
         <header class="theme-main-menu sticky-menu theme-menu-three">
             <div class="inner-content">
                 <div class="container d-flex align-items-center justify-content-between">
-                    <div class="logo order-lg-0"><a href="index.html" class="d-block"><img src="images/logo/logo_02.png"
+                    <div class="logo order-lg-0"><a href="{{ url('') }}" class="d-block"><img src="images/logo/logo_02.png"
                                 alt="" width="129"></a></div>
 
                     <div class="right-widget d-flex align-items-center ms-auto ms-lg-0 order-lg-3">
@@ -71,7 +71,7 @@
                         <div class="collapse navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav">
                                 <li class="d-block d-lg-none">
-                                    <div class="logo"><a href="index.html"><img src="images/logo/logo_02.png" alt=""
+                                    <div class="logo"><a href="{{ url('') }}"><img src="images/logo/logo_02.png" alt=""
                                                 width="130"></a></div>
                                 </li>
                                 <li class="nav-item active">
@@ -110,12 +110,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xl-7 col-md-6">
-                        <h1 class="hero-heading">Next Level Client Support with lily.</h1>
-                        <p class="text-lg mb-50 lg-mb-40">CryptFence delivered blazing fast, striking ai solution</p>
+                        <h1 class="hero-heading">Next Gen<br>Cloud Licensing<br>System</h1>
+                        <p class="text-lg mb-50 lg-mb-40">Delivering blazing fast &amp; secure licensing solution.</p>
                         <ul class="style-none button-group d-lg-flex align-items-center">
-                            <li class="me-4"><a href="contact-us.html" class="btn-one ripple-btn">Start Free Trial</a>
+                            <li class="me-4"><a href="{{ url('pricing') }}" class="btn-one ripple-btn">See Pricing</a>
                             </li>
-                            <li class="help-btn">Need any help? <a href="contact-us.html">Contact us</a></li>
+                            <li class="help-btn">Need any help? <a href="{{ url('contact') }}">Contact us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -140,29 +140,24 @@
                 <div class="row justify-content-center gx-xxl-5">
                     <div class="col-lg-4 col-sm-6 d-flex mb-30" data-aos="fade-up">
                         <div class="block-style-seven">
-                            <div class="icon d-flex align-items-end"><img src="images/icon/icon_17.svg" alt=""></div>
-                            <h5><a href="service-details-V1.html">Data Science</a></h5>
-                            <p>Convert data noise to intelligent insights for quis competitive differentiation.</p>
-                            <a href="service-details-V1.html" class="tran3s more-btn"><img src="images/icon/icon_20.svg"
-                                    alt=""></a>
+                            <div class="icon d-flex align-items-end"><img src="images/icon/icon_12.svg" alt=""></div>
+                            <h5><a href="#">Secure Licenses</a></h5>
+                            <p>Offers fully secure licensing features with the support of newest crypto algorithms.</p>
+                     
                         </div> <!-- /.block-style-seven -->
                     </div>
                     <div class="col-lg-4 col-sm-6 d-flex mb-30" data-aos="fade-up" data-aos-delay="100">
                         <div class="block-style-seven">
-                            <div class="icon d-flex align-items-end"><img src="images/icon/icon_18.svg" alt=""></div>
-                            <h5><a href="service-details-V1.html">Machine Learning</a></h5>
-                            <p>Convert data noise to intelligent insights for quis competitive differentiation.</p>
-                            <a href="service-details-V1.html" class="tran3s more-btn"><img src="images/icon/icon_20.svg"
-                                    alt=""></a>
+                            <div class="icon d-flex align-items-end"><img src="images/icon/icon_28.svg" alt=""></div>
+                            <h5><a href="#">Cross-Language</a></h5>
+                            <p>Provides libraries for common programming languages and a powerful API system.</p>
                         </div> <!-- /.block-style-seven -->
                     </div>
                     <div class="col-lg-4 d-flex mb-30" data-aos="fade-up" data-aos-delay="200">
                         <div class="block-style-seven">
                             <div class="icon d-flex align-items-end"><img src="images/icon/icon_19.svg" alt=""></div>
-                            <h5><a href="service-details-V1.html">Customer Support</a></h5>
-                            <p>Convert data noise to intelligent insights for quis competitive differentiation.</p>
-                            <a href="service-details-V1.html" class="tran3s more-btn"><img src="images/icon/icon_20.svg"
-                                    alt=""></a>
+                            <h5><a href="#">Customer Support</a></h5>
+                            <p>User friendly support team, always waiting to help you with API integration and all other related services.</p>
                         </div> <!-- /.block-style-seven -->
                     </div>
                 </div>
@@ -174,11 +169,11 @@
 				Feature Section Eleven
 			============================================== 
 			-->
-        <div class="fancy-feature-eleven mt-225 lg-mt-120">
+        <div class="fancy-feature-eleven lg-mt-120">
             <div class="container">
                 <div class="title-style-one white-vr text-center mb-55 lg-mb-30" data-aos="fade-up">
                     <h2 class="main-title">How It works</h2>
-                    <p class="sub-title">Our advance AI system work seamlesly & smartly.</p>
+                    <p class="sub-title">Our advance license system work seamlesly, securely & smartly.</p>
                 </div> <!-- /.title-style-one -->
 
                 <div class="row">
@@ -190,7 +185,7 @@
                                         <img src="images/icon/icon_21.svg" alt="">
                                         <div class="num">1</div>
                                     </div>
-                                    <h5>Identify the probelm <br> with ai</h5>
+                                    <h5>Create a product and<br>get a pub key</h5>
                                 </div> <!-- /.block-style-eight -->
                             </div>
                             <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="100">
@@ -199,7 +194,7 @@
                                         <img src="images/icon/icon_22.svg" alt="">
                                         <div class="num">2</div>
                                     </div>
-                                    <h5>Collect data with our <br> advance ai.</h5>
+                                    <h5>Implement pub key<br>in your application</h5>
                                 </div> <!-- /.block-style-eight -->
                             </div>
                             <div class="col-md-4 col-sm-6" data-aos="fade-left" data-aos-delay="200">
@@ -208,7 +203,7 @@
                                         <img src="images/icon/icon_23.svg" alt="">
                                         <div class="num">3</div>
                                     </div>
-                                    <h5>Deliver Accurate data <br> solution.</h5>
+                                    <h5>Manage licenses and<br>plan ahead</h5>
                                 </div> <!-- /.block-style-eight -->
                             </div>
                         </div>
@@ -233,62 +228,59 @@
                     <div class="col-xxl-5 col-lg-6 ms-auto order-lg-last">
                         <div class="block-style-two md-mb-50" data-aos="fade-left">
                             <div class="title-style-one">
-                                <div class="sc-title-four">What is Chatbot</div>
-                                <h2 class="main-title">Customer service by our chatbot.</h2>
+                                <div class="sc-title-four">What is CryptFence</div>
+                                <h2 class="main-title">We offer cloud licenses.</h2>
                             </div> <!-- /.title-style-one -->
                             <ul class="nav nav-tabs justify-content-between" role="tablist">
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#sp1"
-                                        type="button" role="tab">Speech</button>
+                                        type="button" role="tab">Licenses</button>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link" data-bs-toggle="tab" data-bs-target="#sp2" type="button"
-                                        role="tab">Auto Text</button>
+                                        role="tab">Integration</button>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link" data-bs-toggle="tab" data-bs-target="#sp3" type="button"
-                                        role="tab">Q&A</button>
+                                        role="tab">Dashboard</button>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link" data-bs-toggle="tab" data-bs-target="#sp4" type="button"
-                                        role="tab">Generate Leads</button>
+                                        role="tab">Support</button>
                                 </li>
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane fade active show" id="sp1">
-                                    <p class="pt-10 pb-10">Save web pages (without the ads) and mark them up with
-                                        arrows, highlights, and text.</p>
+                                    <p class="pt-10 pb-10">Our licenses are secured with modern RSA and AES algorithms.</p>
                                     <ul class="style-none list-item">
-                                        <li>Various analysis options.</li>
-                                        <li>Page Load (time, size, number of requests).</li>
-                                        <li>Big data analysis.</li>
+                                        <li>RSA &amp; AES-256-CBC crypto licenses.</li>
+                                        <li>Securely stored on cloud.</li>
+                                        <li>25 character alphanumeric keys.</li>
+                                        <li>Supports offline licenses (conditions apply)</li>
                                     </ul>
                                 </div> <!-- /.tab-pane -->
                                 <div class="tab-pane fade" id="sp2">
-                                    <p class="pt-10 pb-10">CryptFence is data science, machine learning and artificial
-                                        intelligence provide business solution.</p>
+                                    <p class="pt-10 pb-10">We already have libraries for common programming languages. Also you can use the API and validate from any language.</p>
                                     <ul class="style-none list-item">
-                                        <li>Page Load (time, size, number of requests).</li>
-                                        <li>Various analysis options.</li>
-                                        <li>Big data analysis.</li>
+                                        <li>Powerful API system with rate limits.</li>
+                                        <li>Libraries for commom languages.</li>
+                                        <li>Lightning fast and 99.9% uptime.</li>
                                     </ul>
                                 </div> <!-- /.tab-pane -->
                                 <div class="tab-pane fade" id="sp3">
-                                    <p class="pt-10 pb-10">Save web pages (without the ads) and mark them up with
-                                        arrows, highlights, and text.</p>
+                                    <p class="pt-10 pb-10">Our web dashboard allows you to generate and manage licenses. Expecting provide API support soon.</p>
                                     <ul class="style-none list-item">
-                                        <li>Various analysis options.</li>
-                                        <li>Page Load (time, size, number of requests).</li>
-                                        <li>Big data analysis.</li>
+                                        <li>Manage products, keys &amp; customers.</li>
+                                        <li>Friendly interface.</li>
+                                        <li>Extra safely with 2FA.</li>
                                     </ul>
                                 </div> <!-- /.tab-pane -->
                                 <div class="tab-pane fade" id="sp4">
-                                    <p class="pt-10 pb-10">CryptFence is data science, machine learning and artificial
-                                        intelligence provide business solution.</p>
+                                    <p class="pt-10 pb-10">Customer service and customer satisfaction is our top priority.</p>
                                     <ul class="style-none list-item">
-                                        <li>Page Load (time, size, number of requests).</li>
-                                        <li>Various analysis options.</li>
-                                        <li>Big data analysis.</li>
+                                        <li>Friendly support.</li>
+                                        <li>24/7 with fast replies.</li>
+                                        <li>Personalized solutions.</li>
                                     </ul>
                                 </div> <!-- /.tab-pane -->
                             </div> <!-- /.tab-content -->
@@ -322,12 +314,9 @@
                                 <h2 class="main-title">Why choose us for your business.</h2>
                             </div> <!-- /.title-style-one -->
                             <ul class="style-none list-item">
-                                <li data-aos="fade-up">Learn content by interacting with an expert lesson or watching a
-                                    video.</li>
-                                <li data-aos="fade-up" data-aos-delay="100">Practice what you learned on realistic SAT
-                                    test questions.</li>
-                                <li data-aos="fade-up" data-aos-delay="200">Review your practice questions and learn how
-                                    to improve.</li>
+                                <li data-aos="fade-up">Affordable pricing plans for both individuals and organizations. We do not charge based on # of users.</li>
+                                <li data-aos="fade-up" data-aos-delay="100">Easy integration, a detailed documentation and 24/7 customer support available.</li>
+                                <li data-aos="fade-up" data-aos-delay="200">We perform frequent scans on our systems, which means your licenses and data are secure with us.</li>
                             </ul>
                         </div> <!-- /.block-style-nine -->
                     </div>
@@ -340,8 +329,8 @@
                             </div> <!-- /.card-one -->
                             <div class="card-two shapes text-center">
                                 <div class="icon"><i class="bi bi-check-lg"></i></div>
-                                <div class="main-count"><span class="counter">20</span>k</div>
-                                <div class="info">5 Start Rating</div>
+                                <div class="main-count"><span class="counter">5</span></div>
+                                <div class="info">Star Rating</div>
                                 <ul class="style-none d-flex justify-content-center rating">
                                     <li><i class="bi bi-star-fill"></i></li>
                                     <li><i class="bi bi-star-fill"></i></li>
@@ -369,12 +358,12 @@
                     <div class="col-xxl-4 col-lg-5">
                         <div class="block-style-five md-pb-50" data-aos="fade-right">
                             <div class="title-style-one">
-                                <div class="sc-title-three">Questions & Answers</div>
+                                <div class="sc-title-three">Frequently Asked Question</div>
                                 <h2 class="main-title">Any Questions? Find here.</h2>
                             </div> <!-- /.title-style-one -->
-                            <p class="pt-10 pb-15">Don’t find your answer here? just send us a message for any query.
+                            <p class="pt-10 pb-15">Don’t find your answer here? just check our FAQ section
                             </p>
-                            <a href="contact-us.html" class="btn-five ripple-btn">Contact us</a>
+                            <a href="{{ url('faq') }}" class="btn-five ripple-btn">See our FAQ</a>
                         </div> <!-- /.block-style-five -->
                     </div>
 
@@ -484,9 +473,9 @@
                     <div class="row align-items-center">
                         <div class="col-lg-8 m-auto" data-aos="fade-up">
                             <div class="title-style-one text-center white-vr mb-30" data-aos="fade-up">
-                                <h2 class="main-title">Get Ready to Started It’s Fast, Free & very easy</h2>
+                                <h2 class="main-title">Get Ready to Started. It’s Fast & very easy</h2>
                             </div> <!-- /.title-style-one -->
-                            <a href="contact-us.html" class="btn-six ripple-btn">Get Started <i
+                            <a href="{{ url('register') }}" class="btn-six ripple-btn">Get Started <i
                                     class="fas fa-chevron-right"></i></a>
                         </div>
                     </div>
@@ -508,7 +497,7 @@
                                 <div class="icon"><img src="images/icon/icon_06.svg" alt=""></div>
                                 <div class="text-meta">
                                     <h4 class="title">Our Address</h4>
-                                    <p>1012 Pebda Parkway, Mirpur 2 <br>Dhaka, Bangladesh</p>
+                                    <p>9169 W State St #2028, 83714<br>Garden City, Idaho</p>
                                 </div> <!-- /.text-meta -->
                             </div> <!-- /.address-block-one -->
                         </div>
@@ -517,7 +506,7 @@
                                 <div class="icon"><img src="images/icon/icon_07.svg" alt=""></div>
                                 <div class="text-meta">
                                     <h4 class="title">Contact Info</h4>
-                                    <p>Open a chat or give us call at <br><a href="#">310.841.5500</a></p>
+                                    <p>Open a chat or give us call at <br><a href="tel:+14356605999">+1 (435) 660-5999</a></p>
                                 </div> <!-- /.text-meta -->
                             </div> <!-- /.address-block-one -->
                         </div>
@@ -540,55 +529,45 @@
                 <div class="inner-wrapper">
                     <div class="row">
                         <div class="col-lg-3 footer-intro mb-40">
-                            <div class="logo"><a href="index.html"><img src="images/logo/logo_02.png" alt=""
+                            <div class="logo"><a href="{{ url('') }}"><img src="images/logo/logo_02.png" alt=""
                                         width="129"></a></div>
-                            <p>We will assist you in becoming more successful.</p>
+                            <p>We support to for your licensing requirements.</p>
                             <ul class="d-flex social-icon style-none">
                                 <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                                 <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                                 <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
                             </ul>
                         </div>
-                        <div class="col-lg-2 col-md-3 col-sm-6 mb-30">
-                            <h5 class="footer-title">Links</h5>
+                        <div class="col-lg-4 col-md-6 col-sm-12 mb-30">
+                            <h5 class="footer-title">Home Links</h5>
                             <ul class="footer-nav-link style-none">
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="pricing.html">Pricing</a></li>
-                                <li><a href="about-us2.html">About us</a></li>
-                                <li><a href="service-V1.html">Service</a></li>
-                                <li><a href="blog-V1.html">Blog</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-xl-2 col-md-3 col-sm-6 mb-30">
-                            <h5 class="footer-title">Legal</h5>
-                            <ul class="footer-nav-link style-none">
-                                <li><a href="faq.html">Terms of use</a></li>
-                                <li><a href="faq.html">Terms & conditions</a></li>
-                                <li><a href="faq.html">Privacy policy</a></li>
-                                <li><a href="faq.html">Cookie policy</a></li>
+                                <li><a href="{{ url('') }}">Home</a></li>
+                                <li><a href="{{ url('docs') }}">API documentation</a></li>
+                                <li><a href="{{ url('pricing') }}">Pricing</a></li>
+                                <li><a href="{{ url('faq') }}">FAQ</a></li>
+                                <li><a href="{{ url('contact') }}">Contact</a></li>
                             </ul>
                         </div>
                         <div class="col-xl-5 col-lg-4 col-md-6 mb-30">
-                            <div class="newsletter ps-xl-5">
-                                <h5 class="footer-title">Subscribe </h5>
-                                <p>Join over <span>68,000</span> people getting our emails</p>
-                                <form action="#">
-                                    <input type="email" placeholder="Enter your email">
-                                    <button>Sign Up</button>
-                                </form>
-                                <div class="info">We only send interesting and relevant emails.</div>
-                            </div> <!-- /.newsletter -->
+                            <h5 class="footer-title">Dashboard Links</h5>
+                            <ul class="footer-nav-link style-none">
+                                <li><a href="{{ url('dashboard') }}">Dashboard</a></li>
+                                <li><a href="{{ url('products') }}">Manage products</a></li>
+                                <li><a href="{{ url('customers') }}">Manage customers</a></li>
+                                <li><a href="{{ url('billing') }}">Billing</a></li>
+                                <li><a href="{{ url('user/profile') }}">Account settings</a></li>
+                            </ul>
                         </div>
                     </div>
 
                     <div class="bottom-footer">
                         <div class="d-lg-flex justify-content-between align-items-center">
                             <ul class="order-lg-1 pb-15 d-flex justify-content-center footer-nav style-none">
-                                <li><a href="faq.html">Privacy &amp; Terms.</a></li>
-                                <li><a href="faq.html">FAQ</a></li>
-                                <li><a href="contact-us.html">Contact Us</a></li>
+                             <!--   <li><a href="#">Privacy &amp; Terms.</a></li> -->
+                                <li><a href="{{ url('faq') }}">FAQ</a></li>
+                                <li><a href="{{ url('contact') }}">Contact Us</a></li>
                             </ul>
-                            <p class="copyright text-center order-lg-0 pb-15">Copyright @2022 CryptFence inc.</p>
+                            <p class="copyright text-center order-lg-0 pb-15">Copyright @2022 CryptFence Solutions.</p>
                         </div>
                     </div>
                 </div> <!-- /.inner-wrapper -->
