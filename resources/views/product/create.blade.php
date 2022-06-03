@@ -43,7 +43,7 @@
                 </div>
                 <div class="form-group mb-6 form-check text-right mt-2">
                     <input type="checkbox"
-                        class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain mr-2 cursor-pointer"
+                        class="form-check-input appearance-none h-4 w-4 border transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain mr-2 cursor-pointer"
                         id="force_latest_version" name="force_latest_version" @if(is_array(old('force_latest_version'))
                         && in_array(3, old('force_latest_version'))) checked @endif>
                     <label class="form-check-label inline-block text-gray-800" for="force_latest_version">Force latest
