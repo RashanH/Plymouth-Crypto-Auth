@@ -1,133 +1,717 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-        <title>Laravel</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Styles -->
-        <style>
-            /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}a{background-color:transparent}[hidden]{display:none}html{font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;line-height:1.5}*,:after,:before{box-sizing:border-box;border:0 solid #e2e8f0}a{color:inherit;text-decoration:inherit}svg,video{display:block;vertical-align:middle}video{max-width:100%;height:auto}.bg-white{--bg-opacity:1;background-color:#fff;background-color:rgba(255,255,255,var(--bg-opacity))}.bg-gray-100{--bg-opacity:1;background-color:#f7fafc;background-color:rgba(247,250,252,var(--bg-opacity))}.border-gray-200{--border-opacity:1;border-color:#edf2f7;border-color:rgba(237,242,247,var(--border-opacity))}.border-t{border-top-width:1px}.flex{display:flex}.grid{display:grid}.hidden{display:none}.items-center{align-items:center}.justify-center{justify-content:center}.font-semibold{font-weight:600}.h-5{height:1.25rem}.h-8{height:2rem}.h-16{height:4rem}.text-sm{font-size:.875rem}.text-lg{font-size:1.125rem}.leading-7{line-height:1.75rem}.mx-auto{margin-left:auto;margin-right:auto}.ml-1{margin-left:.25rem}.mt-2{margin-top:.5rem}.mr-2{margin-right:.5rem}.ml-2{margin-left:.5rem}.mt-4{margin-top:1rem}.ml-4{margin-left:1rem}.mt-8{margin-top:2rem}.ml-12{margin-left:3rem}.-mt-px{margin-top:-1px}.max-w-6xl{max-width:72rem}.min-h-screen{min-height:100vh}.overflow-hidden{overflow:hidden}.p-6{padding:1.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.pt-8{padding-top:2rem}.fixed{position:fixed}.relative{position:relative}.top-0{top:0}.right-0{right:0}.shadow{box-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px 0 rgba(0,0,0,.06)}.text-center{text-align:center}.text-gray-200{--text-opacity:1;color:#edf2f7;color:rgba(237,242,247,var(--text-opacity))}.text-gray-300{--text-opacity:1;color:#e2e8f0;color:rgba(226,232,240,var(--text-opacity))}.text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.text-gray-500{--text-opacity:1;color:#a0aec0;color:rgba(160,174,192,var(--text-opacity))}.text-gray-600{--text-opacity:1;color:#718096;color:rgba(113,128,150,var(--text-opacity))}.text-gray-700{--text-opacity:1;color:#4a5568;color:rgba(74,85,104,var(--text-opacity))}.text-gray-900{--text-opacity:1;color:#1a202c;color:rgba(26,32,44,var(--text-opacity))}.underline{text-decoration:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.w-5{width:1.25rem}.w-8{width:2rem}.w-auto{width:auto}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}@media (min-width:640px){.sm\:rounded-lg{border-radius:.5rem}.sm\:block{display:block}.sm\:items-center{align-items:center}.sm\:justify-start{justify-content:flex-start}.sm\:justify-between{justify-content:space-between}.sm\:h-20{height:5rem}.sm\:ml-0{margin-left:0}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:pt-0{padding-top:0}.sm\:text-left{text-align:left}.sm\:text-right{text-align:right}}@media (min-width:768px){.md\:border-t-0{border-top-width:0}.md\:border-l{border-left-width:1px}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1024px){.lg\:px-8{padding-left:2rem;padding-right:2rem}}@media (prefers-color-scheme:dark){.dark\:bg-gray-800{--bg-opacity:1;background-color:#2d3748;background-color:rgba(45,55,72,var(--bg-opacity))}.dark\:bg-gray-900{--bg-opacity:1;background-color:#1a202c;background-color:rgba(26,32,44,var(--bg-opacity))}.dark\:border-gray-700{--border-opacity:1;border-color:#4a5568;border-color:rgba(74,85,104,var(--border-opacity))}.dark\:text-white{--text-opacity:1;color:#fff;color:rgba(255,255,255,var(--text-opacity))}.dark\:text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.dark\:text-gray-500{--tw-text-opacity:1;color:#6b7280;color:rgba(107,114,128,var(--tw-text-opacity))}}
-        </style>
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
-        <style>
-            body {
-                font-family: 'Nunito', sans-serif;
-            }
-        </style>
-    </head>
-    <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-            @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+    <!-- Styles -->
+    <meta name="theme-color" content="#1E78FF">
+    <meta name="msapplication-navbutton-color" content="#1E78FF">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#1E78FF">
+    <link rel="icon" type="image/png" sizes="56x56" href="images/fav-icon/icon.png">
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="all">
+    <link rel="stylesheet" type="text/css" href="css/responsive.css" media="all">
 
+    <!-- Fix Internet Explorer ______________________________________-->
+    <!--[if lt IE 9]>
+			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="vendor/html5shiv.js"></script>
+			<script src="vendor/respond.js"></script>
+		<![endif]-->
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+
+    <!-- Scripts -->
+    <script src="{{ mix('js/app.js') }}" defer></script>
+</head>
+
+<body class="antialiased">
+    <div class="main-page-wrapper">
+        <!-- 
+			=============================================
+				Theme Main Menu
+			============================================== 
+			-->
+        <header class="theme-main-menu sticky-menu theme-menu-three">
+            <div class="inner-content">
+                <div class="container d-flex align-items-center justify-content-between">
+                    <div class="logo order-lg-0"><a href="index.html" class="d-block"><img src="images/logo/logo_02.png"
+                                alt="" width="129"></a></div>
+
+                    <div class="right-widget d-flex align-items-center ms-auto ms-lg-0 order-lg-3">
+
+                        @if (Route::has('login'))
+                        @auth
+                        <a href="{{ url('/dashboard') }}" class="req-demo-btn tran3s d-none d-lg-block">Dashboard</a>
+                        @else
+                        <a class="loginbtn" href="{{ route('login') }}">Log in</a>
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                        <a href="{{ route('register') }}" class="req-demo-btn tran3s d-none d-lg-block">Register</a>
                         @endif
-                    @endauth
+                        @endauth
+                        @endif
+
+
+                    </div> <!-- /.right-widget -->
+
+                    <nav class="navbar navbar-expand-lg order-lg-2">
+                        <button class="navbar-toggler d-block d-lg-none" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav">
+                                <li class="d-block d-lg-none">
+                                    <div class="logo"><a href="index.html"><img src="images/logo/logo_02.png" alt=""
+                                                width="130"></a></div>
+                                </li>
+                                <li class="nav-item active dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                        data-bs-auto-close="outside" aria-expanded="false">Home</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="index.html" class="dropdown-item"><span>User Analysis</span></a>
+                                        </li>
+                                        <li><a href="index-2.html" class="dropdown-item"><span>Artificial
+                                                    Intelligence</span></a></li>
+                                        <li><a href="index-3.html" class="dropdown-item"><span>Data Science</span></a>
+                                        </li>
+                                        <li><a href="index-4.html" class="dropdown-item"><span>Chatboot</span></a></li>
+                                        <li><a href="index-5.html" class="dropdown-item"><span>Machine
+                                                    Learning</span></a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                        data-bs-auto-close="outside" aria-expanded="false">Pages</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-submenu dropdown">
+                                            <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"
+                                                data-bs-auto-close="outside" aria-expanded="false" href="#"><span>About
+                                                    Us</span></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="about-us1.html" class="dropdown-item"><span>About Us
+                                                            One</span></a></li>
+                                                <li><a href="about-us2.html" class="dropdown-item"><span>About Us
+                                                            Two</span></a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown-submenu dropdown">
+                                            <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"
+                                                data-bs-auto-close="outside" aria-expanded="false"
+                                                href="#"><span>Services</span></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="service-V1.html" class="dropdown-item"><span>Service
+                                                            One</span></a></li>
+                                                <li><a href="service-V2.html" class="dropdown-item"><span>Service
+                                                            Two</span></a></li>
+                                                <li><a href="service-details-V1.html"
+                                                        class="dropdown-item"><span>Service Details</span></a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown-submenu dropdown">
+                                            <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"
+                                                data-bs-auto-close="outside" aria-expanded="false" href="#"><span>Our
+                                                    Team</span></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="team.html" class="dropdown-item"><span>Team
+                                                            Member</span></a></li>
+                                                <li><a href="team-details.html" class="dropdown-item"><span>Team
+                                                            Details</span></a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown-submenu dropdown">
+                                            <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"
+                                                data-bs-auto-close="outside" aria-expanded="false" href="#"><span>Other
+                                                    Pages</span></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="faq.html" class="dropdown-item"><span>Faq</span></a></li>
+                                                <li><a href="signin.html" class="dropdown-item"><span>Signin</span></a>
+                                                </li>
+                                                <li><a href="sign-up.html" class="dropdown-item"><span>Signup</span></a>
+                                                </li>
+                                                <li><a href="404.html" class="dropdown-item"><span>404 Error</span></a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="testimonial.html"
+                                                class="dropdown-item"><span>Testimonials</span></a></li>
+                                        <li><a href="pricing.html" class="dropdown-item"><span>Our Pricing</span></a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                        data-bs-auto-close="outside" aria-expanded="false">Portfolio</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="portfolio-V1.html" class="dropdown-item"><span>Portfolio 3
+                                                    Column</span></a></li>
+                                        <li><a href="portfolio-V2.html" class="dropdown-item"><span>Portfolio 2
+                                                    Column</span></a></li>
+                                        <li><a href="portfolio-V3.html" class="dropdown-item"><span>Portfolio
+                                                    Masonry</span></a></li>
+                                        <li><a href="portfolio-details-V1.html" class="dropdown-item"><span>Single
+                                                    Portfolio</span></a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                        data-bs-auto-close="outside" aria-expanded="false">Blog</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="blog-V1.html" class="dropdown-item"><span>Grid Layout</span></a>
+                                        </li>
+                                        <li><a href="blog-V2.html" class="dropdown-item"><span>Grid With
+                                                    Sidebar</span></a></li>
+                                        <li><a href="blog-V3.html" class="dropdown-item"><span>Blog Masonary</span></a>
+                                        </li>
+                                        <li><a href="blog-V4.html" class="dropdown-item"><span>Blog Standard</span></a>
+                                        </li>
+                                        <li><a href="blog-details.html" class="dropdown-item"><span>Blog
+                                                    Details</span></a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('/contact') }}" role="button">Contact</a>
+                                </li>
+                            </ul>
+                            <!-- Mobile Content -->
+                            <div class="mobile-content d-block d-lg-none">
+                                <div class="d-flex flex-column align-items-center justify-content-center mt-70">
+                                    <a href="contact-us.html" class="req-demo-btn tran3s">Request a Demo</a>
+                                </div>
+                            </div> <!-- /.mobile-content -->
+                        </div>
+                    </nav>
                 </div>
-            @endif
+            </div> <!-- /.inner-content -->
+        </header> <!-- /.theme-main-menu -->
 
-            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
-                    <svg viewBox="0 0 651 192" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-16 w-auto text-gray-700 sm:h-20">
-                        <g clip-path="url(#clip0)" fill="#EF3B2D">
-                            <path d="M248.032 44.676h-16.466v100.23h47.394v-14.748h-30.928V44.676zM337.091 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.431 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162-.001 2.863-.479 5.584-1.432 8.161zM463.954 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.432 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162 0 2.863-.479 5.584-1.432 8.161zM650.772 44.676h-15.606v100.23h15.606V44.676zM365.013 144.906h15.607V93.538h26.776V78.182h-42.383v66.724zM542.133 78.182l-19.616 51.096-19.616-51.096h-15.808l25.617 66.724h19.614l25.617-66.724h-15.808zM591.98 76.466c-19.112 0-34.239 15.706-34.239 35.079 0 21.416 14.641 35.079 36.239 35.079 12.088 0 19.806-4.622 29.234-14.688l-10.544-8.158c-.006.008-7.958 10.449-19.832 10.449-13.802 0-19.612-11.127-19.612-16.884h51.777c2.72-22.043-11.772-40.877-33.023-40.877zm-18.713 29.28c.12-1.284 1.917-16.884 18.589-16.884 16.671 0 18.697 15.598 18.813 16.884h-37.402zM184.068 43.892c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002-35.648-20.524a2.971 2.971 0 00-2.964 0l-35.647 20.522-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v38.979l-29.706 17.103V24.493a3 3 0 00-.103-.776c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002L40.098 1.396a2.971 2.971 0 00-2.964 0L1.487 21.919l-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v122.09c0 1.063.568 2.044 1.489 2.575l71.293 41.045c.156.089.324.143.49.202.078.028.15.074.23.095a2.98 2.98 0 001.524 0c.069-.018.132-.059.2-.083.176-.061.354-.119.519-.214l71.293-41.045a2.971 2.971 0 001.489-2.575v-38.979l34.158-19.666a2.971 2.971 0 001.489-2.575V44.666a3.075 3.075 0 00-.106-.774zM74.255 143.167l-29.648-16.779 31.136-17.926.001-.001 34.164-19.669 29.674 17.084-21.772 12.428-43.555 24.863zm68.329-76.259v33.841l-12.475-7.182-17.231-9.92V49.806l12.475 7.182 17.231 9.92zm2.97-39.335l29.693 17.095-29.693 17.095-29.693-17.095 29.693-17.095zM54.06 114.089l-12.475 7.182V46.733l17.231-9.92 12.475-7.182v74.537l-17.231 9.921zM38.614 7.398l29.693 17.095-29.693 17.095L8.921 24.493 38.614 7.398zM5.938 29.632l12.475 7.182 17.231 9.92v79.676l.001.005-.001.006c0 .114.032.221.045.333.017.146.021.294.059.434l.002.007c.032.117.094.222.14.334.051.124.088.255.156.371a.036.036 0 00.004.009c.061.105.149.191.222.288.081.105.149.22.244.314l.008.01c.084.083.19.142.284.215.106.083.202.178.32.247l.013.005.011.008 34.139 19.321v34.175L5.939 144.867V29.632h-.001zm136.646 115.235l-65.352 37.625V148.31l48.399-27.628 16.953-9.677v33.862zm35.646-61.22l-29.706 17.102V66.908l17.231-9.92 12.475-7.182v33.841z"/>
-                        </g>
-                    </svg>
+
+
+        <!-- 
+			=============================================
+				Theme Hero Banner
+			============================================== 
+			-->
+        <div class="hero-banner-three">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-7 col-md-6">
+                        <h1 class="hero-heading">Next Level Client Support with lily.</h1>
+                        <p class="text-lg mb-50 lg-mb-40">CryptFence delivered blazing fast, striking ai solution</p>
+                        <ul class="style-none button-group d-lg-flex align-items-center">
+                            <li class="me-4"><a href="contact-us.html" class="btn-one ripple-btn">Start Free Trial</a>
+                            </li>
+                            <li class="help-btn">Need any help? <a href="contact-us.html">Contact us</a></li>
+                        </ul>
+                    </div>
                 </div>
+            </div> <!-- /.container -->
+            <div class="illustration-holder sm-mt-50">
+                <img src="images/assets/ils_07.svg" alt="" class="main-illustration transform-img-meta ms-auto">
+                <img src="images/shape/shape_19.png" alt="" class="shapes shape-one">
+            </div> <!-- /.illustration-holder -->
+            <img src="images/shape/shape_18.svg" alt="" class="shapes cube-shape">
+        </div> <!-- /.hero-banner-three -->
 
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                    <div class="grid grid-cols-1 md:grid-cols-2">
-                        <div class="p-6">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel.com/docs" class="underline text-gray-900 dark:text-white">Documentation</a></div>
+
+
+
+        <!-- 
+			=============================================
+				Feature Section Eight
+			============================================== 
+			-->
+        <div class="fancy-feature-eight position-relative">
+            <div class="container">
+                <div class="row justify-content-center gx-xxl-5">
+                    <div class="col-lg-4 col-sm-6 d-flex mb-30" data-aos="fade-up">
+                        <div class="block-style-seven">
+                            <div class="icon d-flex align-items-end"><img src="images/icon/icon_17.svg" alt=""></div>
+                            <h5><a href="service-details-V1.html">Data Science</a></h5>
+                            <p>Convert data noise to intelligent insights for quis competitive differentiation.</p>
+                            <a href="service-details-V1.html" class="tran3s more-btn"><img src="images/icon/icon_20.svg"
+                                    alt=""></a>
+                        </div> <!-- /.block-style-seven -->
+                    </div>
+                    <div class="col-lg-4 col-sm-6 d-flex mb-30" data-aos="fade-up" data-aos-delay="100">
+                        <div class="block-style-seven">
+                            <div class="icon d-flex align-items-end"><img src="images/icon/icon_18.svg" alt=""></div>
+                            <h5><a href="service-details-V1.html">Machine Learning</a></h5>
+                            <p>Convert data noise to intelligent insights for quis competitive differentiation.</p>
+                            <a href="service-details-V1.html" class="tran3s more-btn"><img src="images/icon/icon_20.svg"
+                                    alt=""></a>
+                        </div> <!-- /.block-style-seven -->
+                    </div>
+                    <div class="col-lg-4 d-flex mb-30" data-aos="fade-up" data-aos-delay="200">
+                        <div class="block-style-seven">
+                            <div class="icon d-flex align-items-end"><img src="images/icon/icon_19.svg" alt=""></div>
+                            <h5><a href="service-details-V1.html">Customer Support</a></h5>
+                            <p>Convert data noise to intelligent insights for quis competitive differentiation.</p>
+                            <a href="service-details-V1.html" class="tran3s more-btn"><img src="images/icon/icon_20.svg"
+                                    alt=""></a>
+                        </div> <!-- /.block-style-seven -->
+                    </div>
+                </div>
+            </div> <!-- /.container -->
+        </div> <!-- /.fancy-feature-eight -->
+
+        <!-- 
+			=============================================
+				Feature Section Eleven
+			============================================== 
+			-->
+        <div class="fancy-feature-eleven mt-225 lg-mt-120">
+            <div class="container">
+                <div class="title-style-one white-vr text-center mb-55 lg-mb-30" data-aos="fade-up">
+                    <h2 class="main-title">How It works</h2>
+                    <p class="sub-title">Our advance AI system work seamlesly & smartly.</p>
+                </div> <!-- /.title-style-one -->
+
+                <div class="row">
+                    <div class="col-xxl-11 m-auto">
+                        <div class="row justify-content-center gx-xxl-5">
+                            <div class="col-md-4 col-sm-6" data-aos="fade-right">
+                                <div class="block-style-eight position-relative mt-50">
+                                    <div class="icon d-flex align-items-center justify-content-center">
+                                        <img src="images/icon/icon_21.svg" alt="">
+                                        <div class="num">1</div>
+                                    </div>
+                                    <h5>Identify the probelm <br> with ai</h5>
+                                </div> <!-- /.block-style-eight -->
                             </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel has wonderful, thorough documentation covering every aspect of the framework. Whether you are new to the framework or have previous experience with Laravel, we recommend reading all of the documentation from beginning to end.
-                                </div>
+                            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="100">
+                                <div class="block-style-eight position-relative mt-50 shape-arrow">
+                                    <div class="icon d-flex align-items-center justify-content-center">
+                                        <img src="images/icon/icon_22.svg" alt="">
+                                        <div class="num">2</div>
+                                    </div>
+                                    <h5>Collect data with our <br> advance ai.</h5>
+                                </div> <!-- /.block-style-eight -->
                             </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laracasts.com" class="underline text-gray-900 dark:text-white">Laracasts</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel-news.com/" class="underline text-gray-900 dark:text-white">Laravel News</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel News is a community driven portal and newsletter aggregating all of the latest and most important news in the Laravel ecosystem, including new package releases and tutorials.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">Vibrant Ecosystem</div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel's robust library of first-party tools and libraries, such as <a href="https://forge.laravel.com" class="underline">Forge</a>, <a href="https://vapor.laravel.com" class="underline">Vapor</a>, <a href="https://nova.laravel.com" class="underline">Nova</a>, and <a href="https://envoyer.io" class="underline">Envoyer</a> help you take your projects to the next level. Pair them with powerful open source libraries like <a href="https://laravel.com/docs/billing" class="underline">Cashier</a>, <a href="https://laravel.com/docs/dusk" class="underline">Dusk</a>, <a href="https://laravel.com/docs/broadcasting" class="underline">Echo</a>, <a href="https://laravel.com/docs/horizon" class="underline">Horizon</a>, <a href="https://laravel.com/docs/sanctum" class="underline">Sanctum</a>, <a href="https://laravel.com/docs/telescope" class="underline">Telescope</a>, and more.
-                                </div>
+                            <div class="col-md-4 col-sm-6" data-aos="fade-left" data-aos-delay="200">
+                                <div class="block-style-eight position-relative mt-50">
+                                    <div class="icon d-flex align-items-center justify-content-center">
+                                        <img src="images/icon/icon_23.svg" alt="">
+                                        <div class="num">3</div>
+                                    </div>
+                                    <h5>Deliver Accurate data <br> solution.</h5>
+                                </div> <!-- /.block-style-eight -->
                             </div>
                         </div>
                     </div>
                 </div>
+            </div> <!-- /.container -->
+            <img src="images/shape/shape_20.svg" alt="" class="shapes shape-one">
+            <img src="images/shape/shape_21.svg" alt="" class="shapes shape-two">
+            <img src="images/shape/shape_22.png" alt="" class="shapes shape-three">
+            <img src="images/shape/shape_23.png" alt="" class="shapes shape-four">
+        </div> <!-- /.fancy-feature-eleven -->
 
-                <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
-                    <div class="text-center text-sm text-gray-500 sm:text-left">
-                        <div class="flex items-center">
-                            <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" class="-mt-px w-5 h-5 text-gray-400">
-                                <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                            </svg>
 
-                            <a href="https://laravel.bigcartel.com" class="ml-1 underline">
-                                Shop
-                            </a>
+        <!-- 
+			=============================================
+				Feature Section Nine
+			============================================== 
+			-->
+        <div class="fancy-feature-nine mt-190 lg-mt-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xxl-5 col-lg-6 ms-auto order-lg-last">
+                        <div class="block-style-two md-mb-50" data-aos="fade-left">
+                            <div class="title-style-one">
+                                <div class="sc-title-four">What is Chatbot</div>
+                                <h2 class="main-title">Customer service by our chatbot.</h2>
+                            </div> <!-- /.title-style-one -->
+                            <ul class="nav nav-tabs justify-content-between" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#sp1"
+                                        type="button" role="tab">Speech</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#sp2" type="button"
+                                        role="tab">Auto Text</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#sp3" type="button"
+                                        role="tab">Q&A</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#sp4" type="button"
+                                        role="tab">Generate Leads</button>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane fade active show" id="sp1">
+                                    <p class="pt-10 pb-10">Save web pages (without the ads) and mark them up with
+                                        arrows, highlights, and text.</p>
+                                    <ul class="style-none list-item">
+                                        <li>Various analysis options.</li>
+                                        <li>Page Load (time, size, number of requests).</li>
+                                        <li>Big data analysis.</li>
+                                    </ul>
+                                </div> <!-- /.tab-pane -->
+                                <div class="tab-pane fade" id="sp2">
+                                    <p class="pt-10 pb-10">CryptFence is data science, machine learning and artificial
+                                        intelligence provide business solution.</p>
+                                    <ul class="style-none list-item">
+                                        <li>Page Load (time, size, number of requests).</li>
+                                        <li>Various analysis options.</li>
+                                        <li>Big data analysis.</li>
+                                    </ul>
+                                </div> <!-- /.tab-pane -->
+                                <div class="tab-pane fade" id="sp3">
+                                    <p class="pt-10 pb-10">Save web pages (without the ads) and mark them up with
+                                        arrows, highlights, and text.</p>
+                                    <ul class="style-none list-item">
+                                        <li>Various analysis options.</li>
+                                        <li>Page Load (time, size, number of requests).</li>
+                                        <li>Big data analysis.</li>
+                                    </ul>
+                                </div> <!-- /.tab-pane -->
+                                <div class="tab-pane fade" id="sp4">
+                                    <p class="pt-10 pb-10">CryptFence is data science, machine learning and artificial
+                                        intelligence provide business solution.</p>
+                                    <ul class="style-none list-item">
+                                        <li>Page Load (time, size, number of requests).</li>
+                                        <li>Various analysis options.</li>
+                                        <li>Big data analysis.</li>
+                                    </ul>
+                                </div> <!-- /.tab-pane -->
+                            </div> <!-- /.tab-content -->
 
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="ml-4 -mt-px w-5 h-5 text-gray-400">
-                                <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                            </svg>
-
-                            <a href="https://github.com/sponsors/taylorotwell" class="ml-1 underline">
-                                Sponsor
-                            </a>
-                        </div>
+                        </div> <!-- /.block-style-two -->
                     </div>
 
-                    <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
-                        Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
+                    <div class="col-lg-6 order-lg-first text-center text-lg-start" data-aos="fade-right">
+                        <div class="illustration-holder d-inline-block ms-xxl-5 mt-40 lg-mt-10">
+                            <img src="images/assets/ils_08.svg" alt="" class="transform-img-meta">
+                            <img src="images/assets/ils_08_1.svg" alt="" class="shapes shape-one">
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- /.container -->
+        </div> <!-- /.fancy-feature-nine -->
+
+
+        <!-- 
+			=============================================
+				Feature Section Twelve
+			============================================== 
+			-->
+        <div class="fancy-feature-twelve mt-170 lg-mt-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-5 col-md-6 order-md-last">
+                        <div class="block-style-nine pt-30 sm-pt-10">
+                            <div class="title-style-one pb-10" data-aos="fade-up">
+                                <div class="sc-title-four">WHY CHOOSE US</div>
+                                <h2 class="main-title">Why choose us for your business.</h2>
+                            </div> <!-- /.title-style-one -->
+                            <ul class="style-none list-item">
+                                <li data-aos="fade-up">Learn content by interacting with an expert lesson or watching a
+                                    video.</li>
+                                <li data-aos="fade-up" data-aos-delay="100">Practice what you learned on realistic SAT
+                                    test questions.</li>
+                                <li data-aos="fade-up" data-aos-delay="200">Review your practice questions and learn how
+                                    to improve.</li>
+                            </ul>
+                        </div> <!-- /.block-style-nine -->
+                    </div>
+                    <div class="col-xl-7 col-md-6 order-md-first" data-aos="fade-right">
+                        <div class="illustration-holder position-relative d-inline-block ms-5 sm-mt-30">
+                            <img src="images/assets/ils_09.svg" alt="" class="transform-img-meta">
+                            <div class="card-one shapes d-flex align-items-center justify-content-center">
+                                <div class="icon"><i class="bi bi-check-lg"></i></div>
+                                <h6>A++ Performance</h6>
+                            </div> <!-- /.card-one -->
+                            <div class="card-two shapes text-center">
+                                <div class="icon"><i class="bi bi-check-lg"></i></div>
+                                <div class="main-count"><span class="counter">20</span>k</div>
+                                <div class="info">5 Start Rating</div>
+                                <ul class="style-none d-flex justify-content-center rating">
+                                    <li><i class="bi bi-star-fill"></i></li>
+                                    <li><i class="bi bi-star-fill"></i></li>
+                                    <li><i class="bi bi-star-fill"></i></li>
+                                    <li><i class="bi bi-star-fill"></i></li>
+                                    <li><i class="bi bi-star-fill"></i></li>
+                                </ul>
+                            </div> <!-- /.card-two -->
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </body>
+            <img src="images/shape/shape_25.svg" alt="" class="shapes bg-shape">
+        </div> <!-- /.fancy-feature-twelve -->
+
+
+        <!--
+			=====================================================
+				Feature Section Seven
+			=====================================================
+			-->
+        <div class="fancy-feature-seven mt-140 lg-mt-50 sm-mt-20">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xxl-4 col-lg-5">
+                        <div class="block-style-five md-pb-50" data-aos="fade-right">
+                            <div class="title-style-one">
+                                <div class="sc-title-three">Questions & Answers</div>
+                                <h2 class="main-title">Any Questions? Find here.</h2>
+                            </div> <!-- /.title-style-one -->
+                            <p class="pt-10 pb-15">Don’t find your answer here? just send us a message for any query.
+                            </p>
+                            <a href="contact-us.html" class="btn-five ripple-btn">Contact us</a>
+                        </div> <!-- /.block-style-five -->
+                    </div>
+
+                    <div class="col-lg-7 col-lg-6 ms-auto" data-aos="fade-left">
+                        <div class="accordion accordion-style-one" id="accordionOne">
+                            <div class="accordion-item">
+                                <div class="accordion-header" id="headingOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                        What is web hosting?
+                                    </button>
+                                </div>
+                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                    data-bs-parent="#accordionOne">
+                                    <div class="accordion-body">
+                                        <p>They not only understand what I say but read between the lines and also give
+                                            me ideas of my own. AI technology is perfect for best business solutions.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        How do you weigh different criteria in your process?
+                                    </button>
+                                </div>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                    data-bs-parent="#accordionOne">
+                                    <div class="accordion-body">
+                                        <p>They not only understand what I say but read between the lines and also give
+                                            me ideas of my own. AI technology is perfect for best business solutions.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header" id="headingThree">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseThree" aria-expanded="false"
+                                        aria-controls="collapseThree">
+                                        What can I use to build my website?
+                                    </button>
+                                </div>
+                                <div id="collapseThree" class="accordion-collapse collapse"
+                                    aria-labelledby="headingThree" data-bs-parent="#accordionOne">
+                                    <div class="accordion-body">
+                                        <p>They not only understand what I say but read between the lines and also give
+                                            me ideas of my own. AI technology is perfect for best business solutions.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header" id="headingFour">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseFour" aria-expanded="true"
+                                        aria-controls="collapseFour">
+                                        If I already have a website, can I transfer it to your web hosting?
+                                    </button>
+                                </div>
+                                <div id="collapseFour" class="accordion-collapse collapse show"
+                                    aria-labelledby="headingFour" data-bs-parent="#accordionOne">
+                                    <div class="accordion-body">
+                                        <p>They not only understand what I say but read between the lines and also give
+                                            me ideas of my own. AI technology is perfect for best business solutions.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header" id="headingFive">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseFive" aria-expanded="false"
+                                        aria-controls="collapseFive">
+                                        How can I accept credit cards online?
+                                    </button>
+                                </div>
+                                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                                    data-bs-parent="#accordionOne">
+                                    <div class="accordion-body">
+                                        <p>They not only understand what I say but read between the lines and also give
+                                            me ideas of my own. AI technology is perfect for best business solutions.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- /.container -->
+            <img src="images/shape/shape_13.svg" alt="" class="shapes shape-one">
+            <img src="images/shape/shape_14.svg" alt="" class="shapes shape-two">
+            <img src="images/shape/shape_15.svg" alt="" class="shapes shape-three">
+        </div> <!-- /.fancy-feature-seven -->
+
+
+        <!-- 
+			=============================================
+				Fancy Short Banner Three
+			============================================== 
+			-->
+        <div class="fancy-short-banner-three position-relative mt-160 lg-mt-80">
+            <div class="container">
+                <div class="bg-wrapper">
+                    <div class="row align-items-center">
+                        <div class="col-lg-8 m-auto" data-aos="fade-up">
+                            <div class="title-style-one text-center white-vr mb-30" data-aos="fade-up">
+                                <h2 class="main-title">Get Ready to Started It’s Fast, Free & very easy</h2>
+                            </div> <!-- /.title-style-one -->
+                            <a href="contact-us.html" class="btn-six ripple-btn">Get Started <i
+                                    class="fas fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div> <!-- /.bg-wrapper -->
+            </div> <!-- /.container -->
+        </div> <!-- /.fancy-short-banner-three -->
+
+        <!--
+			=====================================================
+				Address Section One
+			=====================================================
+			-->
+        <div class="address-section-one">
+            <div class="container">
+                <div class="inner-content bg-white" data-aos="fade-up">
+                    <div class="row g-0">
+                        <div class="col-md-6 d-flex">
+                            <div class="address-block-one d-flex border-right">
+                                <div class="icon"><img src="images/icon/icon_06.svg" alt=""></div>
+                                <div class="text-meta">
+                                    <h4 class="title">Our Address</h4>
+                                    <p>1012 Pebda Parkway, Mirpur 2 <br>Dhaka, Bangladesh</p>
+                                </div> <!-- /.text-meta -->
+                            </div> <!-- /.address-block-one -->
+                        </div>
+                        <div class="col-md-6 d-flex">
+                            <div class="address-block-one d-flex">
+                                <div class="icon"><img src="images/icon/icon_07.svg" alt=""></div>
+                                <div class="text-meta">
+                                    <h4 class="title">Contact Info</h4>
+                                    <p>Open a chat or give us call at <br><a href="#">310.841.5500</a></p>
+                                </div> <!-- /.text-meta -->
+                            </div> <!-- /.address-block-one -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- /.address-section-one -->
+
+
+        <!--
+			=====================================================
+				Footer
+			=====================================================
+			-->
+        <div class="footer-style-three theme-basic-footer">
+            <img src="images/shape/shape_30.png" alt="" class="shapes shape-one">
+            <img src="images/shape/shape_28.png" alt="" class="shapes shape-two">
+            <img src="images/shape/shape_29.png" alt="" class="shapes shape-three">
+            <div class="container">
+                <div class="inner-wrapper">
+                    <div class="row">
+                        <div class="col-lg-3 footer-intro mb-40">
+                            <div class="logo"><a href="index.html"><img src="images/logo/logo_02.png" alt=""
+                                        width="129"></a></div>
+                            <p>We will assist you in becoming more successful.</p>
+                            <ul class="d-flex social-icon style-none">
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-6 mb-30">
+                            <h5 class="footer-title">Links</h5>
+                            <ul class="footer-nav-link style-none">
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="pricing.html">Pricing</a></li>
+                                <li><a href="about-us2.html">About us</a></li>
+                                <li><a href="service-V1.html">Service</a></li>
+                                <li><a href="blog-V1.html">Blog</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-xl-2 col-md-3 col-sm-6 mb-30">
+                            <h5 class="footer-title">Legal</h5>
+                            <ul class="footer-nav-link style-none">
+                                <li><a href="faq.html">Terms of use</a></li>
+                                <li><a href="faq.html">Terms & conditions</a></li>
+                                <li><a href="faq.html">Privacy policy</a></li>
+                                <li><a href="faq.html">Cookie policy</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-xl-5 col-lg-4 col-md-6 mb-30">
+                            <div class="newsletter ps-xl-5">
+                                <h5 class="footer-title">Subscribe </h5>
+                                <p>Join over <span>68,000</span> people getting our emails</p>
+                                <form action="#">
+                                    <input type="email" placeholder="Enter your email">
+                                    <button>Sign Up</button>
+                                </form>
+                                <div class="info">We only send interesting and relevant emails.</div>
+                            </div> <!-- /.newsletter -->
+                        </div>
+                    </div>
+
+                    <div class="bottom-footer">
+                        <div class="d-lg-flex justify-content-between align-items-center">
+                            <ul class="order-lg-1 pb-15 d-flex justify-content-center footer-nav style-none">
+                                <li><a href="faq.html">Privacy &amp; Terms.</a></li>
+                                <li><a href="faq.html">FAQ</a></li>
+                                <li><a href="contact-us.html">Contact Us</a></li>
+                            </ul>
+                            <p class="copyright text-center order-lg-0 pb-15">Copyright @2022 CryptFence inc.</p>
+                        </div>
+                    </div>
+                </div> <!-- /.inner-wrapper -->
+            </div>
+        </div> <!-- /.footer-style-three -->
+
+
+        <button class="scroll-top">
+            <i class="bi bi-arrow-up-short"></i>
+        </button>
+
+
+
+
+    </div>
+
+
+    <!-- Optional JavaScript _____________________________  -->
+    <script src="{{ asset('vendor/jquery.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('vendor/aos-next/dist/aos.js') }}"></script>
+    <script src="{{ asset('vendor/slick/slick.min.js') }}"></script>
+    <script src="{{ asset('vendor/jquery.counterup.min.js') }}"></script>
+    <script src="{{ asset('vendor/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ asset('vendor/fancybox/dist/jquery.fancybox.min.js') }}"></script>
+    <script src="{{ asset('vendor/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ asset('js/theme.js') }}"></script>
+
+</body>
+
 </html>

@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -19,8 +20,22 @@
 
     @livewireStyles
 
+
+    <meta name="theme-color" content="#1E78FF">
+    <meta name="msapplication-navbutton-color" content="#1E78FF">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#1E78FF">
+    <link rel="icon" type="image/png" sizes="56x56" href="{{ asset('images/fav-icon/icon.png') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" media="all">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}" media="all">
+
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
+    <!-- Fix Internet Explorer ______________________________________-->
+    <!--[if lt IE 9]>
+			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="vendor/html5shiv.js"></script>
+			<script src="vendor/respond.js"></script>
+		<![endif]-->
 </head>
 
 <body class="font-sans antialiased bg-gray-100">
@@ -59,6 +74,17 @@
             Copyright © 2022
         </div>
     </div>
+
+    <!-- Optional JavaScript _____________________________  -->
+    <script src="{{ asset('vendor/jquery.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('vendor/aos-next/dist/aos.js') }}"></script>
+    <script src="{{ asset('vendor/slick/slick.min.js') }}"></script>
+    <script src="{{ asset('vendor/jquery.counterup.min.js') }}"></script>
+    <script src="{{ asset('vendor/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ asset('vendor/fancybox/dist/jquery.fancybox.min.js') }}"></script>
+    <script src="{{ asset('vendor/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ asset('js/theme.js') }}"></script>
 
 </body>
 

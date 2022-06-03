@@ -63,9 +63,6 @@ class ProductController extends Controller
         // Extract the public key from $res to $pubKey
         $pubKey = openssl_pkey_get_details($res);
         $pubKey = $pubKey["key"];
-
-        //$pubKey = Str::replace('-----BEGIN PUBLIC KEY-----', '', $pubKey);
-        //$pubKey = Str::replace('-----END PUBLIC KEY-----', '', $pubKey);
        
         return array('private' => $privKey, 'public' => $pubKey);
     }
@@ -79,7 +76,7 @@ class ProductController extends Controller
             'latest_version' => 'required'
         ]);
 
-        //generate RSA
+        //generate AES
         $key_set = $this->generate_rsa_key();
         $encrypted_private = Crypt::encryptString($key_set['private']);
 

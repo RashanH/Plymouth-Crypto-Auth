@@ -48,12 +48,13 @@ class KeyController extends Controller
     public function create(Request $request, Product $product)
     {
         if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission.')->withInput(); }
-        //return $product;
         $productx = Product::select('user_id')
         ->where('id', '=', $product->id)
         ->first();
 
         if ($productx->user_id != Auth::id()){ return back()->withErrors('You don\'t have permissions.')->withInput(); }
+        
+        //generate encrypted serial key
         $serial = $this->generate_serial_code();
 
         return view('key.create', compact('product', 'serial'));
@@ -180,6 +181,7 @@ class KeyController extends Controller
     public function update(Request $request, Key $key)
     {
         if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission.')->withInput(); }
+
         $request->validate([
             'product_id'=>'required',
             'key_code' => 'required',
@@ -258,3 +260,4 @@ class KeyController extends Controller
         return str_rot13(base64_decode($_encrypted_key));
     }
 }
+
