@@ -4,7 +4,7 @@
 			============================================== 
 			-->
 
-<div class="main-page-wrapper">
+<div class="main-page-wrapper bg-white">
 
 
     <header class="theme-main-menu sticky-menu theme-menu-four" style="position: unset;">
