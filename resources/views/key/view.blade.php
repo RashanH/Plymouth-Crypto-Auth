@@ -16,12 +16,12 @@
 </div>
 
 @if ($message = Session::get('success'))
-<div class="py-5 px-6 mb-4 mt-4 text-base" role="alert" style="background:#caffdf;">
+<div class="py-4 px-4 mb-2 mt-2 text-base font-bold" role="alert" style="background:#caffdf;">
     {{ $message }}
 </div>
 @endif
 @if ($errors->any())
-<div class="py-5 px-6 mb-4 mt-4 text-base" role="alert" style="background:#ffcaca;">
+<div class="py-4 px-4 mb-2 mt-2 text-base font-bold" role="alert" style="background:#ffcaca;">
 <ul> @foreach ($errors->all() as $error) <li>{{ $error }}</li> @endforeach </ul>
 </div>
 @endif
@@ -86,7 +86,7 @@
 
                                 <a class="text-indigo-700" href="{{ URL::to('billing/portal') }}">
                                     <div class="text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-2 my-4 bg-green-900 text-green-900 rounded-full"
-                                        style="background: #10ff005e; color:#000;">
+                                        style="background: var(--prime-three); color:#fff;">
                                         View Plans
                                     </div>
                                 </a>
@@ -100,7 +100,7 @@
 
                                 <a class="text-indigo-700" href="{{ URL::to('keys/create', $product->id) }}">
                                     <div class="text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-2 my-4 bg-green-900 text-green-900 rounded-full"
-                                        style="background: #10ff005e; color:#000;">
+                                        style="background: var(--prime-three); color:#fff;">
                                         Create the first key
                                     </div>
                                 </a>

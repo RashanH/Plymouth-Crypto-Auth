@@ -69,7 +69,7 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission. Please subscribe to a plan.')->withInput(); }
+       if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission. Please subscribe to a plan.')->withInput(); }
 
         $request->validate([
             'name'=>'required',
@@ -101,7 +101,7 @@ class ProductController extends Controller
         //return $public;
 
         return redirect('/products')->with('success', 'Product has been added. Your new public key is send via an email.&nbsp;
-        <a class="text-indigo-700" onclick="copy_public_key()" href="#"><div class="text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-2 bg-green-900 text-green-900 rounded-full" style="background: #10ff005e; color:#000;">Copy public key</div></a><input type="text" id="public_key" value="' . $public . '" style="display:none;"><script>function copy_public_key() { var copyText = document.getElementById("public_key"); copyText.select(); copyText.setSelectionRange(0, 99999); navigator.clipboard.writeText(copyText.value); alert("Key copied to clipboard"); }</script>');
+        <a class="text-indigo-700" onclick="copy_public_key()" href="#"><div class="text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-2 bg-green-900 text-green-900 rounded-full" style="background: var(--prime-three); color:#fff;">Copy public key</div></a><input type="text" id="public_key" value="' . $public . '" style="display:none;"><script>function copy_public_key() { var copyText = document.getElementById("public_key"); copyText.select(); copyText.setSelectionRange(0, 99999); navigator.clipboard.writeText(copyText.value); alert("Key copied to clipboard"); }</script>');
     }
 
     /**
@@ -151,7 +151,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission.')->withInput(); }
+        if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission. Please subscribe to a plan.')->withInput(); }
         if ($product->user_id != Auth::id()){ return back()->withErrors('You don\'t have permission.')->withInput(); }
         return view('product.edit',compact('product'));
     }
@@ -165,7 +165,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission.')->withInput(); }
+        if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission. Please subscribe to a plan.')->withInput(); }
         if ($product->user_id != Auth::id()){ return back()->withErrors('You don\'t have permission.')->withInput(); }
      
         $request->validate([

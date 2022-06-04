@@ -389,6 +389,29 @@ body .btn-one {
 body .btn-one.xs {padding: 0 26px;}
 body .btn-one i {font-size: 11px; margin-left: 3px;}
 body .btn-one:hover {background: var(--prime-two);}
+
+body .btn-dash {
+  font-family: 'gorditamedium';
+  font-size: 14px;
+  text-transform: capitalize;
+  color: #fff;
+  line-height: 55px;
+  border-radius: 7px;
+  letter-spacing: 0.6px;
+  padding: 0 20px;
+  position: relative;
+  background: var(--prime-three);
+  z-index: 1;
+  transition: all 0.3s ease-in-out;
+}
+body .btn-dash.xs {padding: 0 26px;}
+body .btn-dash i {font-size: 11px; margin-left: 3px;}
+body .btn-dash:hover {background: var(--prime-two);}
+
+ul{
+  margin-bottom:0;
+}
+
 body .btn-two {
   font-size: 17px;
   color: #6B6B6B;

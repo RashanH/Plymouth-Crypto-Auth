@@ -96,7 +96,7 @@ class CustomerController extends Controller
      */
     public function edit(Customer $customer)
     {
-        if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission.')->withInput(); }
+        if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission. Please subscribe to a plan.')->withInput(); }
         if ($customer->user_id != Auth::id()){ return back()->withErrors('You don\'t have permission.')->withInput(); }
         return view('customer.edit',compact('customer'));
     }
@@ -110,7 +110,7 @@ class CustomerController extends Controller
      */
     public function update(Request $request, Customer $customer)
     {
-        if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission.')->withInput(); }
+        if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission. Please subscribe to a plan.')->withInput(); }
         if ($customer->user_id != Auth::id()){ return back()->withErrors('You don\'t have permission.')->withInput(); }
      
         $request->validate([
@@ -136,7 +136,7 @@ class CustomerController extends Controller
      */
     public function destroy(Customer $customer)
     {
-        if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission.')->withInput(); }
+        if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission. Please subscribe to a plan.')->withInput(); }
         if ($customer->user_id != Auth::id()){ return back()->withErrors('You don\'t have permission.')->withInput(); }
         $customer->delete();
         return redirect('/customers')->with('success', 'Customer deleted successfully');

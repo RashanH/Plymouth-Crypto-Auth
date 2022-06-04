@@ -17,18 +17,18 @@
     <div class="text-lg text-gray-600 leading-7 font-semibold">
         <a class="text-indigo-700" href="{{ route('customers.edit',$customer->id) }}">
             <div class="text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-2 bg-green-900 text-green-900 rounded-full"
-                style="background: #10ff005e; color:#000;">Edit customer</div>
+                style="background: var(--prime-three); color:#fff;">Edit customer</div>
         </a>
     </div>
 </div>
 
 @if ($message = Session::get('success'))
-<div class="py-5 px-6 mb-4 mt-4 text-base" role="alert" style="background:#caffdf;">
+<div class="py-4 px-4 mb-2 mt-2 text-base font-bold" role="alert" style="background:#caffdf;">
     {{ $message }}
 </div>
 @endif
 @if ($errors->any())
-<div class="py-5 px-6 mb-4 mt-4 text-base" role="alert" style="background:#ffcaca;">
+<div class="py-4 px-4 mb-2 mt-2 text-base font-bold" role="alert" style="background:#ffcaca;">
     <ul> @foreach ($errors->all() as $error) <li>{{ $error }}</li> @endforeach </ul>
 </div>
 @endif
@@ -195,7 +195,7 @@
 
                                 <a class="text-indigo-700" href="{{ URL::to('billing/portal') }}">
                                     <div class="text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-2 my-4 bg-green-900 text-green-900 rounded-full"
-                                        style="background: #10ff005e; color:#000;">
+                                        style="background: var(--prime-three); color:#fff;">
                                         View Plans
                                     </div>
                                 </a>

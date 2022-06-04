@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-white leading-tight">
             {{ __('Billing') }}
         </h2>
     </x-slot>
@@ -66,7 +66,7 @@
 
                                     @if (! Auth::user()->subscribed())
                                     <div class="text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-green-900 text-green-900 rounded-full"
-                                        style="background: #10ff005e; color:#000;">
+                                        style="background: var(--prime-three); color:#fff;">
                                         Start your subscription
                                     </div>
 
@@ -98,7 +98,7 @@
                         settings, please visit our new <a class="text-indigo-700"
                             href="{{ URL::to('billing/portal') }}">
                             <div class="text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-green-900 text-green-900 rounded-full"
-                                style="background: #10ff005e; color:#000;">
+                                style="background: var(--prime-three); color:#fff;">
                                 Billing Portal
                             </div>
                         </a></div>

@@ -93,11 +93,11 @@ return [
     */
 
     'receipt_data' => [
-        'vendor' => 'Your Product',
-        'product' => 'Your Product',
-        'street' => '111 Example St.',
-        'location' => 'Los Angeles, CA',
-        'phone' => '555-555-5555',
+        'vendor' => 'CryptFence',
+        'product' => 'CryptFence',
+        'street' => '9169 W State St #2028',
+        'location' => 'Garden City, Idaho',
+        'phone' => '143-5660-5999',
     ],
 
     'dashboard_url' => '/billing',

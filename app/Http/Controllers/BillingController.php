@@ -13,6 +13,7 @@ class BillingController extends Controller
         $invoices = $user->invoices();
         $current_plan = $user->sparkPlan();
 
+        
 
         return view('billing.index', compact('user', 'invoices', 'current_plan'));
         return $current_plan;

@@ -47,7 +47,7 @@ class KeyController extends Controller
      */
     public function create(Request $request, Product $product)
     {
-        if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission.')->withInput(); }
+        if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission. Please subscribe to a plan.')->withInput(); }
         $productx = Product::select('user_id')
         ->where('id', '=', $product->id)
         ->first();
@@ -68,7 +68,7 @@ class KeyController extends Controller
      */
     public function store(Request $request)
     {
-        if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission.')->withInput(); }
+        if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission. Please subscribe to a plan.')->withInput(); }
 
         $request->validate([
             'product_id'=>'required',
@@ -146,7 +146,7 @@ class KeyController extends Controller
      */
     public function edit(Key $key)
     {
-        if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission.')->withInput(); }
+        if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission. Please subscribe to a plan.')->withInput(); }
         //return $key;
         if ($key->user_id != Auth::id()){ return back()->withErrors('You don\'t have permission.')->withInput(); }
 
@@ -180,7 +180,7 @@ class KeyController extends Controller
      */
     public function update(Request $request, Key $key)
     {
-        if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission.')->withInput(); }
+        if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission. Please subscribe to a plan.')->withInput(); }
 
         $request->validate([
             'product_id'=>'required',
@@ -243,7 +243,7 @@ class KeyController extends Controller
      */
     public function destroy(Key $key)
     {
-        if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission.')->withInput(); }
+        if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission. Please subscribe to a plan.')->withInput(); }
         if ($key->user_id != Auth::id()){ return back()->withErrors('You don\'t have permissions.')->withInput(); }
 
         $product_id = $key->product_id;

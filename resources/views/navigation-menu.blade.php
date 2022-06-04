@@ -18,7 +18,7 @@
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
 
-                        <x-jet-dropdown-link href="{{ route('logout') }}" class="req-demo-btn tran3s d-none d-lg-block"
+                        <x-jet-dropdown-link href="{{ route('logout') }}" class="req-demo-btn tran3s d-none d-lg-block" style="line-height: 1.8; background: var(--prime-two); color: white;"
                                  onclick="event.preventDefault();
                                         this.closest('form').submit();">
                             {{ __('Log Out') }}

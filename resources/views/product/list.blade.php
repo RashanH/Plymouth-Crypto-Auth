@@ -7,20 +7,19 @@
     <div class="max-w-7xl px-4 pt-6 pb-2 sm:px-6 lg:px-8 border-t border-gray-200 md:border-t-1 md:border-0">
         <div class="text-lg text-gray-600 leading-7 font-semibold text-right"><a class="text-indigo-700"
                 href="{{ route('products.create') }}">
-                <div class="text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-2 bg-green-900 text-green-900 rounded-full"
-                    style="background: #10ff005e; color:#000;">
+                <div class="text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-2 bg-green-900 text-green-900 rounded-full" style="background: var(--prime-three); color:#fff;">
                     Add new product
                 </div>
             </a></div>
     </div>
 
     @if ($message = Session::get('success'))
-    <div class="py-5 px-6 mb-4 mt-4 text-base" role="alert" style="background:#caffdf;">
+    <div class="py-4 px-4 mb-2 mt-2 text-base font-bold" role="alert" style="background:#caffdf;">
         {!! $message !!}
     </div>
     @endif
     @if ($errors->any())
-    <div class="py-5 px-6 mb-4 mt-4 text-base" role="alert" style="background:#ffcaca;">
+    <div class="py-4 px-4 mb-2 mt-2 text-base font-bold" role="alert" style="background:#ffcaca;">
         <ul> @foreach ($errors->all() as $error) <li>{{ $error }}</li> @endforeach </ul>
     </div>
     @endif
@@ -32,17 +31,17 @@
                     <table class="w-full border-collapse table-fixed pd-4">
                         <thead class="bg-white border-b">
                             <tr>
-                                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                <th scope="col" class="font-bold text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                     Name
                                 </th>
                                 <th scope="col"
-                                    class="max-w-md text-sm font-medium text-gray-900 px-6 py-4 text-center">
+                                    class="font-bold max-w-md text-sm font-medium text-gray-900 px-6 py-4 text-center">
                                     Version
                                 </th>
-                                <th scope="col" class="w-20 text-sm font-medium text-gray-900 px-6 py-4 text-center">
+                                <th scope="col" class="font-bold w-20 text-sm font-medium text-gray-900 px-6 py-4 text-center">
                                     Keys
                                 </th>
-                                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-center"
+                                <th scope="col" class="font-bold text-sm font-medium text-gray-900 px-6 py-4 text-center"
                                     style="width:9rem">
                                     Actions
                                 </th>
@@ -88,7 +87,7 @@
 
                                     <a class="text-indigo-700" href="{{ URL::to('billing/portal') }}">
                                         <div class="text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-2 my-4 bg-green-900 text-green-900 rounded-full"
-                                            style="background: #10ff005e; color:#000;">
+                                            style="background: var(--prime-three); color:#fff;">
                                             View Plans
                                         </div>
                                     </a>
@@ -103,7 +102,7 @@
 
                                     <a class="text-indigo-700" href="{{ URL::to('products/create') }}">
                                         <div class="text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-2 my-4 bg-green-900 text-green-900 rounded-full"
-                                            style="background: #10ff005e; color:#000;">
+                                            style="background: var(--prime-three); color:#fff;">
                                             Create the first product
                                         </div>
                                     </a>

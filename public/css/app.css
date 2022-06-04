@@ -1403,7 +1403,7 @@ select {
 }
 .bg-blue-600 {
   --tw-bg-opacity: 1;
-  background-color: rgb(37 99 235 / var(--tw-bg-opacity));
+  background-color: var(--prime-three);
 }
 .bg-opacity-25 {
   --tw-bg-opacity: 0.25;
@@ -1637,11 +1637,11 @@ select {
 }
 .text-indigo-700 {
   --tw-text-opacity: 1;
-  color: rgb(67 56 202 / var(--tw-text-opacity));
+  color: var(--prime-three);
 }
 .text-indigo-500 {
   --tw-text-opacity: 1;
-  color: rgb(99 102 241 / var(--tw-text-opacity));
+  color: var(--prime-three);
 }
 .text-green-900 {
   --tw-text-opacity: 1;
@@ -1657,7 +1657,7 @@ select {
 }
 .text-indigo-600 {
   --tw-text-opacity: 1;
-  color: rgb(79 70 229 / var(--tw-text-opacity));
+  color: var(--prime-three);
 }
 .text-red-600 {
   --tw-text-opacity: 1;
@@ -1791,7 +1791,7 @@ select {
 }
 .hover\:bg-blue-700:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(29 78 216 / var(--tw-bg-opacity));
+  background-color: var(--prime-three);
 }
 .hover\:bg-red-700:hover {
   --tw-bg-opacity: 1;
@@ -1871,7 +1871,7 @@ select {
 }
 .focus\:bg-blue-700:focus {
   --tw-bg-opacity: 1;
-  background-color: rgb(29 78 216 / var(--tw-bg-opacity));
+  background-color: var(--prime-three);
 }
 .focus\:bg-red-700:focus {
   --tw-bg-opacity: 1;
@@ -1949,7 +1949,7 @@ select {
 }
 .active\:bg-blue-800:active {
   --tw-bg-opacity: 1;
-  background-color: rgb(30 64 175 / var(--tw-bg-opacity));
+  background-color: var(--prime-three);
 }
 .active\:text-gray-700:active {
   --tw-text-opacity: 1;
