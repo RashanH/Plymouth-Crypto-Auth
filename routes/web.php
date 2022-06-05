@@ -53,3 +53,6 @@ Route::get('pricing', function () { return view('pricing'); });
 Route::get('faq', function () { return view('faq'); });
 Route::get('contact', function () { return view('contact'); });
 Route::post('contact', [DashboardController::class, 'contact'])->name('contact');
+
+Route::get('docs', function () { return view('docs.index'); });
+Route::get('docs/csharp', function () { return view('docs.csharp'); });

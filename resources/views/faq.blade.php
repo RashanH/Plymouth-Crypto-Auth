@@ -18,8 +18,8 @@
     <meta name="msapplication-navbutton-color" content="#1E78FF">
     <meta name="apple-mobile-web-app-status-bar-style" content="#1E78FF">
     <link rel="icon" type="image/png" sizes="56x56" href="images/fav-icon/icon.png">
-    <link rel="stylesheet" type="text/css" href="css/style.css" media="all">
-    <link rel="stylesheet" type="text/css" href="css/responsive.css" media="all">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" media="all">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}" media="all">
 
     <!-- Fix Internet Explorer ______________________________________-->
     <!--[if lt IE 9]>
@@ -304,15 +304,7 @@
 				<i class="bi bi-arrow-up-short"></i>
 			</button>
 			
-        
-
-
-
-        <button class="scroll-top">
-            <i class="bi bi-arrow-up-short"></i>
-        </button>
-
-
+			
 
 
     </div>
