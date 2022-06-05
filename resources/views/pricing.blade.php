@@ -84,6 +84,9 @@
                                     <a class="nav-link" href="{{ url('faq') }}" role="button">FAQ</a>
                                 </li>
                                 <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('docs') }}" role="button">Documentation</a>
+                                </li>
+                                <li class="nav-item">
                                     <a class="nav-link" href="{{ url('contact') }}" role="button">Contact</a>
                                 </li>
                             </ul>

@@ -376,14 +376,13 @@
                                 <div class="accordion-header" id="headingOne">
                                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                        What is web hosting?
+                                        What are the requirements for create a CryptFence account?
                                     </button>
                                 </div>
                                 <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
                                     data-bs-parent="#accordionOne">
                                     <div class="accordion-body">
-                                        <p>They not only understand what I say but read between the lines and also give
-                                            me ideas of my own. AI technology is perfect for best business solutions.
+                                        <p>Just your first name, last name and email are enough.
                                         </p>
                                     </div>
                                 </div>
@@ -392,15 +391,15 @@
                                 <div class="accordion-header" id="headingTwo">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        How do you weigh different criteria in your process?
+                                        How can I create an account?
                                     </button>
                                 </div>
                                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                                     data-bs-parent="#accordionOne">
                                     <div class="accordion-body">
-                                        <p>They not only understand what I say but read between the lines and also give
-                                            me ideas of my own. AI technology is perfect for best business solutions.
-                                        </p>
+                                        <p>Please register your new account <a
+                                            href="{{ url('register') }}">here</a>. You may have to verify
+                                        your email address.</p>
                                     </div>
                                 </div>
                             </div>
@@ -409,15 +408,15 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseThree" aria-expanded="false"
                                         aria-controls="collapseThree">
-                                        What can I use to build my website?
+                                        What are available Payment methods?
                                     </button>
                                 </div>
                                 <div id="collapseThree" class="accordion-collapse collapse"
                                     aria-labelledby="headingThree" data-bs-parent="#accordionOne">
                                     <div class="accordion-body">
-                                        <p>They not only understand what I say but read between the lines and also give
-                                            me ideas of my own. AI technology is perfect for best business solutions.
-                                        </p>
+                                        <p>We use Stripe as our exclusive payment gateway provider. We accept
+                                            credit/debit cards, bank debits, AliPay, ApplePay, Google Pay,
+                                            Microsoft Pay and GrabPay.</p>
                                     </div>
                                 </div>
                             </div>
@@ -426,15 +425,14 @@
                                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseFour" aria-expanded="true"
                                         aria-controls="collapseFour">
-                                        If I already have a website, can I transfer it to your web hosting?
+                                        Do you store my card information?
                                     </button>
                                 </div>
                                 <div id="collapseFour" class="accordion-collapse collapse show"
                                     aria-labelledby="headingFour" data-bs-parent="#accordionOne">
                                     <div class="accordion-body">
-                                        <p>They not only understand what I say but read between the lines and also give
-                                            me ideas of my own. AI technology is perfect for best business solutions.
-                                        </p>
+                                        <p>No. We won't store your sensitive information. Payments are proceeded
+                                            by Stripe.</p>
                                     </div>
                                 </div>
                             </div>
@@ -443,15 +441,13 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseFive" aria-expanded="false"
                                         aria-controls="collapseFive">
-                                        How can I accept credit cards online?
+                                        Are you GDPR (General Data Protection Regulation) compliant?
                                     </button>
                                 </div>
                                 <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
                                     data-bs-parent="#accordionOne">
                                     <div class="accordion-body">
-                                        <p>They not only understand what I say but read between the lines and also give
-                                            me ideas of my own. AI technology is perfect for best business solutions.
-                                        </p>
+                                        <p>We are GDPR-ready.</p>
                                     </div>
                                 </div>
                             </div>
