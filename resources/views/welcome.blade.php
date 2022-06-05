@@ -423,7 +423,7 @@
                             <div class="accordion-item">
                                 <div class="accordion-header" id="headingFour">
                                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseFour" aria-expanded="true"
+                                        data-bs-target="#collapseFour" aria-expanded="false"
                                         aria-controls="collapseFour">
                                         Do you store my card information?
                                     </button>
@@ -541,7 +541,7 @@
                             <h5 class="footer-title">Home Links</h5>
                             <ul class="footer-nav-link style-none">
                                 <li><a href="{{ url('') }}">Home</a></li>
-                                <li><a href="{{ url('docs') }}">API documentation</a></li>
+                                <li><a href="{{ url('docs') }}">API Documentation</a></li>
                                 <li><a href="{{ url('pricing') }}">Pricing</a></li>
                                 <li><a href="{{ url('faq') }}">FAQ</a></li>
                                 <li><a href="{{ url('contact') }}">Contact</a></li>
