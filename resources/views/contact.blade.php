@@ -128,7 +128,7 @@
 											<div class="col-12">
 												<div class="input-group-meta form-group mb-30">
 													<label>Name*</label>
-													<input type="text" placeholder="Your name" name="name" required="required" data-error="Name is required.">
+													<input type="text" placeholder="Your name" name="name" required="required" data-error="Name is required." value="{{ old('name') ?? '' }}">
 													<div class="help-block with-errors"></div>
 												</div>
 											</div>
@@ -136,13 +136,13 @@
 											<div class="col-12">
 												<div class="input-group-meta form-group mb-30">
 													<label>Email*</label>
-													<input type="email" placeholder="Your email" name="email" required="required" data-error="Valid email is required.">
+													<input type="email" placeholder="Your email" name="email" required="required" data-error="Valid email is required." value="{{ old('email') ?? '' }}">
 													<div class="help-block with-errors"></div>
 												</div>
 											</div>
 											<div class="col-12">
 												<div class="input-group-meta form-group mb-30">
-													<textarea placeholder="Your message" name="message" required="required" data-error="Please,leave us a message."></textarea>
+													<textarea placeholder="Your message" name="message" required="required" data-error="Please,leave us a message.">{{ old('message') ?? '' }}</textarea>
 													<div class="help-block with-errors"></div>
 												</div>
 											</div>

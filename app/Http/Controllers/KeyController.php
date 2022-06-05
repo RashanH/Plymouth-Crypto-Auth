@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Key;
 use App\Models\Product;
 use App\Models\Customer;
+use App\Models\Device;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -133,10 +134,20 @@ class KeyController extends Controller
      * @param  \App\Models\Key  $key
      * @return \Illuminate\Http\Response
      */
+    
     public function show(Key $key)
     {
-        //
+        if ($key->user_id != Auth::id()){ return back()->withErrors('You don\'t have permission.')->withInput(); }
+
+        $devices = Device::where('key_id', '=', $key->id)->paginate(10);
+        $product = Product::where('id', '=', $key->product_id)->first();
+        $customer = Customer::where('id', '=', $key->customer_id)->first();
+        $decrypted_key =  $this->encryptedToPlainKey($key->key_code);
+        $devices_count = Device::where('key_id', '=', $key->id)->count();
+
+        return view('key.view',compact('key', 'devices', 'product', 'customer', 'decrypted_key', 'devices_count'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -246,6 +257,7 @@ class KeyController extends Controller
         if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission. Please subscribe to a plan.')->withInput(); }
         if ($key->user_id != Auth::id()){ return back()->withErrors('You don\'t have permissions.')->withInput(); }
 
+        Device::where('key_id', '=', $key->id)->delete();
         $product_id = $key->product_id;
 
         $key->delete();

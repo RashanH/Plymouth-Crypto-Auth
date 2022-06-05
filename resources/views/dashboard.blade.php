@@ -126,19 +126,6 @@
                                                 @endif
                                             </td>
                                         </tr>
-                                        <tr class="">
-                                            <td class="px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-900">
-                                                Expires at
-                                            </td>
-                                            <td
-                                                class="text-sm text-gray-900 font-light px-6 py-3 whitespace-nowrap text-right">
-                                                @if(empty($expires))
-                                                <b>N/A</b>
-                                                @else
-                                                <b>{{ $expires->ends_at->diffForHumans() }}</b>
-                                                @endif
-                                            </td>
-                                        </tr>
                                     </tbody>
                                 </table>
 

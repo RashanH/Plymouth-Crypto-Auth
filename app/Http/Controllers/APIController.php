@@ -136,10 +136,10 @@ class APIController extends Controller
                     'product_id' => $product->id,
                     'hardware_unique' => $hwid,
                     'operating_system'=> $operating_system,
-                    'registered_ip_address'=> $request()->ip(),
-                    'registered_country'=> Location::get($request()->ip())->countryName,
+                    'registered_ip_address'=> $this->getIp(),
+                    'registered_country'=> $this->getCountry($this->getIp()),
                 ]);
-                $customer->save();
+                $new_device->save();
                 return response()->json(['status' => 'success', 'message' => 'device_registered']); 
             }
         } else {
@@ -149,13 +149,35 @@ class APIController extends Controller
                 'product_id' => $product->id,
                 'hardware_unique' => $hwid,
                 'operating_system'=> $operating_system,
-                'registered_ip_address'=> $request()->ip(),
-                'registered_country'=> Location::get($request()->ip())->countryName,
+                'registered_ip_address'=> $this->getIp(),
+                'registered_country'=> $this->getCountry($this->getIp()),
             ]);
-            $customer->save();
+            $new_device->save();
             return response()->json(['status' => 'success', 'message' => 'device_registered']); 
         }
 
+    }
+
+    public function getCountry($ip){
+        try {
+           return Location::get($ip)->countryName;
+          } catch (\Exception $e) {
+              return 'N/A';
+          }
+    }
+
+    public function getIp(){
+        foreach (array('HTTP_CLIENT_IP', 'HTTP_X_FORWARDED_FOR', 'HTTP_X_FORWARDED', 'HTTP_X_CLUSTER_CLIENT_IP', 'HTTP_FORWARDED_FOR', 'HTTP_FORWARDED', 'REMOTE_ADDR') as $key){
+            if (array_key_exists($key, $_SERVER) === true){
+                foreach (explode(',', $_SERVER[$key]) as $ip){
+                    $ip = trim($ip); // just to be safe
+                    if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE) !== false){
+                        return $ip;
+                    }
+                }
+            }
+        }
+        return request()->ip(); // it will return server ip when no client ip found
     }
 
     public function unsubscribe(Request $request){

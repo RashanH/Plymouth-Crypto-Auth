@@ -129,8 +129,8 @@ return [
                 [
                     'name' => 'Standard',
                     'short_description' => 'Starter licensing features with limited products',
-                    'monthly_id' => 'price_1L6il5GNiD9f6pP2sqH4VVoo',
-                    'yearly_id' => 'price_1L6il5GNiD9f6pP2EUEMavRU',
+                    'monthly_id' => 'price_1L7I4oGNiD9f6pP2wlq4EliC', //price_1L6il5GNiD9f6pP2sqH4VVoo
+                    'yearly_id' => 'price_1L7I4oGNiD9f6pP25YMJyhCq', //price_1L6il5GNiD9f6pP2EUEMavRU
                     'features' => [
                         'Upto 25 products',
                         'Unlimited keys',
@@ -141,8 +141,8 @@ return [
                 ],[
                     'name' => 'Premium',
                     'short_description' => 'This is a short, human friendly description of the plan.',
-                    'monthly_id' => 'price_1L6il5GNiD9f6pP2JGdPGakJ',
-                    'yearly_id' => 'price_1L6il5GNiD9f6pP2UnW3A54k',
+                    'monthly_id' => 'price_1L7I4oGNiD9f6pP2xbJ810Zg', //price_1L6il5GNiD9f6pP2JGdPGakJ
+                    'yearly_id' => 'price_1L7I4oGNiD9f6pP29fWefOrp', //price_1L6il5GNiD9f6pP2UnW3A54k
                     'features' => [
                         'Unlimited products',
                         'Unlimited keys',

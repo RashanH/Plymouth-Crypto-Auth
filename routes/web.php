@@ -39,7 +39,8 @@ Route::get('/keys/create/{product}', [KeyController::class, 'create'])->middlewa
 Route::get('/keys/generate_serial', [KeyController::class, 'generate_serial'])->middleware('auth');
 Route::resource('keys', KeyController::class)->except(['create'])->middleware('auth');
 
-Route::get('devices', [DeviceController::class, 'index'])->middleware('auth');
+//Route::get('devices', [DeviceController::class, 'index'])->middleware('auth');
+Route::resource('devices', DeviceController::class)->except(['index', 'create', 'store', 'show', 'edit', 'update'])->middleware('auth');
 
 Route::get('test', [TestController::class, 'index2']);
 

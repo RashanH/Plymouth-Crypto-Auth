@@ -143,11 +143,19 @@
                         @forelse ($keys as $key)
                         <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-indigo-500 truncate">
+                                @if(isset($key->product))
                                 <a href="{{ route('products.show', $key->product->id) }}">
                                     <div style="height:100%;" class="w-full">
                                         {{ $key->product->name }}
                                     </div>
                                 </a>
+                                @else
+                                <a href="#">
+                                    <div style="height:100%;" class="w-full">
+                                        Deleted product
+                                    </div>
+                                </a>
+                                @endif
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-indigo-500 truncate text-center">
                                 <a href="{{ route('keys.show', $key) }}">

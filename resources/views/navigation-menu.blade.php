@@ -44,7 +44,7 @@
                                 <a class="nav-link" href="{{ route('dashboard') }}" active
                                     role="button">{{ __('Dashboard') }}</a>
                             </li>
-                            <li class="nav-item @if(request()->routeIs('products.*')) active @endif">
+                            <li class="nav-item @if(request()->routeIs('products.*', 'keys.*')) active @endif">
                                 <a class="nav-link" href="{{ route('products.index') }}" active
                                     role="button">{{ __('Products') }}</a>
                             </li>

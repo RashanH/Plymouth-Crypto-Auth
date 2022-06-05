@@ -88,7 +88,7 @@
                 </div>
                 <div class="form-group mb-6 form-check text-right mt-6">
                     <input type="checkbox"
-                        class="form-check-input appearance-none h-4 w-4 border transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain mr-2 cursor-pointer"
+                        class=""
                         id="is_blocked" name="is_blocked" @if(is_array(old('is_blocked')) && in_array(3,
                         old('is_blocked'))) checked @endif>
                     <label class="form-check-label inline-block text-gray-800" for="is_blocked">Blocked</label>

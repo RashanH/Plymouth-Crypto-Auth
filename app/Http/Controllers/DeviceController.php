@@ -93,6 +93,10 @@ class DeviceController extends Controller
      */
     public function destroy(Device $device)
     {
-        //
+        $key = key::where('id', '=', $device->key_id)->first();
+        if ($key->user_id != Auth::id()){ return back()->withErrors('You don\'t have permission.')->withInput(); }
+
+        $device->delete();
+        return back()->with('success', 'Device removed successfully.'); 
     }
 }

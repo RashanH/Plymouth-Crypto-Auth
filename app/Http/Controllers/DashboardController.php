@@ -31,7 +31,7 @@ class DashboardController extends Controller
     public function contact(Request $request){
         $request->validate([
             'name'=>'required',
-            'email' => 'required',
+            'email' => 'required|email',
             'message' => 'required'
         ]);
 

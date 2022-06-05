@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Key;
+use App\Models\Device;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -76,6 +77,15 @@ class ProductController extends Controller
             'latest_version' => 'required'
         ]);
 
+        //check if subscription allows more than 25
+        if (Auth::user()->sparkPlan()->name === 'Standard'){
+            $prev_products_count = Product::where('user_id', '=', Auth::id())->count();
+            if ($prev_products_count >= 25){
+                return back()->withErrors('Sorry. You are not allowed to have more than 25 products. Please consider upgrading your subscription package.')->withInput(); 
+            }
+        }
+        
+
         //generate AES
         $key_set = $this->generate_rsa_key();
         $encrypted_private = Crypt::encryptString($key_set['private']);
@@ -113,9 +123,7 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         if ($product->user_id != Auth::id()){ return back()->withErrors('You don\'t have permission.')->withInput(); }
-
-
-
+        
         //$keys = Key::where('product_id', '=', $product->id)->paginate(10);
 
         $keys = Key::select('keys.*', 'first_name', 'last_name', 'email', 'company')
@@ -126,11 +134,6 @@ class ProductController extends Controller
         $keys->each(function ($collection, $alphabet) {
             $collection->key_code = $this->encryptedToPlainKey($collection->key_code);
         });
-
-       
-        
-        
-
         
         return view('product.view',compact('product', 'keys'));
     }
@@ -197,7 +200,10 @@ class ProductController extends Controller
          if (!Auth::user()->subscribed()) { return back()->withErrors('You don\'t have permission.')->withInput(); }
          
         if ($product->user_id != Auth::id()){ return back()->withErrors('You don\'t have permission.')->withInput(); }
+        Key::where('product_id', '=', $product->id)->delete();
+        Device::where('product_id', '=', $product->id)->delete();
         $product->delete();
+
         return redirect('/products')->with('success', 'Product deleted successfully');
     }
 }

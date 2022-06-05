@@ -10,7 +10,7 @@ class Device extends Model
     use HasFactory;
 
     protected $fillable = [
-        'key_id', 'product_id','hardware_unique', 'operating_system', 'ip_address', 'country'
+        'key_id', 'product_id','hardware_unique', 'operating_system', 'registered_ip_address', 'registered_country'
     ];
 
   
