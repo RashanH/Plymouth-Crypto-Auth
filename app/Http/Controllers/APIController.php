@@ -125,23 +125,9 @@ class APIController extends Controller
         if (Carbon::parse($key->expires_at) < Carbon::now()) { return response()->json(['status' => 'error', 'message' => 'key_expired']); }
 
         //check multiple devices
-        if ($key->maximum_devices > 1){
-            $current_devices_count = Device::where('key_id', '=', $key->id)->where('product_id', '=', $request->product_id)->count();
-            if ($current_devices_count >= $key->maximum_devices) { 
-                return response()->json(['status' => 'error', 'message' => 'maximum_devices_limit_reached']); 
-            } else {
-                //register device
-                $new_device = new Device([
-                    'key_id' => $key->id,
-                    'product_id' => $product->id,
-                    'hardware_unique' => $hwid,
-                    'operating_system'=> $operating_system,
-                    'registered_ip_address'=> $this->getIp(),
-                    'registered_country'=> $this->getCountry($this->getIp()),
-                ]);
-                $new_device->save();
-                return response()->json(['status' => 'success', 'message' => 'device_registered']); 
-            }
+        $current_devices_count = Device::where('key_id', '=', $key->id)->where('product_id', '=', $request->product_id)->count();
+        if ($current_devices_count >= $key->maximum_devices) { 
+            return response()->json(['status' => 'error', 'message' => 'maximum_devices_limit_reached']); 
         } else {
             //register device
             $new_device = new Device([

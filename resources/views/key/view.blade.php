@@ -143,17 +143,17 @@
                         @forelse ($devices as $device)
                         <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium truncate">
-                                <span>{{ $device->hardware_unique }}</span>
+                                <span title="{{ $device->hardware_unique }}">{{ $device->hardware_unique }}</span>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium truncate text-center">
-                                <span>{{ $device->operating_system }}</span>
+                                <span title="{{ $device->operating_system }}">{{ $device->operating_system }}</span>
                             </td>
                             <td
                                 class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-center truncate">
-                                <span>{{ $device->registered_ip_address }}</span>
+                                <span title="{{ $device->registered_ip_address }}">{{ $device->registered_ip_address }}</span>
                             </td>
                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-center truncate">
-                                <span>{{ $device->registered_country }}</span>
+                                <span title="{{ $device->registered_country }}">{{ $device->registered_country }}</span>
                             </td>
                             <td
                                 class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-center truncate">
