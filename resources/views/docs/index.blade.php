@@ -104,6 +104,9 @@
                 <li>To unsubscribe a device, you can use <code>/unsubscribe</code> endpoint.</li>
                 <li>All API endpoints are rate-limited to prevent from abusing. Maximum 15 requests/minute.</li>
             </ul>
+            <div class="py-4 px-4 mb-2 mt-2 text-base font-bold" role="alert" style="background:#caffdf; padding: 20px;">
+                🛈 Always make sure to obfuscate your codes before deploying.
+            </div>
             <br>
             If something wrong, don't worry. We got your back. Please <a href="{{ url('contact') }}"> contact</a> us.
             Good luck!

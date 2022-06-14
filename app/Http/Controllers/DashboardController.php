@@ -9,7 +9,8 @@ use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-use Mail;
+use App\Mail\Contact;
+use Illuminate\Support\Facades\Mail;
 
 class DashboardController extends Controller
 {
@@ -39,16 +40,8 @@ class DashboardController extends Controller
         $email = $request->email;
         $message = $request->message;
 
-        Mail::raw('Name: '. $name . '
-
-Email: ' . $email . '.
-
-Message:
-'. $message, function ($message) {
-            $message->from('support@cryptfence.com', 'CryptFence');
-            $message->to('rashanhasa@gmail.com');
-            $message->subject('New contact form request');
-        });
+        Mail::to('rashanhasa@gmail.com')
+        ->send(new Contact($name, $email, $message));
 
         return redirect('/contact')->with('success', 'Thank you, we will follow up soon!');
 
