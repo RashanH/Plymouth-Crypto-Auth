@@ -56,3 +56,7 @@ The web platform will start on 127.0.0.1:8000. There is no default user and you 
 ##### Usage:
 •	Log into web platform using http://127.0.0.1:8000/login and setup products.  
 •	The full API documentation will be available for you at http://127.0.0.1/docs. 
+
+------------
+Version 1.2
+Compiled on: 18/08/2022
