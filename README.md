@@ -27,28 +27,28 @@ This section will guide you to setup license server on your own server.
 ##### Installation:
 
 ###### Step 1:
-Copy the submitted source file to a directory and unzip it.
+Copy the submitted source file to a directory and ***unzip*** it.
 ###### Step 2:
 Update vendor files. Make sure to provide your Laravel Spark authentication key while installing it.
-$ composer update
+***$ composer update***
 ###### Step 3:
 Update NPM files:
-$ npm install
-$ npn run dev
+***$ npm install
+$ npn run dev***
 ###### Step 4:
 Run database migrations.
-php artisan migrate
+***php artisan migrate***
 ###### Step 5:
 Update environment file (.env).
-CASHIER_CURRENCY=USD
+***CASHIER_CURRENCY=USD
 CASHIER_CURRENCY_LOCALE=en
 STRIPE_KEY=pk_test_example
-STRIPE_SECRET=sk_test_example
+STRIPE_SECRET=sk_test_example***
 ###### Step 6:
-Update config/Spart.php file with Stripe’s subscription and packages.
+Update ***config/Spart.php*** file with Stripe’s subscription and packages.
 ###### Step 7:
 Start the server using,
-$ php artisan serve
+***$ php artisan serve***
 The web platform will start on 127.0.0.1:8000. There is no default user and you will have to create a new user via http://127.0.0.1:8000/register.
 
 ------------
