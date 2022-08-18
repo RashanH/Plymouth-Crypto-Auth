@@ -31,6 +31,7 @@
 
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
+    {!! RecaptchaV3::initJs() !!}
 </head>
 
 <body class="antialiased">
@@ -43,8 +44,8 @@
         <header class="theme-main-menu sticky-menu theme-menu-four">
             <div class="inner-content">
                 <div class="container d-flex align-items-center justify-content-between">
-                    <div class="logo order-lg-0"><a href="{{ url('') }}" class="d-block"><img src="images/logo/logo_01.png"
-                                alt="" width="129"></a></div>
+                    <div class="logo order-lg-0"><a href="{{ url('') }}" class="d-block"><img
+                                src="images/logo/logo_01.png" alt="" width="129"></a></div>
 
                     <div class="right-widget d-flex align-items-center ms-auto ms-lg-0 order-lg-3">
 
@@ -75,7 +76,7 @@
                                                 width="130"></a></div>
                                 </li>
                                 <li class="nav-item">
-                                        <a class="nav-link" href="{{ url('') }}" role="button">Home</a>
+                                    <a class="nav-link" href="{{ url('') }}" role="button">Home</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ url('pricing') }}" role="button">Pricing</a>
@@ -103,168 +104,191 @@
         </header> <!-- /.theme-main-menu -->
 
 
-        
 
-				<div class="mt-100 lg-mt-70 pt-6">
-					<div class="container">
-						<div class="row gx-xxl-5">
-							<div class="col-lg-6 d-flex order-lg-last">
-								<div class="form-style-one">
-									<h3 class="form-title pb-40 lg-pb-20 mt-6">Get in touch.</h3>
 
-                                    
-    @if ($message = Session::get('success'))
-    <div class="py-4 px-4 mb-2 mt-2 text-base font-bold" role="alert" style="background:#caffdf;">
-        {!! $message !!}
-    </div>
-    @endif
-    @if ($errors->any())
-    <div class="py-4 px-4 mb-2 mt-2 text-base font-bold" role="alert" style="background:#ffcaca;">
-        <ul> @foreach ($errors->all() as $error) <li>{{ $error }}</li> @endforeach </ul>
-    </div>
-    @endif
-    
-									<form method="POST" action="{{ route('contact') }}" id="contact-form"  data-toggle="validator">
-                                        @csrf
-										<div class="messages"></div>
-										<div class="row controls">
-											<div class="col-12">
-												<div class="input-group-meta form-group mb-30">
-													<label>Name*</label>
-													<input type="text" placeholder="Your name" name="name" required="required" data-error="Name is required." value="{{ old('name') ?? '' }}">
-													<div class="help-block with-errors"></div>
-												</div>
-											</div>
-											
-											<div class="col-12">
-												<div class="input-group-meta form-group mb-30">
-													<label>Email*</label>
-													<input type="email" placeholder="Your email" name="email" required="required" data-error="Valid email is required." value="{{ old('email') ?? '' }}">
-													<div class="help-block with-errors"></div>
-												</div>
-											</div>
-											<div class="col-12">
-												<div class="input-group-meta form-group mb-30">
-													<textarea placeholder="Your message" name="message" required="required" data-error="Please,leave us a message.">{{ old('message') ?? '' }}</textarea>
-													<div class="help-block with-errors"></div>
-												</div>
-											</div>
-											<div class="col-12"><button class="btn-eight ripple-btn">Send Message</button></div>
-										</div>
-									</form>
-								</div> <!-- /.form-style-one -->
-							</div>
+        <div class="mt-100 lg-mt-70 pt-6">
+            <div class="container">
+                <div class="row gx-xxl-5">
+                    <div class="col-lg-6 d-flex order-lg-last">
+                        <div class="form-style-one">
+                            <h3 class="form-title pb-40 lg-pb-20 mt-6">Get in touch.</h3>
 
-							<div class="col-lg-6 d-flex order-lg-first">
-								<div class="map-area-one mt-10 me-lg-4 md-mt-50">
-									<div class="mapouter">
-										<div class="gmap_canvas">
-											<iframe class="gmap_iframe" src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=W State St, Garden City, Idaho&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
-										</div>
-									</div>
-								</div> <!-- /.map-area-one -->
-							</div>
-						</div>
-					</div>
-				</div>
-			</div> <!-- /.contact-section-one -->
 
-			<br><br><br><br><br>
-			
-			<!-- 
+                            @if ($message = Session::get('success'))
+                            <div class="py-4 px-4 mb-2 mt-2 text-base font-bold" role="alert"
+                                style="background:#caffdf;">
+                                {!! $message !!}
+                            </div>
+                            @endif
+                            @if ($errors->any())
+                            <div class="py-4 px-4 mb-2 mt-2 text-base font-bold" role="alert"
+                                style="background:#ffcaca;">
+                                <ul> @foreach ($errors->all() as $error) <li>{{ $error }}</li> @endforeach </ul>
+                            </div>
+                            @endif
+
+                            <form method="POST" action="{{ route('contact') }}" id="contact-form"
+                                data-toggle="validator">
+                                @csrf
+                                <div class="messages"></div>
+                                <div class="row controls">
+                                    <div class="col-12">
+                                        <div class="input-group-meta form-group mb-30">
+                                            <label>Name*</label>
+                                            <input type="text" placeholder="Your name" name="name" required="required"
+                                                data-error="Name is required." value="{{ old('name') ?? '' }}">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="input-group-meta form-group mb-30">
+                                            <label>Email*</label>
+                                            <input type="email" placeholder="Your email" name="email"
+                                                required="required" data-error="Valid email is required."
+                                                value="{{ old('email') ?? '' }}">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="input-group-meta form-group mb-30">
+                                            <textarea placeholder="Your message" name="message" required="required"
+                                                data-error="Please,leave us a message.">{{ old('message') ?? '' }}</textarea>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="form-group{{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}">
+                                        <div class="col-md-6">
+                                            {!! RecaptchaV3::field('contact') !!}
+                                            @if ($errors->has('g-recaptcha-response'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                                            </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-12"><button class="btn-eight ripple-btn">Send Message</button></div>
+                                </div>
+                            </form>
+                        </div> <!-- /.form-style-one -->
+                    </div>
+
+                    <div class="col-lg-6 d-flex order-lg-first">
+                        <div class="map-area-one mt-10 me-lg-4 md-mt-50">
+                            <div class="mapouter">
+                                <div class="gmap_canvas">
+                                    <iframe class="gmap_iframe"
+                                        src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=W State St, Garden City, Idaho&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+                                </div>
+                            </div>
+                        </div> <!-- /.map-area-one -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- /.contact-section-one -->
+
+    <br><br><br><br><br>
+
+    <!-- 
 			=============================================
 				Contact Section One
 			============================================== 
 			-->
-			<div class="contact-section-one mb-170 lg-mb-120">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-4">
-							<div class="address-block-two text-center mb-40 sm-mb-20">
-								<div class="icon d-flex align-items-center justify-content-center m-auto"><img src="images/icon/icon_17.svg" alt=""></div>
-								<h5 class="title">Our Address</h5>
-								<p>9169 W State St #2028, 83714<br>Garden City, Idaho</p>
-							</div> <!-- /.address-block-two -->
-						</div>
-						<div class="col-md-4">
-							<div class="address-block-two text-center mb-40 sm-mb-20">
-								<div class="icon d-flex align-items-center justify-content-center m-auto"><img src="images/icon/icon_18.svg" alt=""></div>
-								<h5 class="title">Contact Info</h5>
-								<p>Open a chat or give us call at <br><a href="tel:+14356605999">+1 (435) 660-5999</a></p>
-							</div> <!-- /.address-block-two -->
-						</div>
-						<div class="col-md-4">
-							<div class="address-block-two text-center mb-40 sm-mb-20">
-								<div class="icon d-flex align-items-center justify-content-center m-auto"><img src="images/icon/icon_19.svg" alt=""></div>
-								<h5 class="title">Live Support</h5>
-								<p>live support service via the above form or <a href="mailto:support@cryptfence.com">support@cryptfence.com</a>.</p>
-							</div> <!-- /.address-block-two -->
-						</div>
-					</div>
-				</div>
+    <div class="contact-section-one mb-170 lg-mb-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="address-block-two text-center mb-40 sm-mb-20">
+                        <div class="icon d-flex align-items-center justify-content-center m-auto"><img
+                                src="images/icon/icon_17.svg" alt=""></div>
+                        <h5 class="title">Our Address</h5>
+                        <p>9169 W State St #2028, 83714<br>Garden City, Idaho</p>
+                    </div> <!-- /.address-block-two -->
+                </div>
+                <div class="col-md-4">
+                    <div class="address-block-two text-center mb-40 sm-mb-20">
+                        <div class="icon d-flex align-items-center justify-content-center m-auto"><img
+                                src="images/icon/icon_18.svg" alt=""></div>
+                        <h5 class="title">Contact Info</h5>
+                        <p>Open a chat or give us call at <br><a href="tel:+14356605999">+1 (435) 660-5999</a></p>
+                    </div> <!-- /.address-block-two -->
+                </div>
+                <div class="col-md-4">
+                    <div class="address-block-two text-center mb-40 sm-mb-20">
+                        <div class="icon d-flex align-items-center justify-content-center m-auto"><img
+                                src="images/icon/icon_19.svg" alt=""></div>
+                        <h5 class="title">Live Support</h5>
+                        <p>live support service via the above form or <a
+                                href="mailto:support@cryptfence.com">support@cryptfence.com</a>.</p>
+                    </div> <!-- /.address-block-two -->
+                </div>
+            </div>
+        </div>
 
-            
-			<!--
+
+        <!--
 			=====================================================
 				Footer
 			=====================================================
 			-->
-			<div class="footer-style-four space-fix-one theme-basic-footer">
-				<div class="container">
-					<div class="inner-wrapper">
-						<div class="row">
-							<div class="col-lg-3 footer-intro mb-40">
-                                <div class="logo"><a href="{{ url('') }}"><img src="images/logo/logo_01.png" alt=""
-                                            width="129"></a></div>
-                                <p>We support to for your licensing requirements.</p>
-                                <ul class="d-flex social-icon style-none">
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-12 mb-30">
-                                <h5 class="footer-title">Home Links</h5>
-                                <ul class="footer-nav-link style-none">
-                                    <li><a href="{{ url('') }}">Home</a></li>
-                                    <li><a href="{{ url('docs') }}">API documentation</a></li>
-                                    <li><a href="{{ url('pricing') }}">Pricing</a></li>
-                                    <li><a href="{{ url('faq') }}">FAQ</a></li>
-                                    <li><a href="{{ url('contact') }}">Contact</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-xl-5 col-lg-4 col-md-6 mb-30">
-                                <h5 class="footer-title">Dashboard Links</h5>
-                                <ul class="footer-nav-link style-none">
-                                    <li><a href="{{ url('dashboard') }}">Dashboard</a></li>
-                                    <li><a href="{{ url('products') }}">Manage products</a></li>
-                                    <li><a href="{{ url('customers') }}">Manage customers</a></li>
-                                    <li><a href="{{ url('billing') }}">Billing</a></li>
-                                    <li><a href="{{ url('user/profile') }}">Account settings</a></li>
-                                </ul>
-                            </div>
-						</div>
-
-                        <div class="bottom-footer">
-                            <div class="d-lg-flex justify-content-between align-items-center">
-                                <ul class="order-lg-1 pb-15 d-flex justify-content-center footer-nav style-none">
-                                 <!--   <li><a href="#">Privacy &amp; Terms.</a></li> -->
-                                    <li><a href="{{ url('faq') }}">FAQ</a></li>
-                                    <li><a href="{{ url('contact') }}">Contact Us</a></li>
-                                </ul>
-                                <p class="copyright text-center order-lg-0 pb-15">Copyright @2022 CryptFence Solutions.</p>
-                            </div>
+        <div class="footer-style-four space-fix-one theme-basic-footer">
+            <div class="container">
+                <div class="inner-wrapper">
+                    <div class="row">
+                        <div class="col-lg-3 footer-intro mb-40">
+                            <div class="logo"><a href="{{ url('') }}"><img src="images/logo/logo_01.png" alt=""
+                                        width="129"></a></div>
+                            <p>We support to for your licensing requirements.</p>
+                            <ul class="d-flex social-icon style-none">
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                            </ul>
                         </div>
-					</div> <!-- /.inner-wrapper -->
-				</div>
-			</div> <!-- /.footer-style-four -->
+                        <div class="col-lg-4 col-md-6 col-sm-12 mb-30">
+                            <h5 class="footer-title">Home Links</h5>
+                            <ul class="footer-nav-link style-none">
+                                <li><a href="{{ url('') }}">Home</a></li>
+                                <li><a href="{{ url('docs') }}">API documentation</a></li>
+                                <li><a href="{{ url('pricing') }}">Pricing</a></li>
+                                <li><a href="{{ url('faq') }}">FAQ</a></li>
+                                <li><a href="{{ url('contact') }}">Contact</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-xl-5 col-lg-4 col-md-6 mb-30">
+                            <h5 class="footer-title">Dashboard Links</h5>
+                            <ul class="footer-nav-link style-none">
+                                <li><a href="{{ url('dashboard') }}">Dashboard</a></li>
+                                <li><a href="{{ url('products') }}">Manage products</a></li>
+                                <li><a href="{{ url('customers') }}">Manage customers</a></li>
+                                <li><a href="{{ url('billing') }}">Billing</a></li>
+                                <li><a href="{{ url('user/profile') }}">Account settings</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="bottom-footer">
+                        <div class="d-lg-flex justify-content-between align-items-center">
+                            <ul class="order-lg-1 pb-15 d-flex justify-content-center footer-nav style-none">
+                                <!--   <li><a href="#">Privacy &amp; Terms.</a></li> -->
+                                <li><a href="{{ url('faq') }}">FAQ</a></li>
+                                <li><a href="{{ url('contact') }}">Contact Us</a></li>
+                            </ul>
+                            <p class="copyright text-center order-lg-0 pb-15">Copyright @2022 CryptFence Solutions.</p>
+                        </div>
+                    </div>
+                </div> <!-- /.inner-wrapper -->
+            </div>
+        </div> <!-- /.footer-style-four -->
 
 
-			<button class="scroll-top">
-				<i class="bi bi-arrow-up-short"></i>
-			</button>
-			
-        
+        <button class="scroll-top">
+            <i class="bi bi-arrow-up-short"></i>
+        </button>
+
+
 
 
 

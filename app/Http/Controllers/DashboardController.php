@@ -33,7 +33,8 @@ class DashboardController extends Controller
         $request->validate([
             'name'=>'required',
             'email' => 'required|email',
-            'message' => 'required'
+            'message' => 'required',
+            'g-recaptcha-response' => 'required|recaptchav3:contact,0.3'
         ]);
 
         $name = $request->name;
